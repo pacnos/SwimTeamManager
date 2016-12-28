@@ -1,0 +1,58 @@
+{% extends 'base_backend.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static "dataTables/css/dataTables.bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "dataTables/css/dataTables.responsive.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <!-- First data block -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ title }}</h1>
+        </div>
+    </div>
+    <!-- Start Athlete table -->
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Birth Date</th>
+                        <th>Gender</th>
+                        <th>Last medical</th>
+                        <th>Competitor Number</th>
+                        <th>Details</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for athlete in athlete_list %}
+                    <tr>
+                        <td>{{ athlete.first_name }}</td>
+                        <td>{{ athlete.last_name }}</td>
+                        <td>{{ athlete.birth_date }}</td>
+                        <td>{{ athlete.male }}</td>
+                        <td>{{ athlete.last_medical }}</td>
+                        <td>{{ athlete.competitor_number }}</td>
+                        <td><i class="fa fa-book" /></td>
+                        <td><i class="fa fa-pencil" /></td>
+                        <td><i class="fa fa-trash" /></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static "dataTables/js/jquery.dataTables.min.js" %}"></script>
+    <script src="{% static "dataTables/js/dataTables.bootstrap.min.js" %}"></script>
+    <script src="{% static "dataTables/js/dataTables.responsive.js" %}"></script>
+{% endblock %}
