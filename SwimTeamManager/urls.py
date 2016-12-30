@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 
-from TeamManager import views
+from TeamManager.views import views
 
 urlpatterns = [
     url(r'^$', views.DashboardView.as_view(), name='dashboard'),

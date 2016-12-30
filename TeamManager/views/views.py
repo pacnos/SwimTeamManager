@@ -1,19 +1,14 @@
-from django.http import HttpResponse
-from django.http.response import HttpResponseBadRequest
-
-from django.views.generic.base import TemplateView, View
+from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 
 from TeamManager.models import Athlete
-from django.forms.models import model_to_dict
-import json
 
 
 class DashboardView(TemplateView):
     """
     View which shows the login dashboard
     """
-    template_name ="base_backend.html"
+    template_name = "base_backend.html"
 
 
 class AthleteManagementView(ListView):

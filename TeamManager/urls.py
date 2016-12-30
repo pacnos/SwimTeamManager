@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from . import views, json_views
+from TeamManager.views import json_views, views
 
 app_name = 'TeamManager'
 
