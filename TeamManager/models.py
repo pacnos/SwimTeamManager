@@ -22,6 +22,7 @@ class Athlete(models.Model):
 
     # Contact Data
     phone = models.CharField(max_length=30, null=True, blank=True)
+    mobile_phone = models.CharField(max_length=30, null=True, blank=True)
     mail = models.CharField(max_length=30, null=True, blank=True)
 
     mobile_phone_father = models.CharField(max_length=30, null=True, blank=True)

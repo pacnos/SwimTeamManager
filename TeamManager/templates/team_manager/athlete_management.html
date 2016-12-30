@@ -39,8 +39,10 @@
                         <td>{{ athlete.male }}</td>
                         <td>{{ athlete.last_medical }}</td>
                         <td>{{ athlete.competitor_number }}</td>
-                        <td><i class="fa fa-book" /></td>
-                        <td><i class="fa fa-pencil" /></td>
+                        <td>
+                            <button type="button" class="table-button fa fa-book" data-toggle="modal" data-target="#athleteDetails" data-id="{{ athlete.id }}"/>
+                        </td>
+                        <td><a href="#" data-toggle="modal" data-target=#myModal"><i class="fa fa-pencil" /></a></td>
                         <td><i class="fa fa-trash" /></td>
                     </tr>
                     {% endfor %}
@@ -49,10 +51,119 @@
         </div>
     </div>
 
+
+    <!-- Modal Dialog - Athlete Details -->
+    <div class="modal fade" id="athleteDetails" tabindex="-1" role="dialog" aria-labelledby="athleteDetailsLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="athleteDetails"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Start Contact Table -->
+                    <table class="table table-responsive table-bordered">
+                        <!-- Address Data -->
+                        <tr>
+                            <td class="table-column-header" colspan="2">Address Data</td>
+                        </tr>
+                        <tr>
+                            <td class="table-column-bold">Street</td>
+                            <td id="athlete_street"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-column-bold">City</td>
+                            <td id="athlete_city"></td>
+                        </tr>
+                        <!-- Contact Athlete -->
+                        <tr>
+                            <td class="table-column-header" colspan="2">Athlete Contacts</td>
+                        </tr>
+                        <tr>
+                            <td class="table-column-bold">Phone</td>
+                            <td id="athlete_phone"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-column-bold">Mobile Phone</td>
+                            <td id="athlete_mobile_phone"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-column-bold">Mail</td>
+                            <td id="athlete_mail"></td>
+                        </tr>
+                        <!-- Contact Mother -->
+                        <tr>
+                            <td class="table-column-header" colspan="2">Contact Mother</td>
+                        </tr>
+                        <tr>
+                            <td class="table-column-bold">Mobile Phone</td>
+                            <td id="mother_phone"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-column-bold">Mail</td>
+                            <td id="mother_mail"></td>
+                        </tr>
+                        <!-- Contact Father -->
+                        <tr>
+                            <td class="table-column-header" colspan="2">Contact Father</td>
+                        </tr>
+                        <tr>
+                            <td class="table-column-bold">Mobile Phone</td>
+                            <td id="father_phone"></td>
+                        </tr>
+                        <tr>
+                            <td class="table-column-bold">Mail</td>
+                            <td id="father_mail"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 {% endblock %}
 
 {% block javascript %}
     <script src="{% static "dataTables/js/jquery.dataTables.min.js" %}"></script>
     <script src="{% static "dataTables/js/dataTables.bootstrap.min.js" %}"></script>
     <script src="{% static "dataTables/js/dataTables.responsive.js" %}"></script>
+
+    <script>
+        $('#athleteDetails').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var athlete_id = button.data('id');
+            var modal = $(this);
+            //Execute the ajax request
+            $.ajax({
+                    url: "{% url 'TeamManager:athleteContact' %}"+athlete_id+"/",
+                    success: function(athlete){
+                        // Fill the title
+                        modal.find('#athleteDetails').text("Contact Details: " + athlete.first_name + " " + athlete.last_name);
+
+                        //Address data
+                        modal.find('#athlete_street').text(athlete.street);
+                        modal.find('#athlete_city').text(athlete.zip_code + " " + athlete.city);
+
+                        // Contact athlete
+                        modal.find('#athlete_phone').text(athlete.phone);
+                        modal.find('#athlete_mobile_phone').text(athlete.mobile_phone);
+                        modal.find('#athlete_mail').text(athlete.mail);
+
+                        //Contact mother
+                        modal.find('#mother_phone').text(athlete.mobile_phone_mother);
+                        modal.find('#mother_mail').text(athlete.mail_mother);
+
+                        //Contact father
+                        modal.find('#father_phone').text(athlete.mobile_phone_father);
+                        modal.find('#father_mail').text(athlete.mail_father);
+            }});
+        })
+    </script>
+
+
+
 {% endblock %}

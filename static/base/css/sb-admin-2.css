@@ -252,3 +252,22 @@ table.dataTable thead .sorting:after {
 .panel-yellow > a:hover {
   color: #df8a13;
 }
+
+.table-button {
+  border: 0;
+  background-color: transparent;
+  color: #0d6aad;
+}
+
+.table-button:focus {
+  outline-style: none;
+}
+
+.table-column-header {
+  text-align: center;
+  font-weight: bold;
+}
+
+.table-column-bold {
+  font-weight: bold;
+}
