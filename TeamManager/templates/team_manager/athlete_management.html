@@ -40,7 +40,8 @@
                         <td>{{ athlete.last_medical }}</td>
                         <td>{{ athlete.competitor_number }}</td>
                         <td>
-                            <button type="button" class="table-button fa fa-book" data-toggle="modal" data-target="#athleteDetails" data-id="{{ athlete.id }}"/>
+                            <button type="button" class="table-button fa fa-book" onclick="showAthleteDetails({{ athlete.id }})" data-id="{{ athlete.id }}"/>
+                            <!-- data-toggle="modal" data-target="#athleteDetails" -->
                         </td>
                         <td><a href="#" data-toggle="modal" data-target=#myModal"><i class="fa fa-pencil" /></a></td>
                         <td><i class="fa fa-trash" /></td>
@@ -133,6 +134,37 @@
     <script src="{% static "dataTables/js/dataTables.responsive.js" %}"></script>
 
     <script>
+        function showAthleteDetails(athlete_id) {
+            var modal = $("#athleteDetails");
+            $.ajax({
+                    url: "{% url 'TeamManager:athleteContact' %}"+athlete_id+"/",
+                    success: function(athlete){
+                        // Fill the title
+                        modal.find('#athleteDetails').text("Contact Details: " + athlete.first_name + " " + athlete.last_name);
+
+                        //Address data
+                        modal.find('#athlete_street').text(athlete.street);
+                        modal.find('#athlete_city').text(athlete.zip_code + " " + athlete.city);
+
+                        // Contact athlete
+                        modal.find('#athlete_phone').text(athlete.phone);
+                        modal.find('#athlete_mobile_phone').text(athlete.mobile_phone);
+                        modal.find('#athlete_mail').text(athlete.mail);
+
+                        //Contact mother
+                        modal.find('#mother_phone').text(athlete.mobile_phone_mother);
+                        modal.find('#mother_mail').text(athlete.mail_mother);
+
+                        //Contact father
+                        modal.find('#father_phone').text(athlete.mobile_phone_father);
+                        modal.find('#father_mail').text(athlete.mail_father);
+
+                        modal.modal('show');
+                    }
+            });
+        }
+
+        /*
         $('#athleteDetails').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var athlete_id = button.data('id');
@@ -160,8 +192,14 @@
                         //Contact father
                         modal.find('#father_phone').text(athlete.mobile_phone_father);
                         modal.find('#father_mail').text(athlete.mail_father);
-            }});
-        })
+                    },
+                    error: function () {
+                        modal.modal('hide');
+                    }
+
+            });
+        }
+        )*/
     </script>
 
 

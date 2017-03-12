@@ -5,6 +5,7 @@ from django.http import HttpResponseBadRequest
 from django.views import View
 
 from TeamManager.models import Athlete
+from TeamManager.utils import json_helper
 
 
 class AthleteContactDetailsJSON(View):
@@ -24,6 +25,7 @@ class AthleteContactDetailsJSON(View):
 
         # Load object from database
         athlete_object = Athlete.objects.get(pk=self.args[0])
-        json_athlete = json.dumps(model_to_dict(athlete_object))
+        dict = model_to_dict(athlete_object)
+        json_athlete = json.dumps(dict, default=json_helper.json_serial)
 
         return HttpResponse(json_athlete, content_type="application/json")
