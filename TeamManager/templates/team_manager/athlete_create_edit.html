@@ -1,0 +1,115 @@
+{% extends 'base_backend.html' %}
+{% load static %}
+
+{% block css %}
+    <!-- Datepicker CSS -->
+    <link href="{% static "datePicker/css/bootstrap-datepicker3.standalone.min.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+    <!-- Datepicker JS -->
+    <script src="{% static "datePicker/js/bootstrap-datepicker.min.js" %}"></script>
+    <script src="{% static "datePicker/js/bootstrap-datepicker.de.min.js" %}"></script>
+
+    <script>
+        $(function() {
+            $('#{{ form.birth_date.id_for_label }}').datepicker({
+                format: "dd.mm.yyyy",
+                language: "de",
+                autoclose: true,
+                todayHighlight: true,
+                maxViewMode: 3,
+                orientation: "bottom auto",
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <!-- First data block -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ title }}</h1>
+        </div>
+    </div>
+    <!-- Start Athlete table -->
+    <div class="row">
+        <div class="col-lg-12">
+            <form action="{% url 'TeamManager:athleteCreate' %}" method="post">
+                {% csrf_token %}
+                <!-- First Name / Name -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form.first_name.errors }}
+                            <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+                            <input type="text" class="form-control" id="{{ form.first_name.id_for_label }}" name="{{ form.first_name.html_name }}" value="{{ form.first_name.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form.last_name.errors }}
+                            <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                            <input type="text" class="form-control" id="{{ form.last_name.id }}" name="{{ form.last_name.html_name }}" value="{{ form.last_name.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                </div>
+                <!-- Birth Date / Gender -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form.birth_date.errors }}
+                            <label for="{{ form.birth_date.id_for_label }}">Birth Date:</label>
+                            <input type="date" class="form-control" id="{{ form.birth_date.id_for_label }}" name="{{ form.birth_date.html_name }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form.male.errors }}
+                            <label for="{{ form.male.id_for_label }}">Gender:</label>
+                            <select class="form-control" id="{{ form.male.id_for_label }}" name="{{ form.male.html_name }}">
+                                <option value="True">Male</option>
+                                <option value="False">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Street -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            {{ form.street.errors }}
+                            <label for="{{ form.street.id_for_label }}">Street:</label>
+                            <input type="text" class="form-control" id="{{ form.street.id_for_label }}" name="{{ form.street.html_name }}" value="{{ form.street.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                </div>
+                <!-- ZIP Code / City -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form.zip_code.errors }}
+                            <label for="{{ form.zip_code.id_for_label }}">Zip Code:</label>
+                            <input type="text" class="form-control" id="{{ form.zip_code.id_for_label }}" name="{{ form.zip_code.html_name }}" value="{{ form.zip_code.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            {{ form.city.errors }}
+                            <label for="{{ form.city.id_for_label }}">City:</label>
+                            <input type="text" class="form-control" id="{{ form.city.id }}" name="{{ form.city.html_name }}" value="{{ form.city.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <input type="submit" value="Save" />
+            </form>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

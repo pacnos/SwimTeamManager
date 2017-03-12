@@ -1,6 +1,9 @@
+from django.urls.base import reverse, reverse_lazy
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import FormView, CreateView
 from django.views.generic.list import ListView
 
+from TeamManager.forms.forms import AthleteForm
 from TeamManager.models import Athlete
 
 
@@ -25,6 +28,30 @@ class AthleteManagementView(ListView):
         context["title"] = "Athlete Management"
 
         return context
+
+
+class CreateAthleteView(CreateView):
+    """
+    View which is used to create a new athlete
+    """
+    model = Athlete
+    context_object_name = "form"
+    form_class = AthleteForm
+    template_name = "team_manager/athlete_create_edit.html"
+    success_url = reverse_lazy("TeamManager:athleteManagement")
+
+    def get_context_data(self, **kwargs):
+        context = super(CreateAthleteView, self).get_context_data(**kwargs)
+
+        context["title"] = "Create Athlete"
+
+        return context
+
+
+
+
+
+
 
 
 

@@ -271,3 +271,7 @@ table.dataTable thead .sorting:after {
 .table-column-bold {
   font-weight: bold;
 }
+
+.table-no-border {
+  border: 0;
+}
