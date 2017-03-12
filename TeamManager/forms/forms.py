@@ -13,3 +13,4 @@ class AthleteForm(ModelForm):
         fields = "__all__"
 
     birth_date = DateField(input_formats=["%d.%m.%Y"])
+    last_medical = DateField(input_formats=["%d.%m.%Y"], required=False)

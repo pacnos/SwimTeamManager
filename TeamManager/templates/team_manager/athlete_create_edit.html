@@ -21,6 +21,15 @@
                 maxViewMode: 3,
                 orientation: "bottom auto",
             });
+
+            $('#{{ form.last_medical.id_for_label }}').datepicker({
+                format: "dd.mm.yyyy",
+                language: "de",
+                autoclose: true,
+                todayHighlight: true,
+                maxViewMode: 2,
+                orientation: "bottom auto",
+            });
         });
     </script>
 {% endblock %}
@@ -37,19 +46,22 @@
         <div class="col-lg-12">
             <form action="{% url 'TeamManager:athleteCreate' %}" method="post">
                 {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Basic Data</h3>
+                    </div>
+                </div>
                 <!-- First Name / Name -->
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="form-group">
-                            {{ form.first_name.errors }}
-                            <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+                        <div class="form-group {{ form.first_name.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.first_name.id_for_label }}">First Name:</label>
                             <input type="text" class="form-control" id="{{ form.first_name.id_for_label }}" name="{{ form.first_name.html_name }}" value="{{ form.first_name.value|default_if_none:"" }}">
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="form-group">
-                            {{ form.last_name.errors }}
-                            <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                        <div class="form-group {{ form.last_name.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.last_name.id_for_label }}">Last Name:</label>
                             <input type="text" class="form-control" id="{{ form.last_name.id }}" name="{{ form.last_name.html_name }}" value="{{ form.last_name.value|default_if_none:"" }}">
                         </div>
                     </div>
@@ -57,16 +69,14 @@
                 <!-- Birth Date / Gender -->
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="form-group">
-                            {{ form.birth_date.errors }}
-                            <label for="{{ form.birth_date.id_for_label }}">Birth Date:</label>
-                            <input type="date" class="form-control" id="{{ form.birth_date.id_for_label }}" name="{{ form.birth_date.html_name }}">
+                        <div class="form-group {{ form.birth_date.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.birth_date.id_for_label }}">Birth Date:</label>
+                            <input type="date" class="form-control" id="{{ form.birth_date.id_for_label }}" name="{{ form.birth_date.html_name }}" value="{{ form.birth_date.value|default_if_none:"" }}">
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="form-group">
-                            {{ form.male.errors }}
-                            <label for="{{ form.male.id_for_label }}">Gender:</label>
+                        <div class="form-group {{ form.male.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.male.id_for_label }}">Gender:</label>
                             <select class="form-control" id="{{ form.male.id_for_label }}" name="{{ form.male.html_name }}">
                                 <option value="True">Male</option>
                                 <option value="False">Female</option>
@@ -77,9 +87,8 @@
                 <!-- Street -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="form-group">
-                            {{ form.street.errors }}
-                            <label for="{{ form.street.id_for_label }}">Street:</label>
+                        <div class="form-group {{ form.street.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.street.id_for_label }}">Street:</label>
                             <input type="text" class="form-control" id="{{ form.street.id_for_label }}" name="{{ form.street.html_name }}" value="{{ form.street.value|default_if_none:"" }}">
                         </div>
                     </div>
@@ -87,24 +96,98 @@
                 <!-- ZIP Code / City -->
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="form-group">
-                            {{ form.zip_code.errors }}
-                            <label for="{{ form.zip_code.id_for_label }}">Zip Code:</label>
+                        <div class="form-group {{ form.zip_code.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.zip_code.id_for_label }}">Zip Code:</label>
                             <input type="text" class="form-control" id="{{ form.zip_code.id_for_label }}" name="{{ form.zip_code.html_name }}" value="{{ form.zip_code.value|default_if_none:"" }}">
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="form-group">
-                            {{ form.city.errors }}
-                            <label for="{{ form.city.id_for_label }}">City:</label>
+                        <div class="form-group {{ form.city.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.city.id_for_label }}">City:</label>
                             <input type="text" class="form-control" id="{{ form.city.id }}" name="{{ form.city.html_name }}" value="{{ form.city.value|default_if_none:"" }}">
                         </div>
                     </div>
                 </div>
-
-
-
-                <input type="submit" value="Save" />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Competition Data</h3>
+                    </div>
+                </div>
+                <!-- Competitor Number / Last Medical Examination -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.competitor_number.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.competitor_number.id_for_label }}">Competitor Number:</label>
+                            <input type="text" class="form-control" id="{{ form.competitor_number.id }}" name="{{ form.competitor_number.html_name }}" value="{{ form.competitor_number.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.last_medical.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.birth_date.id_for_label }}">Last Medical Examination:</label>
+                            <input type="date" class="form-control" id="{{ form.last_medical.id_for_label }}" name="{{ form.last_medical.html_name }}" value="{{ form.last_medical.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Contact Data</h3>
+                    </div>
+                </div>
+                <!-- Phone Athlete -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.phone.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.phone.id_for_label }}">Phone Number:</label>
+                            <input type="tel" class="form-control" id="{{ form.phone.id }}" name="{{ form.phone.html_name }}" value="{{ form.phone.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.mobile_phone.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.mobile_phone.id_for_label }}">Mobile Phone Number:</label>
+                            <input type="tel" class="form-control" id="{{ form.mobile_phone.id_for_label }}" name="{{ form.mobile_phone.html_name }}" value="{{ form.phone.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                </div>
+                <!-- Mail Athlete -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group {{ form.mail.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.mail.id_for_label }}">Mail Address:</label>
+                            <input type="email" class="form-control" id="{{ form.mail.id }}" name="{{ form.mail.html_name }}" value="{{ form.mail.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                </div>
+                <!-- Data Mother -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.mobile_phone_mother.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.mobile_phone_mother.id_for_label }}">Mobile Phone Number Mother:</label>
+                            <input type="tel" class="form-control" id="{{ form.mobile_phone_mother.id }}" name="{{ form.mobile_phone_mother.html_name }}" value="{{ form.mobile_phone_mother.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.mail_mother.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.mail_mother.id_for_label }}">Mail Address Mother:</label>
+                            <input type="email" class="form-control" id="{{ form.mail_mother.id }}" name="{{ form.mail_mother.html_name }}" value="{{ form.mail_mother.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                </div>
+                <!-- Data Father -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.mobile_phone_father.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.mobile_phone_father.id_for_label }}">Mobile Phone Number Father:</label>
+                            <input type="tel" class="form-control" id="{{ form.mobile_phone_father.id }}" name="{{ form.mobile_phone_father.html_name }}" value="{{ form.mobile_phone_father.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.mail_father.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.mail_father.id_for_label }}">Mail Address Father:</label>
+                            <input type="email" class="form-control" id="{{ form.mail_father.id }}" name="{{ form.mail_father.html_name }}" value="{{ form.mail_father.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
     </div>
