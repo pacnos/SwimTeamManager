@@ -41,9 +41,8 @@
                         <td>{{ athlete.competitor_number }}</td>
                         <td>
                             <button type="button" class="table-button fa fa-book" onclick="showAthleteDetails({{ athlete.id }})" data-id="{{ athlete.id }}"/>
-                            <!-- data-toggle="modal" data-target="#athleteDetails" -->
                         </td>
-                        <td><a href="#" data-toggle="modal" data-target=#myModal"><i class="fa fa-pencil" /></a></td>
+                        <td><a href="{% url 'TeamManager:athleteEdit' athlete.pk %}" data-toggle="modal" data-target=#myModal"><i class="fa fa-pencil" /></a></td>
                         <td><i class="fa fa-trash" /></td>
                     </tr>
                     {% endfor %}

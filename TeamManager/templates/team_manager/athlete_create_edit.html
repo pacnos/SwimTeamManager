@@ -71,7 +71,7 @@
                     <div class="col-lg-6">
                         <div class="form-group {{ form.birth_date.errors|yesno:"has-error," }}">
                             <label class="control-label" for="{{ form.birth_date.id_for_label }}">Birth Date:</label>
-                            <input type="date" class="form-control" id="{{ form.birth_date.id_for_label }}" name="{{ form.birth_date.html_name }}" value="{{ form.birth_date.value|default_if_none:"" }}">
+                            <input type="date" class="form-control" id="{{ form.birth_date.id_for_label }}" name="{{ form.birth_date.html_name }}" value="{{ form.birth_date.value|date:"SHORT_DATE_FORMAT" }}">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -124,7 +124,7 @@
                     <div class="col-lg-6">
                         <div class="form-group {{ form.last_medical.errors|yesno:"has-error," }}">
                             <label class="control-label" for="{{ form.birth_date.id_for_label }}">Last Medical Examination:</label>
-                            <input type="date" class="form-control" id="{{ form.last_medical.id_for_label }}" name="{{ form.last_medical.html_name }}" value="{{ form.last_medical.value|default_if_none:"" }}">
+                            <input type="date" class="form-control" id="{{ form.last_medical.id_for_label }}" name="{{ form.last_medical.html_name }}" value="{{ form.last_medical.value|date:"SHORT_DATE_FORMAT" }}">
                         </div>
                     </div>
                 </div>
