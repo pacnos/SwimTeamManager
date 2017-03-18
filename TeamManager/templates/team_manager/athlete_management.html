@@ -40,7 +40,7 @@
                         <td>{{ athlete.first_name }}</td>
                         <td>{{ athlete.last_name }}</td>
                         <td>{{ athlete.birth_date|date:'SHORT_DATE_FORMAT' }}</td>
-                        <td>{{ athlete.male }}</td>
+                        <td>{{ athlete.male|yesno:"Male, Female" }}</td>
                         <td>{{ athlete.last_medical|date:'SHORT_DATE_FORMAT' }}</td>
                         <td>{{ athlete.competitor_number }}</td>
                         <td>
