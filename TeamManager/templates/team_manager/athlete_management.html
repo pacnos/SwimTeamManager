@@ -14,6 +14,10 @@
         </div>
     </div>
     <!-- Start Athlete table -->
+    <div id="error_alert" class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
+        <button type="button" class="close" aria-label="Close" onclick="$(this).parent().hide();"><span aria-hidden="true">&times;</span></button>
+        <strong>Error:</strong> <span id="errorMsg"></span>
+    </div>
     <div class="row">
         <div class="col-lg-12">
             <table class="table table-responsive table-hover">
@@ -32,18 +36,20 @@
                 </thead>
                 <tbody>
                     {% for athlete in athlete_list %}
-                    <tr>
+                    <tr id="athlete-table-row-{{ athlete.id }}">
                         <td>{{ athlete.first_name }}</td>
                         <td>{{ athlete.last_name }}</td>
-                        <td>{{ athlete.birth_date }}</td>
+                        <td>{{ athlete.birth_date|date:'SHORT_DATE_FORMAT' }}</td>
                         <td>{{ athlete.male }}</td>
-                        <td>{{ athlete.last_medical }}</td>
+                        <td>{{ athlete.last_medical|date:'SHORT_DATE_FORMAT' }}</td>
                         <td>{{ athlete.competitor_number }}</td>
                         <td>
-                            <button type="button" class="table-button fa fa-book" onclick="showAthleteDetails({{ athlete.id }})" data-id="{{ athlete.id }}"/>
+                            <button type="button" class="table-button fa fa-book" onclick="showAthleteDetails({{ athlete.id }})"/>
                         </td>
-                        <td><a href="{% url 'TeamManager:athleteEdit' athlete.pk %}" data-toggle="modal" data-target=#myModal"><i class="fa fa-pencil" /></a></td>
-                        <td><i class="fa fa-trash" /></td>
+                        <td><a href="{% url 'TeamManager:athleteEdit' athlete.pk %}"><i class="fa fa-pencil" /></a></td>
+                        <td>
+                            <button type="button" class="table-button fa fa-trash" onclick="showAthleteDelete({{ athlete.id }}, this)" data-firstname="{{ athlete.first_name }}" data-lastname="{{ athlete.last_name }}"/>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -51,6 +57,25 @@
         </div>
     </div>
 
+    <!-- Modal Dialog - Delete Athlete -->
+    <div class="modal fade" id="athleteDelete" tabindex="-1" role="dialog" aria-labelledby="athleteDeleteLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="athleteDelete">Delete Athlete</h4>
+                </div>
+                <div class="modal-body">
+                    Are you sure to delete Athlete: <span id="athlete_name"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="deleteButton" onclick="deleteAthlete(this)">Delete Athlete</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <!-- Modal Dialog - Athlete Details -->
     <div class="modal fade" id="athleteDetails" tabindex="-1" role="dialog" aria-labelledby="athleteDetailsLabel">
@@ -162,6 +187,43 @@
                     }
             });
         }
+
+        function showAthleteDelete(athlete_id, src) {
+            var modal = $("#athleteDelete");
+            var last_name = $(src).data("lastname");
+            var first_name = $(src).data("firstname");
+
+            //Set the athlete name
+            modal.find("#athlete_name").html(first_name + " " + last_name);
+
+            //Set the athlete id
+            modal.find("#deleteButton").data("id", athlete_id);
+
+            //Show the modal
+            modal.modal('show');
+        }
+
+        function deleteAthlete(src) {
+            var athlete_id = $(src).data("id");
+            var modal = $("#athleteDelete");
+
+            //Make Ajax call to delete athlete
+            $.ajax({
+                    url: "{% url 'TeamManager:athleteDelete' %}"+athlete_id+"/",
+                    success: function(){
+                        $("#athlete-table-row-"+athlete_id).remove();
+                    },
+                    error: function (error) {
+                        $("#error_alert").find("#errorMsg").html(error.responseText);
+                        $("#error_alert").show();
+                    },
+                    complete: function () {
+                        modal.modal('hide');
+                    }
+            });
+
+        }
+
     </script>
 
 
