@@ -1,0 +1,125 @@
+{% extends 'base_backend.html' %}
+{% load static %}
+
+{% block css %}
+    <!-- Datepicker CSS -->
+    <link href="{% static "datePicker/css/bootstrap-datepicker3.standalone.min.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block javascript %}
+    <!-- Datepicker JS -->
+    <script src="{% static "datePicker/js/bootstrap-datepicker.min.js" %}"></script>
+    <script src="{% static "datePicker/js/bootstrap-datepicker.de.min.js" %}"></script>
+
+    <script>
+    $(function() {
+
+        //Password fields
+        $('#{{ form.password.id_for_label }}, #repeat_passwd').on('keyup', function () {
+            if ($('#{{ form.password.id_for_label }}').val() == $('#repeat_passwd').val()) {
+                $('#password_form_group').removeClass('has-error');
+                $('#password_repeat_form_group').removeClass('has-error');
+            } else
+            {
+                $('#password_form_group').addClass('has-error');
+                $('#password_repeat_form_group').addClass("has-error");
+            }
+        });
+
+        //Check before submit
+        $('#user_form').bind('submit',function(e){
+            if ($('#{{ form.password.id_for_label }}').val() != $('#repeat_passwd').val()) {
+                $('#{{ form.password.id_for_label }}, #repeat_passwd').delay(50).fadeOut().fadeIn('normal')
+                e.preventDefault();
+            }
+        });
+    });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <!-- First data block -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ title }}</h1>
+        </div>
+    </div>
+    <!-- Start Athlete table -->
+    <div class="row">
+        <div class="col-lg-12">
+            <form action="{{ request.get_full_path }}" method="post" id="user_form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Basic Data</h3>
+                    </div>
+                </div>
+                <!-- Username / Mail -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.username.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.username.id_for_label }}">Username:</label>
+                            <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.mail.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.mail.id_for_label }}">Mail Address:</label>
+                            <input type="email" class="form-control" id="{{ form.mail.id_for_label }}" name="{{ form.mail.html_name }}" value="{{ form.mail.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                </div>
+                <!-- First Name / Name -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.first_name.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.first_name.id_for_label }}">First Name:</label>
+                            <input type="text" class="form-control" id="{{ form.first_name.id_for_label }}" name="{{ form.first_name.html_name }}" value="{{ form.first_name.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.last_name.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                            <input type="text" class="form-control" id="{{ form.last_name.id_for_label }}" name="{{ form.last_name.html_name }}" value="{{ form.last_name.value|default_if_none:"" }}">
+                        </div>
+                    </div>
+                </div>
+                <!-- Rights -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group {{ form.group.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.group.id_for_label }}">Group:</label>
+                            <select class="form-control" id="{{ form.group.id_for_label }}" name="{{ form.group.html_name }}">
+                                {% for choice in form.group.field.choices %}
+                                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Password</h3>
+                    </div>
+                </div>
+                <!-- Password / Repeat Password -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.password.errors|yesno:"has-error," }}" id="password_form_group">
+                            <label class="control-label" for="{{ form.password.id_for_label }}">Password:</label>
+                            <input type="password" class="form-control" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" value="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.password.errors|yesno:"has-error," }}" id="password_repeat_form_group">
+                            <label class="control-label" for="repeat_passwd">Repeat Password:</label>
+                            <input type="password" class="form-control" id="repeat_passwd" name="repeat_passwd" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

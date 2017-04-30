@@ -275,3 +275,8 @@ table.dataTable thead .sorting:after {
 .table-no-border {
   border: 0;
 }
+
+.table-panel-footer {
+  font-size: smaller;
+  padding-left:8px;
+}
