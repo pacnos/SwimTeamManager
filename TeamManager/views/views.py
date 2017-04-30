@@ -66,14 +66,6 @@ class EditAthleteView(UpdateView):
         return context
 
 
-class DeleteAthleteView(DeleteView):
-    """
-    View which is used to delete an athlete
-    """
-
-    model = Athlete
-    success_url = reverse_lazy("TeamManager:athleteManagement")
-
 
 
 

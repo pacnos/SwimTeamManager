@@ -1,11 +1,29 @@
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy
 
-# Create your views here.
-from django.views.generic import TemplateView
+from django.views.generic import ListView, DeleteView
 
 
-class DashboardView(TemplateView):
+class UserManagementView(ListView):
     """
-    View which shows the login dashboard
+    View which shows the User management page
     """
-    template_name = "base_backend.html"
+    template_name = "admin/user_management.html"
+    model = User
+    context_object_name = "user_list"
+
+    def get_context_data(self, **kwargs):
+        context = super(UserManagementView, self).get_context_data(**kwargs)
+
+        context["title"] = "User Management"
+
+        return context
+
+
+class DeleteAthleteView(DeleteView):
+    """
+    View which is used to delete an athlete
+    """
+
+    model = User
+    success_url = reverse_lazy("Admin:overview")
