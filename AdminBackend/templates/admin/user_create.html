@@ -1,0 +1,57 @@
+{% extends 'admin/user_edit.html' %}
+{% load static %}
+
+{% block javascript %}
+    <!-- Datepicker JS -->
+    <script src="{% static "datePicker/js/bootstrap-datepicker.min.js" %}"></script>
+    <script src="{% static "datePicker/js/bootstrap-datepicker.de.min.js" %}"></script>
+
+    <script>
+    $(function() {
+
+        //Password fields
+        $('#{{ form.password.id_for_label }}, #repeat_passwd').on('keyup', function () {
+            if ($('#{{ form.password.id_for_label }}').val() == $('#repeat_passwd').val()) {
+                $('#password_form_group').removeClass('has-error');
+                $('#password_repeat_form_group').removeClass('has-error');
+            } else
+            {
+                $('#password_form_group').addClass('has-error');
+                $('#password_repeat_form_group').addClass("has-error");
+            }
+        });
+
+        //Check before submit
+        $('#user_form').bind('submit',function(e){
+            if ($('#{{ form.password.id_for_label }}').val() != $('#repeat_passwd').val()) {
+                $('#{{ form.password.id_for_label }}, #repeat_passwd').delay(50).fadeOut().fadeIn('normal')
+                e.preventDefault();
+            }
+        });
+    });
+    </script>
+{% endblock %}
+
+{% block password_content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Password</h3>
+        </div>
+    </div>
+
+    <!-- Password / Repeat Password -->
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group {{ form.password.errors|yesno:"has-error," }}" id="password_form_group">
+                <label class="control-label" for="{{ form.password.id_for_label }}">Password:</label>
+                <input type="password" class="form-control" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" value="">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group {{ form.password.errors|yesno:"has-error," }}" id="password_repeat_form_group">
+                <label class="control-label" for="repeat_passwd">Repeat Password:</label>
+                <input type="password" class="form-control" id="repeat_passwd" name="repeat_passwd" value="">
+            </div>
+        </div>
+    </div>
+{% endblock %}

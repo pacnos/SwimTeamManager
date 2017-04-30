@@ -4,8 +4,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DeleteView
 from django.views.generic.edit import FormView
 
-from AdminBackend.forms.forms import UserForm
-from AdminBackend.utils import AVAILABLE_GROUPS
+from AdminBackend.forms.forms import BasicUserForm, FullUserForm
+from AdminBackend.utils import AVAILABLE_GROUPS, get_group_key_for_user, set_group_for_user
 
 
 class UserManagementView(ListView):
@@ -29,8 +29,8 @@ class UserCreateView(FormView):
     View which is used to create a new user
     """
     context_object_name = "form"
-    form_class = UserForm
-    template_name = "admin/user_create_edit.html"
+    form_class = FullUserForm
+    template_name = "admin/user_create.html"
     success_url = reverse_lazy("AdminBackend:overview")
 
     def get_context_data(self, **kwargs):
@@ -62,14 +62,68 @@ class UserCreateView(FormView):
         user.last_name = last_name
 
         # Handle the Rights
-        user.groups.clear()
-        if group == "AT" or group == "CO":
-            group = Group.objects.get(name=AVAILABLE_GROUPS[group])
-            user.groups.add(group)
-        else:
-            user.is_superuser = True
+        set_group_for_user(user, group)
 
         user.save()
 
         # Go to overview page
         return super(UserCreateView, self).form_valid(form)
+
+
+class UserEditView(FormView):
+    """
+    View which is used to edit a existing user
+    """
+    context_object_name = "form"
+    form_class = BasicUserForm
+    template_name = "admin/user_edit.html"
+    success_url = reverse_lazy("AdminBackend:overview")
+
+    def get_initial(self):
+        """
+        Returns the initial form data
+        :return: 
+        """
+
+        user_object = User.objects.get(pk=self.kwargs["pk"])
+
+        return {
+            "username": user_object.username,
+            "first_name": user_object.first_name,
+            "last_name": user_object.last_name,
+            "mail": user_object.email,
+            "group": get_group_key_for_user(user_object)
+        }
+
+    def get_context_data(self, **kwargs):
+        context = super(UserEditView, self).get_context_data(**kwargs)
+
+        context["title"] = "Edit User"
+        context["fix_username"] = True
+
+        return context
+
+    def form_valid(self, form):
+        """
+        Called when the form was valid
+        :param form: 
+        :return: 
+        """
+
+        # Get the form data
+        group = form.cleaned_data["group"]
+
+        # Get the user
+        user = User.objects.get(pk=self.kwargs["pk"])
+
+        user.first_name = form.cleaned_data["first_name"]
+        user.last_name = form.cleaned_data["last_name"]
+        user.email = form.cleaned_data["mail"]
+
+        # Handle the Rights
+        set_group_for_user(user, group)
+
+        user.save()
+
+        # Go to overview page
+        return super(UserEditView, self).form_valid(form)

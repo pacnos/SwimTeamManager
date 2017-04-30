@@ -44,7 +44,7 @@
                             <td>{{ user.email}}</td>
                             <td>TYPE</td>
                             <td>
-                                <a href=""><i class="fa fa-pencil" /></a></td>
+                                <a href="{% url 'AdminBackend:userEdit' user.pk %}"><i class="fa fa-pencil" /></a></td>
                             <td>
                                 <button type="button" class="table-button fa fa-trash" onclick="showUserDelete({{ user.id }}, this)" data-username="{{ user.username }}" data-firstname="{{ user.first_name }}" data-lastname="{{ user.last_name }}"/>
                             </td>

@@ -1,42 +1,6 @@
 {% extends 'base_backend.html' %}
 {% load static %}
 
-{% block css %}
-    <!-- Datepicker CSS -->
-    <link href="{% static "datePicker/css/bootstrap-datepicker3.standalone.min.css" %}" rel="stylesheet">
-{% endblock %}
-
-{% block javascript %}
-    <!-- Datepicker JS -->
-    <script src="{% static "datePicker/js/bootstrap-datepicker.min.js" %}"></script>
-    <script src="{% static "datePicker/js/bootstrap-datepicker.de.min.js" %}"></script>
-
-    <script>
-    $(function() {
-
-        //Password fields
-        $('#{{ form.password.id_for_label }}, #repeat_passwd').on('keyup', function () {
-            if ($('#{{ form.password.id_for_label }}').val() == $('#repeat_passwd').val()) {
-                $('#password_form_group').removeClass('has-error');
-                $('#password_repeat_form_group').removeClass('has-error');
-            } else
-            {
-                $('#password_form_group').addClass('has-error');
-                $('#password_repeat_form_group').addClass("has-error");
-            }
-        });
-
-        //Check before submit
-        $('#user_form').bind('submit',function(e){
-            if ($('#{{ form.password.id_for_label }}').val() != $('#repeat_passwd').val()) {
-                $('#{{ form.password.id_for_label }}, #repeat_passwd').delay(50).fadeOut().fadeIn('normal')
-                e.preventDefault();
-            }
-        });
-    });
-    </script>
-{% endblock %}
-
 {% block content %}
     <!-- First data block -->
     <div class="row">
@@ -59,7 +23,7 @@
                     <div class="col-lg-6">
                         <div class="form-group {{ form.username.errors|yesno:"has-error," }}">
                             <label class="control-label" for="{{ form.username.id_for_label }}">Username:</label>
-                            <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:"" }}">
+                            <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:"" }}" {{ fix_username|yesno:"readonly," }}>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -91,32 +55,17 @@
                             <label class="control-label" for="{{ form.group.id_for_label }}">Group:</label>
                             <select class="form-control" id="{{ form.group.id_for_label }}" name="{{ form.group.html_name }}">
                                 {% for choice in form.group.field.choices %}
-                                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                                    <option value="{{ choice.0 }}"
+                                        {% if form.group.value == choice.0 %}selected="selected"{% endif %}>
+                                    {{ choice.1 }}</option>
                                 {% endfor %}
                             </select>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h3>Password</h3>
-                    </div>
-                </div>
-                <!-- Password / Repeat Password -->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group {{ form.password.errors|yesno:"has-error," }}" id="password_form_group">
-                            <label class="control-label" for="{{ form.password.id_for_label }}">Password:</label>
-                            <input type="password" class="form-control" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" value="">
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="form-group {{ form.password.errors|yesno:"has-error," }}" id="password_repeat_form_group">
-                            <label class="control-label" for="repeat_passwd">Repeat Password:</label>
-                            <input type="password" class="form-control" id="repeat_passwd" name="repeat_passwd" value="">
-                        </div>
-                    </div>
-                </div>
+                {% block password_content %}
+
+                {% endblock %}
 
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
