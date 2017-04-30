@@ -1,0 +1,16 @@
+[
+  {
+    "model": "auth.Group",
+    "pk": 1,
+    "fields": {
+      "name": "Athlete"
+    }
+  },
+  {
+    "model": "auth.Group",
+    "pk": 2,
+    "fields": {
+      "name": "Coach"
+    }
+  }
+]

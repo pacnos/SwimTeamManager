@@ -20,4 +20,5 @@ from TeamManager.views import views
 urlpatterns = [
     url(r'^$', views.DashboardView.as_view(), name='dashboard'),
     url(r'^team/', include('TeamManager.urls')),
+    url(r'^admin/', include('AdminBackend.urls'))
 ]
