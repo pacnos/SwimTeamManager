@@ -15,6 +15,6 @@ urlpatterns = [
     url(r'^athlete_management/athlete/$', json_views.AthleteContactDetailsJSON.as_view(), name='athleteContact'),
     url(r'^athlete_management/athlete/([0-9]+)/$', json_views.AthleteContactDetailsJSON.as_view(), name='athleteContact'),
 
-url(r'^athlete_management/athlete/delete/$', json_views.AthleteDeleteJSON.as_view(), name='athleteDelete'),
+    url(r'^athlete_management/athlete/delete/$', json_views.AthleteDeleteJSON.as_view(), name='athleteDelete'),
     url(r'^athlete_management/athlete/delete/([0-9]+)/$', json_views.AthleteDeleteJSON.as_view(), name='athleteDelete')
 ]
