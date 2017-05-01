@@ -1,6 +1,6 @@
 from django import forms
 
-from AdminBackend.utils import AVAILABLE_RIGHT_GROUPS
+from AdminBackend.models import TMUser
 
 
 class BasicUserForm(forms.Form):
@@ -13,7 +13,7 @@ class BasicUserForm(forms.Form):
     last_name = forms.CharField()
     mail = forms.EmailField()
 
-    group = forms.ChoiceField(choices=AVAILABLE_RIGHT_GROUPS)
+    group = forms.ChoiceField(choices=TMUser.GROUP_CHOICES)
 
 
 class FullUserForm(BasicUserForm):

@@ -5,7 +5,6 @@ from django.views.generic import ListView, DeleteView
 from django.views.generic.edit import FormView
 
 from AdminBackend.forms.forms import BasicUserForm, FullUserForm
-from AdminBackend.utils import AVAILABLE_GROUPS, get_group_key_for_user, set_group_for_user
 
 
 class UserManagementView(ListView):
@@ -60,9 +59,7 @@ class UserCreateView(FormView):
 
         user.first_name = first_name
         user.last_name = last_name
-
-        # Handle the Rights
-        set_group_for_user(user, group)
+        user.tmuser.group = group
 
         user.save()
 
@@ -92,7 +89,7 @@ class UserEditView(FormView):
             "first_name": user_object.first_name,
             "last_name": user_object.last_name,
             "mail": user_object.email,
-            "group": get_group_key_for_user(user_object)
+            "group": user_object.tmuser.get_group()
         }
 
     def get_context_data(self, **kwargs):
@@ -121,7 +118,7 @@ class UserEditView(FormView):
         user.email = form.cleaned_data["mail"]
 
         # Handle the Rights
-        set_group_for_user(user, group)
+        user.tmuser.group = group
 
         user.save()
 
