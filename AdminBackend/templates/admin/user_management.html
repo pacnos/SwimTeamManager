@@ -14,9 +14,15 @@
             <h1 class="page-header">{{ title }}</h1>
         </div>
     </div>
+
     <div id="error_alert" class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
         <button type="button" class="close" aria-label="Close" onclick="$(this).parent().hide();"><span aria-hidden="true">&times;</span></button>
         <strong>Error:</strong> <span id="errorMsg"></span>
+    </div>
+
+    <div id="finish_alert" class="alert alert-success alert-dismissible" role="alert" style="display: none;">
+        <button type="button" class="close" aria-label="Close" onclick="$(this).parent().hide();"><span aria-hidden="true">&times;</span></button>
+        <strong>Success:</strong> <span id="infoMsg"></span>
     </div>
 
     <!-- Start User table -->
@@ -32,6 +38,7 @@
                             <th>Mail</th>
                             <th>Type</th>
                             <th>Edit</th>
+                            <th>Password</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -42,9 +49,12 @@
                             <td>{{ user.first_name }}</td>
                             <td>{{ user.last_name }}</td>
                             <td>{{ user.email}}</td>
-                            <td>TYPE</td>
+                            <td>{{ user.tmuser.get_group_translation }}</td>
                             <td>
                                 <a href="{% url 'AdminBackend:userEdit' user.pk %}"><i class="fa fa-pencil" /></a></td>
+                            <td>
+                                <button type="button" class="table-button fa fa-key" onclick="showResetPassword({{ user.id }}, this)" data-username="{{ user.username }}" data-firstname="{{ user.first_name }}" data-lastname="{{ user.last_name }}"/>
+                            </td>
                             <td>
                                 <button type="button" class="table-button fa fa-trash" onclick="showUserDelete({{ user.id }}, this)" data-username="{{ user.username }}" data-firstname="{{ user.first_name }}" data-lastname="{{ user.last_name }}"/>
                             </td>
@@ -55,6 +65,39 @@
                 <div class="panel-footer table-panel-footer">
                     <a href="{% url 'AdminBackend:userCreate' %}"><i class="fa fa-plus"></i> Create new User</a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Dialog - Reset User Password -->
+    <div class="modal fade" id="passwordReset" tabindex="-1" role="dialog" aria-labelledby="passwordResetLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="passwordResetForm" class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="userDelete">Reset User Password</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" id="password_form_group">
+                            <label for="inputPassword" class="col-sm-4 control-label">Password</label>
+                            <div class="col-sm-8">
+                              <input type="password" class="form-control" id="inputPassword" name="password">
+                            </div>
+                        </div>
+                        <div class="form-group" id="password_repeat_form_group">
+                            <label for="inputPasswordRepeat" class="col-sm-4 control-label">Repeat Password</label>
+                            <div class="col-sm-8">
+                              <input type="password" class="form-control" id="inputPasswordRepeat" name="passwordRepeat">
+                            </div>
+                        </div>
+                        <input type="hidden" id="passwdRstUserId" value="" name="userId">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resetPasswordFields()">Cancel</button>
+                        <button type="submit" class="btn btn-danger" id="deleteButton">Reset Password</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -76,7 +119,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 {% endblock %}
@@ -126,9 +168,80 @@
                         modal.modal('hide');
                     }
             });
-
         }
 
+        function showResetPassword(user_id, src) {
+            var modal = $("#passwordReset");
+
+            //Set the athlete id
+            modal.find("#passwdRstUserId").val(user_id)
+
+            //Show the modal
+            modal.modal('show');
+        }
+        
+        function resetPasswordFields() {
+            var modal = $("#passwordReset");
+            modal.find("#inputPasswordRepeat").val("");
+            modal.find("#inputPassword").val("");
+            modal.find("#passwdRstUserId").val("");
+        }
+
+        $(function () {
+
+            // Handle the Password reset form submit
+            $("#passwordResetForm").submit(function(e) {
+
+                //Set the variables
+                var modal = $("#passwordReset");
+
+                //Prevent form handling
+                e.preventDefault();
+
+                //Check password identity
+                if (this.password.value != this.passwordRepeat.value) {
+                    $('#inputPassword, #inputPasswordRepeat').delay(50).fadeOut().fadeIn('normal')
+                    return;
+                }
+
+
+
+                $.ajax({
+                        type: "POST",
+                        url: "{% url 'AdminBackend:userPassword' %}",
+                        data: {
+                           password: this.password.value,
+                           userId: this.userId.value,
+                           csrfmiddlewaretoken: '{{ csrf_token }}'
+                        },
+                        success: function(data)
+                        {
+                            $("#finish_alert").find("#infoMsg").html("Password changed for successful");
+                            $("#finish_alert").show();
+                        },
+                        error: function (error) {
+                            $("#error_alert").find("#errorMsg").html(error.responseText);
+                            $("#error_alert").show();
+                        },
+                        complete: function () {
+                            resetPasswordFields();
+                            modal.modal('hide');
+                        }
+                    });
+            });
+
+            //Password fields
+            $('#inputPassword, #inputPasswordRepeat').on('keyup', function () {
+                if ($('#inputPassword').val() == $('#inputPasswordRepeat').val()) {
+                    $('#password_form_group').removeClass('has-error');
+                    $('#password_repeat_form_group').removeClass('has-error');
+                } else
+                {
+                    $('#password_form_group').addClass('has-error');
+                    $('#password_repeat_form_group').addClass("has-error");
+                }
+            });
+        });
     </script>
 
 

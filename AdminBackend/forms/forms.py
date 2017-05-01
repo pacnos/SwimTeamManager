@@ -21,3 +21,12 @@ class FullUserForm(BasicUserForm):
     UserForm including password
     """
     password = forms.CharField()
+
+
+class PasswordResetForm(forms.Form):
+    """
+    Form to reset a user password
+    """
+
+    password = forms.CharField()
+    userId = forms.CharField()

@@ -18,6 +18,12 @@ class TMUser(models.Model):
         (GROUP_ADMIN, "Admin")
     )
 
+    GROUP_TRANSLATIONS = {
+        GROUP_ATHLETE: "Athlete",
+        GROUP_COACH: "Coach",
+        GROUP_ADMIN: "Admin"
+    }
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     group = models.CharField(max_length=2, choices=GROUP_CHOICES, default=GROUP_ATHLETE)
 
@@ -31,6 +37,14 @@ class TMUser(models.Model):
             return self.GROUP_ADMIN
         else:
             return self.group
+
+    def get_group_translation(self):
+        """
+        Returns the translation of a group
+        :return: 
+        """
+
+        return self.GROUP_TRANSLATIONS[self.get_group()]
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):

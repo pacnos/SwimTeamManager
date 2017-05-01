@@ -10,6 +10,9 @@ urlpatterns = [
     url(r'^user/create/$', views.UserCreateView.as_view(), name='userCreate'),
     url(r'^user/edit/(?P<pk>[0-9]+)/$', views.UserEditView.as_view(), name='userEdit'),
 
+    # JSON Views
+    url(r'^user/passwordReset//$', json_views.ResetUserPassword.as_view(), name='userPassword'),
+
     url(r'^user/delete/$', json_views.UserDeleteJSON.as_view(), name='userDelete'),
     url(r'^user/delete/([0-9]+)/$', json_views.UserDeleteJSON.as_view(), name='userDelete')
 ]
