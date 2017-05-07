@@ -7,9 +7,10 @@ from django.views.generic import ListView
 from django.views.generic.edit import FormView
 
 from AdminBackend.forms.forms import BasicUserForm, FullUserForm
+from AdminBackend.mixins.group_mixins import AdminPermissionRequiredMixin
 
 
-class UserManagementView(ListView):
+class UserManagementView(AdminPermissionRequiredMixin, ListView):
     """
     View which shows the User management page
     """
@@ -25,7 +26,7 @@ class UserManagementView(ListView):
         return context
 
 
-class UserCreateView(FormView):
+class UserCreateView(AdminPermissionRequiredMixin, FormView):
     """
     View which is used to create a new user
     """
@@ -69,7 +70,7 @@ class UserCreateView(FormView):
         return super(UserCreateView, self).form_valid(form)
 
 
-class UserEditView(FormView):
+class UserEditView(AdminPermissionRequiredMixin, FormView):
     """
     View which is used to edit a existing user
     """

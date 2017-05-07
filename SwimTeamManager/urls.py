@@ -17,10 +17,12 @@ from django.conf.urls import url, include
 
 from TeamManager.views import views
 from AdminBackend.views import views as admin_views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^$', views.DashboardView.as_view(), name='dashboard'),
     url(r'^login/$', admin_views.TMLoginView.as_view(), name='login'),
+    url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
 
     url(r'^team/', include('TeamManager.urls')),
     url(r'^admin/', include('AdminBackend.urls'))

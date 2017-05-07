@@ -6,11 +6,12 @@ from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
 from django.views import View
 
+from AdminBackend.mixins.group_mixins import CoachPermissionRequiredMixin
 from TeamManager.models import Athlete
 from TeamManager.utils import json_helper
 
 
-class AthleteContactDetailsJSON(View):
+class AthleteContactDetailsJSON(CoachPermissionRequiredMixin, View):
     """
     Returns Details to a specific athlete
     """
@@ -33,7 +34,7 @@ class AthleteContactDetailsJSON(View):
         return HttpResponse(json_athlete, content_type="application/json")
 
 
-class AthleteDeleteJSON(View):
+class AthleteDeleteJSON(CoachPermissionRequiredMixin, View):
     """
     Deletes an Athlete
     """

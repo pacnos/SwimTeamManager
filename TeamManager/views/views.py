@@ -3,6 +3,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 
+from AdminBackend.mixins.group_mixins import CoachPermissionRequiredMixin
 from TeamManager.forms.forms import AthleteForm
 from TeamManager.models import Athlete
 
@@ -14,7 +15,7 @@ class DashboardView(TemplateView):
     template_name = "base_backend.html"
 
 
-class AthleteManagementView(ListView):
+class AthleteManagementView(CoachPermissionRequiredMixin, ListView):
     """
     View which shows the data of some athletes
     """
@@ -30,7 +31,7 @@ class AthleteManagementView(ListView):
         return context
 
 
-class CreateAthleteView(CreateView):
+class CreateAthleteView(CoachPermissionRequiredMixin, CreateView):
     """
     View which is used to create a new athlete
     """
@@ -48,7 +49,7 @@ class CreateAthleteView(CreateView):
         return context
 
 
-class EditAthleteView(UpdateView):
+class EditAthleteView(CoachPermissionRequiredMixin, UpdateView):
     """
     View which is used to edit an athlete
     """

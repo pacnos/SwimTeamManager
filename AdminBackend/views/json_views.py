@@ -6,9 +6,10 @@ from django.http import HttpResponseBadRequest
 from django.views import View
 
 from AdminBackend.forms.forms import PasswordResetForm
+from AdminBackend.mixins.group_mixins import AdminPermissionRequiredMixin
 
 
-class UserDeleteJSON(View):
+class UserDeleteJSON(AdminPermissionRequiredMixin, View):
     """
     Deletes an User
     """
@@ -33,7 +34,7 @@ class UserDeleteJSON(View):
         return HttpResponse()
 
 
-class ResetUserPassword(View):
+class ResetUserPassword(AdminPermissionRequiredMixin, View):
     """
     Called when a user reset is executed
     """
