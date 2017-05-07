@@ -14,8 +14,20 @@
                         <h3 class="panel-title">Swim Team Manager Login</h3>
                     </div>
                     <div class="panel-body">
+                        {% if next %}
+                            <div class="alert alert-danger" role="alert">
+                            {% if user.is_authenticated %}
+                                Your account doesn't have access to this page. To proceed, please login with an account that has access.
+                            {% else %}
+                                Please login to see this page.
+                            {% endif %}
+                            </div>
+                        {% endif %}
+
                         {% if form.errors %}
-                            <p></p>
+                            <div class="alert alert-danger" role="alert">
+                                Your username and password didn't match. Please try again.
+                            </div>
                         {% endif %}
 
                         <form method="post" action="{% url 'login' %}" role="form">

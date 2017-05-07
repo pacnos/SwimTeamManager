@@ -1,6 +1,6 @@
-from django.urls.base import reverse, reverse_lazy
+from django.urls.base import reverse_lazy
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 
 from AdminBackend.mixins.group_mixins import CoachPermissionRequiredMixin
