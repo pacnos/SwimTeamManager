@@ -1,5 +1,6 @@
 {% extends 'base_backend.html' %}
 {% load static %}
+{% load form_extras %}
 
 {% block css %}
     <!-- Datepicker CSS -->
@@ -56,13 +57,13 @@
                     <div class="col-lg-6">
                         <div class="form-group {{ form.first_name.errors|yesno:"has-error," }}">
                             <label class="control-label" for="{{ form.first_name.id_for_label }}">First Name:</label>
-                            <input type="text" class="form-control" id="{{ form.first_name.id_for_label }}" name="{{ form.first_name.html_name }}" value="{{ form.first_name.value|default_if_none:"" }}">
+                            {{ form.first_name|b_text }}
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group {{ form.last_name.errors|yesno:"has-error," }}">
                             <label class="control-label" for="{{ form.last_name.id_for_label }}">Last Name:</label>
-                            <input type="text" class="form-control" id="{{ form.last_name.id_for_label }}" name="{{ form.last_name.html_name }}" value="{{ form.last_name.value|default_if_none:"" }}">
+                            {{ form.last_name|b_text }}
                         </div>
                     </div>
                 </div>
@@ -89,7 +90,7 @@
                     <div class="col-lg-12">
                         <div class="form-group {{ form.street.errors|yesno:"has-error," }}">
                             <label class="control-label" for="{{ form.street.id_for_label }}">Street:</label>
-                            <input type="text" class="form-control" id="{{ form.street.id_for_label }}" name="{{ form.street.html_name }}" value="{{ form.street.value|default_if_none:"" }}">
+                            {{ form.street|b_text }}
                         </div>
                     </div>
                 </div>
@@ -98,13 +99,13 @@
                     <div class="col-lg-6">
                         <div class="form-group {{ form.zip_code.errors|yesno:"has-error," }}">
                             <label class="control-label" for="{{ form.zip_code.id_for_label }}">Zip Code:</label>
-                            <input type="text" class="form-control" id="{{ form.zip_code.id_for_label }}" name="{{ form.zip_code.html_name }}" value="{{ form.zip_code.value|default_if_none:"" }}">
+                            {{ form.zip_code|b_text }}
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group {{ form.city.errors|yesno:"has-error," }}">
                             <label class="control-label" for="{{ form.city.id_for_label }}">City:</label>
-                            <input type="text" class="form-control" id="{{ form.city.id_for_label }}" name="{{ form.city.html_name }}" value="{{ form.city.value|default_if_none:"" }}">
+                            {{ form.city|b_text }}
                         </div>
                     </div>
                 </div>
@@ -118,7 +119,7 @@
                     <div class="col-lg-6">
                         <div class="form-group {{ form.competitor_number.errors|yesno:"has-error," }}">
                             <label class="control-label" for="{{ form.competitor_number.id_for_label }}">Competitor Number:</label>
-                            <input type="text" class="form-control" id="{{ form.competitor_number.id_for_label }}" name="{{ form.competitor_number.html_name }}" value="{{ form.competitor_number.value|default_if_none:"" }}">
+                            {{ form.competitor_number|b_text }}
                         </div>
                     </div>
                     <div class="col-lg-6">
