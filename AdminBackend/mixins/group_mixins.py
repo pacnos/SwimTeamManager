@@ -19,7 +19,7 @@ class CoachPermissionRequiredMixin(AccessMixin):
     """
 
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated or request.user.tmuser.get_group() == TMUser.GROUP_ATHLETE:
+        if not request.user.is_authenticated or not request.user.tmuser.is_coach_or_admin():
             return self.handle_no_permission()
         return super(CoachPermissionRequiredMixin, self).dispatch(request, *args, **kwargs)
 
@@ -30,6 +30,6 @@ class AdminPermissionRequiredMixin(AccessMixin):
     """
 
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated or request.user.tmuser.get_group() != TMUser.GROUP_ADMIN:
+        if not request.user.is_authenticated or not request.user.tmuser.is_admin():
             return self.handle_no_permission()
         return super(AdminPermissionRequiredMixin, self).dispatch(request, *args, **kwargs)

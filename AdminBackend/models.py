@@ -46,6 +46,22 @@ class TMUser(models.Model):
 
         return self.GROUP_TRANSLATIONS[self.get_group()]
 
+    def is_coach_or_admin(self):
+        """
+        Checks if the given user is coach or admin
+        :return: 
+        """
+        group = self.get_group()
+        return group != self.GROUP_ATHLETE
+
+    def is_admin(self):
+        """
+        Checks if the given user is admin
+        :return: 
+        """
+
+        return self.get_group() == self.GROUP_ADMIN
+
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
