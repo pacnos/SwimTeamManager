@@ -16,9 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 
 from TeamManager.views import views
+from AdminBackend.views import views as admin_views
 
 urlpatterns = [
     url(r'^$', views.DashboardView.as_view(), name='dashboard'),
+    url(r'^login/$', admin_views.TMLoginView.as_view(), name='login'),
+
     url(r'^team/', include('TeamManager.urls')),
     url(r'^admin/', include('AdminBackend.urls'))
 ]

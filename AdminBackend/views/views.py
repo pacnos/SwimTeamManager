@@ -1,7 +1,9 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 
-from django.views.generic import ListView, DeleteView
+from django.views.generic import ListView
+
 from django.views.generic.edit import FormView
 
 from AdminBackend.forms.forms import BasicUserForm, FullUserForm
@@ -124,3 +126,16 @@ class UserEditView(FormView):
 
         # Go to overview page
         return super(UserEditView, self).form_valid(form)
+
+
+class TMLoginView(LoginView):
+    template_name = "admin/login.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(TMLoginView, self).get_context_data(**kwargs)
+
+        context["title"] = "Login"
+
+        return context
+
+
