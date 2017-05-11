@@ -1,0 +1,36 @@
+{% extends 'base_backend.html' %}
+{% load static %}
+{% load dashboard_widgets %}
+
+{% block css %}
+    <link href="{% static "dataTables/css/dataTables.bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "dataTables/css/dataTables.responsive.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <!-- First data block -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ title }}</h1>
+        </div>
+    </div>
+    <!-- Start Athlete table -->
+    <div id="error_alert" class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
+        <button type="button" class="close" aria-label="Close" onclick="$(this).parent().hide();"><span aria-hidden="true">&times;</span></button>
+        <strong>Error:</strong> <span id="errorMsg"></span>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Content -->
+            {% last_medical_examination %}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascript %}
+
+
+
+{% endblock %}

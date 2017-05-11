@@ -3,16 +3,23 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 
-from AdminBackend.mixins.group_mixins import CoachPermissionRequiredMixin
+from AdminBackend.mixins.group_mixins import CoachPermissionRequiredMixin, AthletePermissionRequiredMixin
 from TeamManager.forms.forms import AthleteForm
 from TeamManager.models import Athlete
 
 
-class DashboardView(TemplateView):
+class DashboardView(AthletePermissionRequiredMixin, TemplateView):
     """
     View which shows the login dashboard
     """
-    template_name = "base_backend.html"
+    template_name = "team_manager/dashboard.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(DashboardView, self).get_context_data(**kwargs)
+
+        context["title"] = "Dashboard"
+
+        return context
 
 
 class AthleteManagementView(CoachPermissionRequiredMixin, ListView):
