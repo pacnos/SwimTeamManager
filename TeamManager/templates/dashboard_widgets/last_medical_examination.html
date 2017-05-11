@@ -1,10 +1,10 @@
-<div class="row">
+<div class="row flex">
     <!-- Overdue Panel -->
     <div class="col-lg-6">
     {% if overdue_medical %}
-        <div class="panel panel-danger">
+        <div class="panel panel-danger panel-flex">
     {% else %}
-        <div class="panel panel-success">
+        <div class="panel panel-success panel-flex">
     {% endif %}
             <div class="panel-heading">
                 <h3 class="panel-title">Overdue medical examinations</h3>
@@ -31,6 +31,43 @@
             {% else %}
                 <div class="panel-body">
                     There are no overdue medical examinations
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Upcoming Panel -->
+    <div class="col-lg-6">
+    {% if upcoming_medical %}
+        <div class="panel panel-warning panel-flex">
+    {% else %}
+        <div class="panel panel-success panel-flex">
+    {% endif %}
+            <div class="panel-heading">
+                <h3 class="panel-title">Upcoming medical examinations</h3>
+            </div>
+            {% if upcoming_medical %}
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Last medical</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for athlete in upcoming_medical %}
+                        <tr>
+                            <td>{{ athlete.first_name }}</td>
+                            <td>{{ athlete.last_name }}</td>
+                            <td>{{ athlete.last_medical|date:'SHORT_DATE_FORMAT' }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="panel-body">
+                    There are no upcoming medical examinations in the next 3 months
                 </div>
             {% endif %}
         </div>
