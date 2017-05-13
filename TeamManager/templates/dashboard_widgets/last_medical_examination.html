@@ -1,10 +1,10 @@
-<div class="row flex">
+<div class="row">
     <!-- Overdue Panel -->
     <div class="col-lg-6">
     {% if overdue_medical %}
-        <div class="panel panel-danger panel-flex">
+        <div class="panel panel-danger">
     {% else %}
-        <div class="panel panel-success panel-flex">
+        <div class="panel panel-success">
     {% endif %}
             <div class="panel-heading">
                 <h3 class="panel-title">Overdue medical examinations</h3>
@@ -39,9 +39,9 @@
     <!-- Upcoming Panel -->
     <div class="col-lg-6">
     {% if upcoming_medical %}
-        <div class="panel panel-warning panel-flex">
+        <div class="panel panel-warning">
     {% else %}
-        <div class="panel panel-success panel-flex">
+        <div class="panel panel-success">
     {% endif %}
             <div class="panel-heading">
                 <h3 class="panel-title">Upcoming medical examinations</h3>
@@ -67,7 +67,7 @@
                 </table>
             {% else %}
                 <div class="panel-body" style="color: #3c763d;">
-                    There are no upcoming medical examinations in the next 3 months
+                    <i class="fa fa-check" aria-hidden="true"></i> There are no upcoming medical examinations in the next 3 months
                 </div>
             {% endif %}
         </div>
