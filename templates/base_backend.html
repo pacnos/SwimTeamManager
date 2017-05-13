@@ -43,7 +43,15 @@
                             <a href="{% url 'dashboard' %}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="{% url 'TeamManager:athleteManagement' %}"><i class="fa fa-users fa-fw"></i> Athlete Management</a>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Athlete Management <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{% url 'TeamManager:athleteManagement' %}"><i class="fa fa-id-badge fa-fw"></i> Overview</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-medkit fa-fw"></i> Medical Examinations</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="{% url 'AdminBackend:overview' %}"><i class="fa fa-wrench fa-fw"></i> Administration</a>
