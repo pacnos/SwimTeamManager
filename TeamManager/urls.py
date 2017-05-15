@@ -15,5 +15,8 @@ urlpatterns = [
     url(r'^athlete/([0-9]+)/$', json_views.AthleteContactDetailsJSON.as_view(), name='athleteContact'),
 
     url(r'^athlete/delete/$', json_views.AthleteDeleteJSON.as_view(), name='athleteDelete'),
-    url(r'^athlete/delete/([0-9]+)/$', json_views.AthleteDeleteJSON.as_view(), name='athleteDelete')
+    url(r'^athlete/delete/([0-9]+)/$', json_views.AthleteDeleteJSON.as_view(), name='athleteDelete'),
+
+    # Athlete sub views
+    url(r'^athlete/medical/$', views.MedicalView.as_view(), name='athleteMedical'),
 ]

@@ -74,6 +74,24 @@ class EditAthleteView(CoachPermissionRequiredMixin, UpdateView):
         return context
 
 
+class MedicalView(CoachPermissionRequiredMixin, ListView):
+    """
+    View which shows an overview about the medical examiniations of the athlete
+    """
+
+    context_object_name = "athlete_list"
+    model = Athlete
+    ordering = "-last_medical"
+    template_name = "team_manager/medical_view.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(MedicalView, self).get_context_data(**kwargs)
+
+        context["title"] = "Medical Examination Overview"
+
+        return context
+
+
 
 
 
