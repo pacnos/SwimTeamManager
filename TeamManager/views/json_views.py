@@ -87,7 +87,7 @@ class AthleteMedicalOverviewUpdate(CoachPermissionRequiredMixin, View):
             athlete.save()
 
             # Create the response
-            athlete_list = Athlete.objects.all()
+            athlete_list = Athlete.objects.all().order_by("-last_medical")
 
             return render(request, "team_manager/ajax_parts/medical_table_body.html", {'athlete_list': athlete_list})
         else:

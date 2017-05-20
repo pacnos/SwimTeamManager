@@ -1,6 +1,8 @@
+{% load athlete_extras %}
+
 <tbody id="medicalTableBody">
     {% for athlete in athlete_list %}
-        <tr id="athlete-table-row-{{ athlete.id }}">
+        <tr id="athlete-table-row-{{ athlete.id }}" style="{{ athlete.medical_warn_state|medical_table_color }}">
             <td>{{ athlete.first_name }}</td>
             <td>{{ athlete.last_name }}</td>
             <td>{{ athlete.last_medical|date:'SHORT_DATE_FORMAT' }}</td>
