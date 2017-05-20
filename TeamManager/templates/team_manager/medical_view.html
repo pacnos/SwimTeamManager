@@ -3,8 +3,6 @@
 {% load athlete_extras %}
 
 {% block css %}
-    <link href="{% static "dataTables/css/datatables.min.css" %}" rel="stylesheet">
-
      <!-- Datepicker CSS -->
     <link href="{% static "datePicker/css/bootstrap-datepicker3.standalone.min.css" %}" rel="stylesheet">
 {% endblock %}
@@ -33,16 +31,7 @@
                             <th>Update date</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {% for athlete in athlete_list %}
-                        <tr id="athlete-table-row-{{ athlete.id }}">
-                            <td>{{ athlete.first_name }}</td>
-                            <td>{{ athlete.last_name }}</td>
-                            <td>{{ athlete.last_medical|date:'SHORT_DATE_FORMAT' }}</td>
-                            <td><button type="button" class="table-button fa fa-pencil" onclick="showChangeMedical({{ athlete.id }}, '{{ athlete.last_medical|date:'SHORT_DATE_FORMAT' }}', this)"/></td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
+                    {% include "team_manager/ajax_parts/medical_table_body.html" %}
                 </table>
             </div>
         </div>
@@ -80,11 +69,12 @@
 {% endblock %}
 
 {% block javascript %}
-    <script src="{% static "dataTables/js/datatables.min.js" %}"></script>
-
     <!-- Datepicker JS -->
     <script src="{% static "datePicker/js/bootstrap-datepicker.min.js" %}"></script>
     <script src="{% static "datePicker/js/bootstrap-datepicker.de.min.js" %}"></script>
+
+    <!-- BlockUI -->
+    <script src="{% static "base/js/jquery.blockUI.js" %}"></script>
 
     <script>
         /**
@@ -108,12 +98,6 @@
          * Called when side is loaded
          */
         $(function () {
-
-            /**
-             * Setup the data table
-             */
-            $('#mainTable').DataTable();
-
             /**
              * Add Calendar widget in form
              */
@@ -137,17 +121,21 @@
                 //Prevent form handling
                 e.preventDefault();
 
+                //Block the dialog
+                modal.block({message: null});
+
                 //Make the ajax call
                 $.ajax({
                         type: "POST",
-                        url: "{% url 'AdminBackend:userPassword' %}",
+                        url: "{% url 'TeamManager:athleteMedicalUpdate' %}",
                         data: {
-                           password: this.password.value,
+                           medicalDate: this.medicalDate.value,
                            userId: this.userId.value,
                            csrfmiddlewaretoken: '{{ csrf_token }}'
                         },
                         success: function(data)
                         {
+                            $("#medicalTableBody").replaceWith(data);
 
                         },
                         error: function (error) {
@@ -155,6 +143,7 @@
                             $("#error_alert").show();
                         },
                         complete: function () {
+                            modal.unblock();
                             modal.modal('hide');
                         }
                     });

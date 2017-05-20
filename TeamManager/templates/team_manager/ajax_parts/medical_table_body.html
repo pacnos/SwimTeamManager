@@ -1,0 +1,10 @@
+<tbody id="medicalTableBody">
+    {% for athlete in athlete_list %}
+        <tr id="athlete-table-row-{{ athlete.id }}">
+            <td>{{ athlete.first_name }}</td>
+            <td>{{ athlete.last_name }}</td>
+            <td>{{ athlete.last_medical|date:'SHORT_DATE_FORMAT' }}</td>
+            <td><button type="button" class="table-button fa fa-pencil" onclick="showChangeMedical({{ athlete.id }}, '{{ athlete.last_medical|date:'SHORT_DATE_FORMAT' }}', this)"/></td>
+        </tr>
+    {% endfor %}
+</tbody>

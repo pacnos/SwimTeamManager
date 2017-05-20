@@ -19,4 +19,5 @@ urlpatterns = [
 
     # Athlete sub views
     url(r'^athlete/medical/$', views.MedicalView.as_view(), name='athleteMedical'),
+    url(r'^athlete/medical_data/$', json_views.AthleteMedicalOverviewUpdate.as_view(), name='athleteMedicalUpdate'),
 ]

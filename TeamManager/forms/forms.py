@@ -1,6 +1,6 @@
-from django.forms.fields import DateField
+from django.forms.fields import DateField, IntegerField, CharField
+from django.forms.forms import Form
 from django.forms.models import ModelForm
-from django.forms import DateInput
 
 from TeamManager.models import Athlete
 
@@ -15,3 +15,12 @@ class AthleteForm(ModelForm):
 
     birth_date = DateField(input_formats=["%d.%m.%Y"])
     last_medical = DateField(input_formats=["%d.%m.%Y"], required=False)
+
+
+class MedicalUpdateForm(Form):
+    """
+    Form which handles the medical update
+    """
+
+    userId = CharField()
+    medicalDate = DateField(input_formats=["%d.%m.%Y"])

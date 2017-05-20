@@ -1,12 +1,15 @@
 import json
 
+from django.core import serializers
 from django.core.exceptions import ObjectDoesNotExist
 from django.forms import model_to_dict
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponseBadRequest
+from django.shortcuts import render
 from django.views import View
 
 from AdminBackend.mixins.group_mixins import CoachPermissionRequiredMixin
+from TeamManager.forms.forms import MedicalUpdateForm
 from TeamManager.models import Athlete
 from TeamManager.utils import json_helper
 
@@ -57,3 +60,35 @@ class AthleteDeleteJSON(CoachPermissionRequiredMixin, View):
             return HttpResponseBadRequest("Can't find athlete to delete")
 
         return HttpResponse()
+
+
+class AthleteMedicalOverviewUpdate(CoachPermissionRequiredMixin, View):
+    """
+    Returns the athlete medical data
+    """
+
+    def post(self, request, *args, **kwargs):
+        """
+        Post Method
+        :param request:
+        :param args:
+        :return:
+        """
+
+        form = MedicalUpdateForm(request.POST)
+
+        if form.is_valid():
+            medical_date = form.cleaned_data["medicalDate"]
+            user_id = form.cleaned_data["userId"]
+
+            # Update the athlete object
+            athlete = Athlete.objects.get(pk=user_id)
+            athlete.last_medical = medical_date
+            athlete.save()
+
+            # Create the response
+            athlete_list = Athlete.objects.all()
+
+            return render(request, "team_manager/ajax_parts/medical_table_body.html", {'athlete_list': athlete_list})
+        else:
+            return HttpResponseBadRequest("The given data are not valid")
