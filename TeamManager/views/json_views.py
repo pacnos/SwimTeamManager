@@ -78,8 +78,8 @@ class AthleteMedicalOverviewUpdate(CoachPermissionRequiredMixin, View):
         form = MedicalUpdateForm(request.POST)
 
         if form.is_valid():
-            medical_date = form.cleaned_data["medicalDate"]
-            user_id = form.cleaned_data["userId"]
+            medical_date = form.cleaned_data["last_medical"]
+            user_id = form.cleaned_data["user_id"]
 
             # Update the athlete object
             athlete = Athlete.objects.get(pk=user_id)

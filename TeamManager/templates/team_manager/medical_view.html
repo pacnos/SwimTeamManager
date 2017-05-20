@@ -129,8 +129,8 @@
                         type: "POST",
                         url: "{% url 'TeamManager:athleteMedicalUpdate' %}",
                         data: {
-                           medicalDate: this.medicalDate.value,
-                           userId: this.userId.value,
+                           last_medical: this.medicalDate.value,
+                           user_id: this.userId.value,
                            csrfmiddlewaretoken: '{{ csrf_token }}'
                         },
                         success: function(data)

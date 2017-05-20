@@ -22,5 +22,5 @@ class MedicalUpdateForm(Form):
     Form which handles the medical update
     """
 
-    userId = CharField()
-    medicalDate = DateField(input_formats=["%d.%m.%Y"])
+    user_id = CharField()
+    last_medical = DateField(input_formats=["%d.%m.%Y"])
