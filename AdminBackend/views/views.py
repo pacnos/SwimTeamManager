@@ -151,7 +151,7 @@ class MailSettingsView(View):
     form_class = MedicalMailForm
     template_name = "admin/mail_settings.html"
     data_object = {
-        'title': "Mail Settings"
+        'title': "Mail Settings",
     }
 
     def get(self, request, *args, **kwargs):
@@ -162,6 +162,8 @@ class MailSettingsView(View):
         :param kwargs: 
         :return: 
         """
+        self.data_object["medical_success"] = False
+
         # Try to get available medical data
         form = self.__get_medical_form()
 
@@ -177,6 +179,8 @@ class MailSettingsView(View):
         :param kwargs: 
         :return: 
         """
+        self.data_object["medical_success"] = False
+
         # Load standard forms
         form = self.__get_medical_form()
 

@@ -1,0 +1,8 @@
+.btn-link-sm {
+    padding: 0px;
+    border-width: 0px;
+}
+
+.btn-link-sm:focus {
+    outline: none;
+}
