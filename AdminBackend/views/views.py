@@ -1,13 +1,17 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
+from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import render
 from django.urls import reverse_lazy
 
 from django.views.generic import ListView
+from django.views.generic.base import TemplateView, View
 
 from django.views.generic.edit import FormView
 
-from AdminBackend.forms.forms import BasicUserForm, FullUserForm
+from AdminBackend.forms.forms import BasicUserForm, FullUserForm, MedicalMailForm
 from AdminBackend.mixins.group_mixins import AdminPermissionRequiredMixin
+from AdminBackend.models import MailSettings
 
 
 class UserManagementView(AdminPermissionRequiredMixin, ListView):
@@ -140,3 +144,86 @@ class TMLoginView(LoginView):
         return context
 
 
+class MailSettingsView(View):
+    """
+    View which shows the mail settings
+    """
+    form_class = MedicalMailForm
+    template_name = "admin/mail_settings.html"
+    data_object = {
+        'title': "Mail Settings"
+    }
+
+    def get(self, request, *args, **kwargs):
+        """
+        Get method
+        :param request: 
+        :param args: 
+        :param kwargs: 
+        :return: 
+        """
+        # Try to get available medical data
+        form = self.__get_medical_form()
+
+        self.data_object["medical_form"] = form
+
+        return render(request, self.template_name, self.data_object)
+
+    def post(self, request, *args, **kwargs):
+        """
+        Post method
+        :param request: 
+        :param args: 
+        :param kwargs: 
+        :return: 
+        """
+        # Load standard forms
+        form = self.__get_medical_form()
+
+        # Determine action
+        action = self.request.POST['action']
+
+        # Medical Mail form selected
+        if action=="medical_mail":
+            form = self.form_class(request.POST, prefix="medical_mail")
+
+            if form.is_valid():
+                self.__update_medical_mail_settings(form.cleaned_data["medical_mail_title"],
+                                                    form.cleaned_data["medical_mail_text"])
+                self.data_object["medical_success"] = True
+
+        # Add forms to view and return
+        self.data_object["medical_form"] = form
+
+        return render(request, self.template_name, self.data_object)
+
+    def __get_medical_form(self):
+        """
+        Returns the medical form
+        :return: 
+        """
+        try:
+            settings_object = MailSettings.objects.get(pk=1)
+            form = self.form_class(instance=settings_object, prefix="medical_mail")
+        except ObjectDoesNotExist as ex:
+            form = self.form_class(prefix="medical_mail")
+
+        return form
+
+    def __update_medical_mail_settings(self, title, text):
+        """
+        Updates the medical Mail settings
+        :param title: 
+        :param text: 
+        :return: 
+        """
+
+        try:
+            settings_object = MailSettings.objects.get(pk=1)
+        except ObjectDoesNotExist as ex:
+            settings_object = MailSettings()
+
+        settings_object.medical_mail_title = title
+        settings_object.medical_mail_text = text
+
+        settings_object.save()

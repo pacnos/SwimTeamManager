@@ -54,7 +54,15 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="{% url 'AdminBackend:overview' %}"><i class="fa fa-wrench fa-fw"></i> Administration</a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Administration <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{% url 'AdminBackend:overview' %}"><i class="fa fa-user fa-fw"></i> User Management</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'AdminBackend:mailSettings' %}"><i class="fa fa-envelope fa-fw"></i> Mail Settings</a>
+                                </li>
+                            </ul>
                         </li>
 
                     </ul>

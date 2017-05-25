@@ -1,6 +1,6 @@
 from django import forms
 
-from AdminBackend.models import TMUser
+from AdminBackend.models import TMUser, MailSettings
 
 
 class BasicUserForm(forms.Form):
@@ -30,3 +30,14 @@ class PasswordResetForm(forms.Form):
 
     password = forms.CharField()
     userId = forms.CharField()
+
+
+class MedicalMailForm(forms.ModelForm):
+    """
+    Form which handles the input for the medical user data
+    """
+    class Meta:
+        model = MailSettings
+        fields = ['medical_mail_title', 'medical_mail_text']
+
+
