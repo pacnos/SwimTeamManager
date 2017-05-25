@@ -70,3 +70,12 @@ class TMUser(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.tmuser.save()
+
+
+class MailSettings(models.Model):
+    """
+    Model which contains the Mail settings
+    """
+
+    medical_mail_title = models.CharField(max_length=150)
+    medical_mail_text = models.TextField()
