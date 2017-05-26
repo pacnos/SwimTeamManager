@@ -1,11 +1,16 @@
 import datetime
+
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
+from django.db.models.signals import post_save, pre_save
+from django.dispatch.dispatcher import receiver
 
 
 class Athlete(models.Model):
     """
     Class for the athletes
     """
+
     date_filter_warning = datetime.date.today() + datetime.timedelta(6 * 30)
     date_filter_overdue = datetime.date.today()
 
@@ -36,7 +41,7 @@ class Athlete(models.Model):
     mail_mother = models.EmailField(null=True, blank=True)
 
     @property
-    def medical_warn_state(self):
+    def medical_state(self):
         """
         Returns the Medical warn state:
         2: Overdue
@@ -44,10 +49,20 @@ class Athlete(models.Model):
         0: OK
         :return: 
         """
-
-        if self.last_medical <= self.date_filter_overdue:
+        if self.last_medical is None or self.last_medical <= self.date_filter_overdue:
             return 2
         elif self.last_medical <= self.date_filter_warning:
             return 1
         else:
             return 0
+
+
+class MedicalWarnState(models.Model):
+    """
+    Table which holds the state of the medical examination warning
+    """
+
+    three_months_warning = models.BooleanField()
+    week_warning = models.BooleanField()
+
+    athlete = models.OneToOneField(Athlete, on_delete=models.CASCADE, related_name='medical_warn_state')

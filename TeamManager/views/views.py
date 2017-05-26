@@ -81,7 +81,7 @@ class MedicalView(CoachPermissionRequiredMixin, ListView):
 
     context_object_name = "athlete_list"
     model = Athlete
-    ordering = "-last_medical"
+    ordering = "last_medical"
     template_name = "team_manager/medical_view.html"
 
     def get_context_data(self, **kwargs):

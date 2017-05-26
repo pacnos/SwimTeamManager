@@ -133,3 +133,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+# Just for Debug
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# End Just for Debug
