@@ -193,7 +193,8 @@ class MailSettingsView(View):
 
             if form.is_valid():
                 self.__update_medical_mail_settings(form.cleaned_data["medical_mail_title"],
-                                                    form.cleaned_data["medical_mail_text"])
+                                                    form.cleaned_data["medical_mail_text"],
+                                                    form.cleaned_data["medical_mail_cc"])
                 self.data_object["medical_success"] = True
 
         # Add forms to view and return
@@ -214,7 +215,7 @@ class MailSettingsView(View):
 
         return form
 
-    def __update_medical_mail_settings(self, title, text):
+    def __update_medical_mail_settings(self, title, text, cc):
         """
         Updates the medical Mail settings
         :param title: 
@@ -229,5 +230,6 @@ class MailSettingsView(View):
 
         settings_object.medical_mail_title = title
         settings_object.medical_mail_text = text
+        settings_object.medical_mail_cc = cc
 
         settings_object.save()

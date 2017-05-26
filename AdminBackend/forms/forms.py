@@ -38,6 +38,6 @@ class MedicalMailForm(forms.ModelForm):
     """
     class Meta:
         model = MailSettings
-        fields = ['medical_mail_title', 'medical_mail_text']
+        fields = ['medical_mail_title', 'medical_mail_text', 'medical_mail_cc']
 
 

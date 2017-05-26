@@ -79,3 +79,4 @@ class MailSettings(models.Model):
 
     medical_mail_title = models.CharField(max_length=150)
     medical_mail_text = models.TextField()
+    medical_mail_cc = models.EmailField()

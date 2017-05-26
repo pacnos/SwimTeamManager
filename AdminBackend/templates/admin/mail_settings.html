@@ -32,6 +32,10 @@
                                         <label class="control-label" for="{{ medical_form.medical_mail_title.id_for_label }}">Mail Title:</label>
                                         {{ medical_form.medical_mail_title|b_text }}
                                     </div>
+                                    <div class="form-group {{ medical_form.medical_mail_cc.errors|yesno:"has-error," }}">
+                                        <label class="control-label" for="{{ medical_form.medical_mail_cc.id_for_label }}">CC:</label>
+                                        {{ medical_form.medical_mail_cc|b_text }}
+                                    </div>
                                     <div class="form-group {{ medical_form.medical_mail_text.errors|yesno:"has-error," }}">
                                         <label class="control-label" for="{{ medical_form.medical_mail_text.id_for_label }}">
                                             Mail Text:
