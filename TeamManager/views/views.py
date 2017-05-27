@@ -7,6 +7,8 @@ from AdminBackend.mixins.group_mixins import CoachPermissionRequiredMixin, Athle
 from TeamManager.forms.forms import AthleteForm
 from TeamManager.models import Athlete
 
+from django.utils.translation import ugettext as _
+
 
 class DashboardView(AthletePermissionRequiredMixin, TemplateView):
     """
@@ -17,7 +19,7 @@ class DashboardView(AthletePermissionRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(DashboardView, self).get_context_data(**kwargs)
 
-        context["title"] = "Dashboard"
+        context["title"] = _("Dashboard")
 
         return context
 
@@ -33,7 +35,7 @@ class AthleteManagementView(CoachPermissionRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(AthleteManagementView, self).get_context_data(**kwargs)
 
-        context["title"] = "Athlete Management"
+        context["title"] = _("Athlete Management")
 
         return context
 

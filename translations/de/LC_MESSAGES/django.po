@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-27 18:16+0000\n"
-"PO-Revision-Date: 2017-05-27 20:18+0200\n"
+"POT-Creation-Date: 2017-05-27 20:28+0000\n"
+"PO-Revision-Date: 2017-05-27 22:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -24,16 +24,19 @@ msgstr "Abgelaufene Untersuchungen"
 
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:18
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:58
+#: TeamManager/templates/team_manager/athlete_management.html:29
 msgid "First Name"
 msgstr "Vorname"
 
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:19
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:59
+#: TeamManager/templates/team_manager/athlete_management.html:30
 msgid "Last Name"
 msgstr "Nachname"
 
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:20
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:60
+#: TeamManager/templates/team_manager/athlete_management.html:33
 msgid "Last medical"
 msgstr "Letzte Untersuchung"
 
@@ -56,6 +59,107 @@ msgstr ""
 "Es gibt keine bevorstehenden medizinischen Untersuchungen in den nächsten 3 "
 "Monaten"
 
+#: TeamManager/templates/team_manager/athlete_management.html:31
+msgid "Birth Date"
+msgstr "Geburtsdatum"
+
+#: TeamManager/templates/team_manager/athlete_management.html:32
+msgid "Gender"
+msgstr "Geschlecht"
+
+#: TeamManager/templates/team_manager/athlete_management.html:34
+msgid "Competitor Number"
+msgstr "Startrechtsnummer"
+
+#: TeamManager/templates/team_manager/athlete_management.html:35
+msgid "Details"
+msgstr "Details"
+
+#: TeamManager/templates/team_manager/athlete_management.html:36
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: TeamManager/templates/team_manager/athlete_management.html:37
+msgid "Delete"
+msgstr "Löschen"
+
+#: TeamManager/templates/team_manager/athlete_management.html:61
+msgid "Add new Athlete"
+msgstr "Sportler hinzufügen"
+
+#: TeamManager/templates/team_manager/athlete_management.html:73
+#: TeamManager/templates/team_manager/athlete_management.html:80
+msgid "Delete Athlete"
+msgstr "Sportler löschen"
+
+#: TeamManager/templates/team_manager/athlete_management.html:76
+msgid "Are you sure to delete Athlete:"
+msgstr "Folgenden Sportler wirklich löschen?:"
+
+#: TeamManager/templates/team_manager/athlete_management.html:79
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: TeamManager/templates/team_manager/athlete_management.html:101
+msgid "Address Data"
+msgstr "Anschrift"
+
+#: TeamManager/templates/team_manager/athlete_management.html:104
+msgid "Street"
+msgstr "Straße"
+
+#: TeamManager/templates/team_manager/athlete_management.html:108
+msgid "City"
+msgstr "Stadt"
+
+#: TeamManager/templates/team_manager/athlete_management.html:113
+msgid "Contact Athlete"
+msgstr "Kontaktdaten Sportler"
+
+#: TeamManager/templates/team_manager/athlete_management.html:116
+msgid "Phone"
+msgstr "Telefon"
+
+#: TeamManager/templates/team_manager/athlete_management.html:120
+#: TeamManager/templates/team_manager/athlete_management.html:132
+#: TeamManager/templates/team_manager/athlete_management.html:144
+msgid "Mobile Phone"
+msgstr "Handy"
+
+#: TeamManager/templates/team_manager/athlete_management.html:124
+#: TeamManager/templates/team_manager/athlete_management.html:136
+#: TeamManager/templates/team_manager/athlete_management.html:148
+msgid "Mail"
+msgstr "E-Mail"
+
+#: TeamManager/templates/team_manager/athlete_management.html:129
+msgid "Contact Mother"
+msgstr "Kontaktdaten Mutter"
+
+#: TeamManager/templates/team_manager/athlete_management.html:141
+msgid "Contact Father"
+msgstr "Kontaktdaten Vater"
+
+#: TeamManager/templates/team_manager/athlete_management.html:173
+msgid "Contact Details:"
+msgstr "Kontaktdaten Sportler:"
+
+#: TeamManager/templatetags/athlete_extras.py:17
+msgid "Male"
+msgstr "Männlich"
+
+#: TeamManager/templatetags/athlete_extras.py:19
+msgid "Female"
+msgstr "Weiblich"
+
+#: TeamManager/views/views.py:22 templates/base_backend.html:44
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: TeamManager/views/views.py:38 templates/base_backend.html:47
+msgid "Athlete Management"
+msgstr "Sportler Management"
+
 #: templates/base_backend.html:11
 msgid "Toggle navigation"
 msgstr "Navigation umschalten"
@@ -63,14 +167,6 @@ msgstr "Navigation umschalten"
 #: templates/base_backend.html:31
 msgid "Logout"
 msgstr "Abmelden"
-
-#: templates/base_backend.html:44
-msgid "Dashboard"
-msgstr "Dashboard"
-
-#: templates/base_backend.html:47
-msgid "Athlete Management"
-msgstr "Sportler Management"
 
 #: templates/base_backend.html:50
 msgid "Overview"
