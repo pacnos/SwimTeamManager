@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-27 20:38+0000\n"
-"PO-Revision-Date: 2017-05-27 22:38+0200\n"
+"POT-Creation-Date: 2017-05-27 20:46+0000\n"
+"PO-Revision-Date: 2017-05-27 22:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -25,18 +25,21 @@ msgstr "Abgelaufene Untersuchungen"
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:18
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:58
 #: TeamManager/templates/team_manager/athlete_management.html:29
+#: TeamManager/templates/team_manager/medical_view.html:29
 msgid "First Name"
 msgstr "Vorname"
 
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:19
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:59
 #: TeamManager/templates/team_manager/athlete_management.html:30
+#: TeamManager/templates/team_manager/medical_view.html:30
 msgid "Last Name"
 msgstr "Nachname"
 
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:20
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:60
 #: TeamManager/templates/team_manager/athlete_management.html:33
+#: TeamManager/templates/team_manager/medical_view.html:31
 msgid "Last medical"
 msgstr "Letzte Untersuchung"
 
@@ -187,6 +190,7 @@ msgid "Are you sure to delete Athlete:"
 msgstr "Folgenden Sportler wirklich löschen?:"
 
 #: TeamManager/templates/team_manager/athlete_management.html:79
+#: TeamManager/templates/team_manager/medical_view.html:61
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -234,6 +238,31 @@ msgstr "Kontaktdaten Vater"
 msgid "Contact Details:"
 msgstr "Kontaktdaten Sportler:"
 
+#: TeamManager/templates/team_manager/medical_view.html:21
+msgid "Error:"
+msgstr "Fehler:"
+
+#: TeamManager/templates/team_manager/medical_view.html:32
+#: TeamManager/templates/team_manager/medical_view.html:62
+msgid "Update date"
+msgstr "Aktualisieren"
+
+#: TeamManager/templates/team_manager/medical_view.html:49
+msgid "Update Date of Medical Examination"
+msgstr "Datum der letzten Untersuchung aktualisieren"
+
+#: TeamManager/templates/team_manager/medical_view.html:53
+msgid "Date:"
+msgstr "Datum:"
+
+#: TeamManager/views/json_views.py:60
+msgid "Can't find athlete to delete"
+msgstr "Sportler konnte nicht gefunden werden"
+
+#: TeamManager/views/json_views.py:94
+msgid "The given data are not valid"
+msgstr "Die Übertragen Daten sind fehlerhaft"
+
 #: TeamManager/views/views.py:22 templates/base_backend.html:44
 msgid "Dashboard"
 msgstr "Dashboard"
@@ -249,6 +278,10 @@ msgstr "Sportler anlegen"
 #: TeamManager/views/views.py:74
 msgid "Edit Athlete"
 msgstr "Sportler bearbeiten"
+
+#: TeamManager/views/views.py:92
+msgid "Medical Examination Overview"
+msgstr "Überblick Untersuchungen"
 
 #: templates/base_backend.html:11
 msgid "Toggle navigation"
