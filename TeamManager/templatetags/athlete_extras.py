@@ -1,6 +1,7 @@
 from django import template
 from django.utils.safestring import mark_safe
 
+from django.utils.translation import ugettext as _
 
 register = template.Library()
 
@@ -13,9 +14,9 @@ def male_female_filter(value):
     """
 
     if value:
-        return mark_safe("<i class=\"fa fa-male\"></i> Male")
+        return mark_safe("<i class=\"fa fa-male fa-fw\"></i> %s" % _("Male"))
     else:
-        return mark_safe("<i class=\"fa fa-female\"></i> Female")
+        return mark_safe("<i class=\"fa fa-female fa-fw\"></i> %s" % _("Female"))
 
 
 @register.filter(name="medical_table_color")

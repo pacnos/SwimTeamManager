@@ -1,11 +1,11 @@
 import json
 
-from django.core import serializers
 from django.core.exceptions import ObjectDoesNotExist
 from django.forms import model_to_dict
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
 from django.shortcuts import render
+from django.utils.translation import ugettext as _
 from django.views import View
 
 from AdminBackend.mixins.group_mixins import CoachPermissionRequiredMixin
@@ -57,7 +57,7 @@ class AthleteDeleteJSON(CoachPermissionRequiredMixin, View):
             athlete = Athlete.objects.get(pk=self.args[0])
             athlete.delete()
         except ObjectDoesNotExist as ex:
-            return HttpResponseBadRequest("Can't find athlete to delete")
+            return HttpResponseBadRequest(_("Can't find athlete to delete"))
 
         return HttpResponse()
 
@@ -91,4 +91,4 @@ class AthleteMedicalOverviewUpdate(CoachPermissionRequiredMixin, View):
 
             return render(request, "team_manager/ajax_parts/medical_table_body.html", {'athlete_list': athlete_list})
         else:
-            return HttpResponseBadRequest("The given data are not valid")
+            return HttpResponseBadRequest(_("The given data are not valid"))

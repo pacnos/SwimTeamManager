@@ -1,6 +1,7 @@
 {% extends 'base_backend.html' %}
 {% load static %}
 {% load form_extras %}
+{% load i18n %}
 
 {% block css %}
     <!-- Datepicker CSS -->
@@ -49,20 +50,20 @@
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>Basic Data</h3>
+                        <h3>{% trans 'Basic Data' %}</h3>
                     </div>
                 </div>
                 <!-- First Name / Name -->
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group {{ form.first_name.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.first_name.id_for_label }}">First Name:</label>
+                            <label class="control-label" for="{{ form.first_name.id_for_label }}">{% trans 'First Name:' %}</label>
                             {{ form.first_name|b_text }}
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group {{ form.last_name.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                            <label class="control-label" for="{{ form.last_name.id_for_label }}">{% trans 'Last Name:' %}</label>
                             {{ form.last_name|b_text }}
                         </div>
                     </div>
@@ -71,16 +72,16 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group {{ form.birth_date.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.birth_date.id_for_label }}">Birth Date:</label>
+                            <label class="control-label" for="{{ form.birth_date.id_for_label }}">{% trans 'Birth Date:' %}</label>
                             <input type="date" class="form-control" id="{{ form.birth_date.id_for_label }}" name="{{ form.birth_date.html_name }}" value="{{ form.birth_date.value|date:"SHORT_DATE_FORMAT" }}">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group {{ form.male.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.male.id_for_label }}">Gender:</label>
+                            <label class="control-label" for="{{ form.male.id_for_label }}">{% trans 'Gender:' %}</label>
                             <select class="form-control" id="{{ form.male.id_for_label }}" name="{{ form.male.html_name }}">
-                                <option value="True">Male</option>
-                                <option value="False">Female</option>
+                                <option value="True">{% trans 'Male' %}</option>
+                                <option value="False">{% trans 'Female' %}</option>
                             </select>
                         </div>
                     </div>
@@ -89,7 +90,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group {{ form.street.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.street.id_for_label }}">Street:</label>
+                            <label class="control-label" for="{{ form.street.id_for_label }}">{% trans 'Street:' %}</label>
                             {{ form.street|b_text }}
                         </div>
                     </div>
@@ -98,53 +99,53 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group {{ form.zip_code.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.zip_code.id_for_label }}">Zip Code:</label>
+                            <label class="control-label" for="{{ form.zip_code.id_for_label }}">{% trans 'Zip Code:' %}</label>
                             {{ form.zip_code|b_text }}
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group {{ form.city.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.city.id_for_label }}">City:</label>
+                            <label class="control-label" for="{{ form.city.id_for_label }}">{% trans 'City:' %}</label>
                             {{ form.city|b_text }}
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>Competition Data</h3>
+                        <h3>{% trans 'Competition Data' %}</h3>
                     </div>
                 </div>
                 <!-- Competitor Number / Last Medical Examination -->
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group {{ form.competitor_number.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.competitor_number.id_for_label }}">Competitor Number:</label>
+                            <label class="control-label" for="{{ form.competitor_number.id_for_label }}">{% trans 'Competitor Number:' %}</label>
                             {{ form.competitor_number|b_text }}
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group {{ form.last_medical.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.birth_date.id_for_label }}">Last Medical Examination:</label>
+                            <label class="control-label" for="{{ form.birth_date.id_for_label }}">{% trans 'Last Medical Examination:' %}</label>
                             <input type="date" class="form-control" id="{{ form.last_medical.id_for_label }}" name="{{ form.last_medical.html_name }}" value="{{ form.last_medical.value|date:"SHORT_DATE_FORMAT" }}">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>Contact Data</h3>
+                        <h3>{% trans 'Contact Data' %}</h3>
                     </div>
                 </div>
                 <!-- Phone Athlete -->
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group {{ form.phone.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.phone.id_for_label }}">Phone Number:</label>
+                            <label class="control-label" for="{{ form.phone.id_for_label }}">{% trans 'Phone Number:' %}</label>
                             <input type="tel" class="form-control" id="{{ form.phone.id_for_label }}" name="{{ form.phone.html_name }}" value="{{ form.phone.value|default_if_none:"" }}">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group {{ form.mobile_phone.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.mobile_phone.id_for_label }}">Mobile Phone Number:</label>
+                            <label class="control-label" for="{{ form.mobile_phone.id_for_label }}">{% trans 'Mobile Phone Number:' %}</label>
                             <input type="tel" class="form-control" id="{{ form.mobile_phone.id_for_label }}" name="{{ form.mobile_phone.html_name }}" value="{{ form.phone.value|default_if_none:"" }}">
                         </div>
                     </div>
@@ -153,7 +154,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group {{ form.mail.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.mail.id_for_label }}">Mail Address:</label>
+                            <label class="control-label" for="{{ form.mail.id_for_label }}">{% trans 'Mail Address:' %}</label>
                             <input type="email" class="form-control" id="{{ form.mail.id_for_label }}" name="{{ form.mail.html_name }}" value="{{ form.mail.value|default_if_none:"" }}">
                         </div>
                     </div>
@@ -162,13 +163,13 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group {{ form.mobile_phone_mother.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.mobile_phone_mother.id_for_label }}">Mobile Phone Number Mother:</label>
+                            <label class="control-label" for="{{ form.mobile_phone_mother.id_for_label }}">{% trans 'Mobile Phone Number Mother:' %}</label>
                             <input type="tel" class="form-control" id="{{ form.mobile_phone_mother.id_for_label }}" name="{{ form.mobile_phone_mother.html_name }}" value="{{ form.mobile_phone_mother.value|default_if_none:"" }}">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group {{ form.mail_mother.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.mail_mother.id_for_label }}">Mail Address Mother:</label>
+                            <label class="control-label" for="{{ form.mail_mother.id_for_label }}">{% trans 'Mail Address Mother:' %}</label>
                             <input type="email" class="form-control" id="{{ form.mail_mother.id_for_label }}" name="{{ form.mail_mother.html_name }}" value="{{ form.mail_mother.value|default_if_none:"" }}">
                         </div>
                     </div>
@@ -177,18 +178,18 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group {{ form.mobile_phone_father.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.mobile_phone_father.id_for_label }}">Mobile Phone Number Father:</label>
+                            <label class="control-label" for="{{ form.mobile_phone_father.id_for_label }}">{% trans 'Mobile Phone Number Father:' %}</label>
                             <input type="tel" class="form-control" id="{{ form.mobile_phone_father.id_for_label }}" name="{{ form.mobile_phone_father.html_name }}" value="{{ form.mobile_phone_father.value|default_if_none:"" }}">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group {{ form.mail_father.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.mail_father.id_for_label }}">Mail Address Father:</label>
+                            <label class="control-label" for="{{ form.mail_father.id_for_label }}">{% trans 'Mail Address Father:' %}</label>
                             <input type="email" class="form-control" id="{{ form.mail_father.id_for_label }}" name="{{ form.mail_father.html_name }}" value="{{ form.mail_father.value|default_if_none:"" }}">
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">{% trans 'Save' %}</button>
             </form>
         </div>
     </div>

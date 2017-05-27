@@ -1,0 +1,498 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-27 21:18+0000\n"
+"PO-Revision-Date: 2017-05-27 23:18+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.2\n"
+
+#: AdminBackend/models.py:17 AdminBackend/models.py:23
+msgid "Athlete"
+msgstr "Sportler"
+
+#: AdminBackend/models.py:18 AdminBackend/models.py:24
+msgid "Coach"
+msgstr "Trainer"
+
+#: AdminBackend/models.py:19 AdminBackend/models.py:25
+msgid "Admin"
+msgstr "Admin"
+
+#: AdminBackend/models.py:96
+msgid "None"
+msgstr "Keines"
+
+#: AdminBackend/templates/admin/general_settings.html:20
+#: AdminBackend/views/views.py:154 templates/base_backend.html:67
+msgid "Mail Settings"
+msgstr "E-Mail Einstellungen"
+
+#: AdminBackend/templates/admin/general_settings.html:26
+#: AdminBackend/templates/admin/mail_settings.html:19
+#: AdminBackend/templates/admin/user_management.html:26
+msgid "Success"
+msgstr "Abgeschlossen"
+
+#: AdminBackend/templates/admin/general_settings.html:26
+#: AdminBackend/templates/admin/mail_settings.html:19
+msgid "Changes were saved successful"
+msgstr "Änderungen wurden erfolgreich gespeichert"
+
+#: AdminBackend/templates/admin/general_settings.html:32
+msgid "Sender Name:"
+msgstr "Absendername:"
+
+#: AdminBackend/templates/admin/general_settings.html:38
+msgid "Sender Mail Address:"
+msgstr "Absender E-Mail Adresse:"
+
+#: AdminBackend/templates/admin/general_settings.html:47
+msgid "SMTP Server:"
+msgstr "SMTP Server:"
+
+#: AdminBackend/templates/admin/general_settings.html:53
+msgid "SMTP Port:"
+msgstr "SMTP Port:"
+
+#: AdminBackend/templates/admin/general_settings.html:62
+msgid "SMTP User:"
+msgstr "SMTP Nutzer:"
+
+#: AdminBackend/templates/admin/general_settings.html:68
+msgid "SMTP Password:"
+msgstr "SMTP Passwort:"
+
+#: AdminBackend/templates/admin/general_settings.html:77
+msgid "Security:"
+msgstr "Sicherheitsprotokoll:"
+
+#: AdminBackend/templates/admin/general_settings.html:84
+#: AdminBackend/templates/admin/mail_settings.html:52
+#: AdminBackend/templates/admin/user_edit.html:72
+#: TeamManager/templates/team_manager/athlete_create_edit.html:192
+msgid "Save"
+msgstr "Speichern"
+
+#: AdminBackend/templates/admin/mail_settings.html:27
+msgid "Medical Examination Mail Settings"
+msgstr "Einstellungen für Warn-E-Mails bezüglich Untersuchung"
+
+#: AdminBackend/templates/admin/mail_settings.html:33
+msgid "Mail Title:"
+msgstr "Titel:"
+
+#: AdminBackend/templates/admin/mail_settings.html:37
+msgid "CC:"
+msgstr "CC:"
+
+#: AdminBackend/templates/admin/mail_settings.html:42
+msgid "Mail Text:"
+msgstr "Text:"
+
+#: AdminBackend/templates/admin/mail_settings.html:68
+msgid "Placeholder Help"
+msgstr "Verfügbare Platzhalter"
+
+#: AdminBackend/templates/admin/mail_settings.html:74
+msgid "Placeholder"
+msgstr "Platzhalter"
+
+#: AdminBackend/templates/admin/mail_settings.html:75
+msgid "Description"
+msgstr "Beschreibung"
+
+#: AdminBackend/templates/admin/mail_settings.html:81
+msgid "The first name of the athlete"
+msgstr "Vorname des Sportlers"
+
+#: AdminBackend/templates/admin/mail_settings.html:85
+msgid "The last name of the athlete"
+msgstr "Nachname des Sportlers"
+
+#: AdminBackend/templates/admin/mail_settings.html:89
+msgid "The date when the medical examination ends"
+msgstr "Ablaufdatum der aktuellen Untersuchung"
+
+#: AdminBackend/templates/admin/user_create.html:39
+#: AdminBackend/templates/admin/user_management.html:42
+msgid "Password"
+msgstr "Passwort"
+
+#: AdminBackend/templates/admin/user_create.html:47
+#: AdminBackend/templates/admin/user_management.html:84
+msgid "Password:"
+msgstr "Passwort:"
+
+#: AdminBackend/templates/admin/user_create.html:53
+#: AdminBackend/templates/admin/user_management.html:90
+msgid "Repeat Password:"
+msgstr "Passwort wiederholen:"
+
+#: AdminBackend/templates/admin/user_edit.html:19
+#: TeamManager/templates/team_manager/athlete_create_edit.html:53
+msgid "Basic Data"
+msgstr "Allgemeine Informationen"
+
+#: AdminBackend/templates/admin/user_edit.html:26
+msgid "Username:"
+msgstr "Nutzername:"
+
+#: AdminBackend/templates/admin/user_edit.html:32
+#: TeamManager/templates/team_manager/athlete_create_edit.html:157
+msgid "Mail Address:"
+msgstr "E-Mail Adresse:"
+
+#: AdminBackend/templates/admin/user_edit.html:41
+#: TeamManager/templates/team_manager/athlete_create_edit.html:60
+msgid "First Name:"
+msgstr "Vorname:"
+
+#: AdminBackend/templates/admin/user_edit.html:47
+#: TeamManager/templates/team_manager/athlete_create_edit.html:66
+msgid "Last Name:"
+msgstr "Nachname:"
+
+#: AdminBackend/templates/admin/user_edit.html:56
+msgid "Group:"
+msgstr "Gruppe"
+
+#: AdminBackend/templates/admin/user_management.html:21
+#: TeamManager/templates/team_manager/medical_view.html:21
+msgid "Error:"
+msgstr "Fehler:"
+
+#: AdminBackend/templates/admin/user_management.html:36
+msgid "Username"
+msgstr "Nutzername"
+
+#: AdminBackend/templates/admin/user_management.html:37
+#: TeamManager/templates/dashboard_widgets/last_medical_examination.html:18
+#: TeamManager/templates/dashboard_widgets/last_medical_examination.html:58
+#: TeamManager/templates/team_manager/athlete_management.html:29
+#: TeamManager/templates/team_manager/medical_view.html:29
+msgid "First Name"
+msgstr "Vorname"
+
+#: AdminBackend/templates/admin/user_management.html:38
+#: TeamManager/templates/dashboard_widgets/last_medical_examination.html:19
+#: TeamManager/templates/dashboard_widgets/last_medical_examination.html:59
+#: TeamManager/templates/team_manager/athlete_management.html:30
+#: TeamManager/templates/team_manager/medical_view.html:30
+msgid "Last Name"
+msgstr "Nachname"
+
+#: AdminBackend/templates/admin/user_management.html:39
+#: TeamManager/templates/team_manager/athlete_management.html:124
+#: TeamManager/templates/team_manager/athlete_management.html:136
+#: TeamManager/templates/team_manager/athlete_management.html:148
+msgid "Mail"
+msgstr "E-Mail"
+
+#: AdminBackend/templates/admin/user_management.html:40
+msgid "Type"
+msgstr "Typ"
+
+#: AdminBackend/templates/admin/user_management.html:41
+#: TeamManager/templates/team_manager/athlete_management.html:36
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: AdminBackend/templates/admin/user_management.html:43
+#: TeamManager/templates/team_manager/athlete_management.html:37
+msgid "Delete"
+msgstr "Löschen"
+
+#: AdminBackend/templates/admin/user_management.html:67
+msgid "Create new User"
+msgstr "Neuen Nutzer anlegen"
+
+#: AdminBackend/templates/admin/user_management.html:80
+msgid "Reset User Password"
+msgstr "Passwort zurücksetzen"
+
+#: AdminBackend/templates/admin/user_management.html:98
+#: AdminBackend/templates/admin/user_management.html:118
+#: TeamManager/templates/team_manager/athlete_management.html:79
+#: TeamManager/templates/team_manager/medical_view.html:61
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: AdminBackend/templates/admin/user_management.html:99
+msgid "Reset Password"
+msgstr "Passwort zurücksetzen"
+
+#: AdminBackend/templates/admin/user_management.html:115
+msgid "Are you sure to delete the User:"
+msgstr "Folgenden Nutzer wirklich löschen?:"
+
+#: AdminBackend/templates/admin/user_management.html:119
+msgid "Delete User"
+msgstr "Nutzer löschen"
+
+#: AdminBackend/templates/admin/user_management.html:220
+msgid "Password changed for successful"
+msgstr "Passwort wurde erfolgreich geändert"
+
+#: AdminBackend/views/json_views.py:33
+msgid "Can't find user to delete"
+msgstr "Nutzer konnte nicht gefunden werden"
+
+#: AdminBackend/views/json_views.py:64 TeamManager/views/json_views.py:94
+msgid "The given data are not valid"
+msgstr "Die Übertragen Daten sind fehlerhaft"
+
+#: AdminBackend/views/views.py:28 templates/base_backend.html:64
+msgid "User Management"
+msgstr "Nutzerverwaltung"
+
+#: AdminBackend/views/views.py:45
+msgid "Create User"
+msgstr "Nutzer anlegen"
+
+#: AdminBackend/views/views.py:105
+msgid "Edit User"
+msgstr "Nutzer bearbeiten"
+
+#: AdminBackend/views/views.py:142
+msgid "Login"
+msgstr "Login"
+
+#: AdminBackend/views/views.py:264 templates/base_backend.html:61
+msgid "General Settings"
+msgstr "Allgemeine Einstellungen"
+
+#: TeamManager/templates/dashboard_widgets/last_medical_examination.html:12
+msgid "Overdue medical examinations"
+msgstr "Abgelaufene Untersuchungen"
+
+#: TeamManager/templates/dashboard_widgets/last_medical_examination.html:20
+#: TeamManager/templates/dashboard_widgets/last_medical_examination.html:60
+#: TeamManager/templates/team_manager/athlete_management.html:33
+#: TeamManager/templates/team_manager/medical_view.html:31
+msgid "Last medical"
+msgstr "Letzte Untersuchung"
+
+#: TeamManager/templates/dashboard_widgets/last_medical_examination.html:35
+msgid "There are no overdue medical examinations"
+msgstr "Es gibt keine überfälligen ärztlichen Untersuchungen"
+
+#: TeamManager/templates/dashboard_widgets/last_medical_examination.html:39
+#: TeamManager/templates/dashboard_widgets/last_medical_examination.html:79
+msgid "Show all"
+msgstr "Alle anzeigen"
+
+#: TeamManager/templates/dashboard_widgets/last_medical_examination.html:52
+msgid "Upcoming medical examinations"
+msgstr "Ablaufende Untersuchungen"
+
+#: TeamManager/templates/dashboard_widgets/last_medical_examination.html:75
+msgid "There are no upcoming medical examinations in the next 3 months"
+msgstr ""
+"Es gibt keine bevorstehenden medizinischen Untersuchungen in den nächsten 3 "
+"Monaten"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:75
+msgid "Birth Date:"
+msgstr "Geburtsdatum:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:81
+msgid "Gender:"
+msgstr "Geschlecht:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:83
+#: TeamManager/templatetags/athlete_extras.py:17
+msgid "Male"
+msgstr "Männlich"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:84
+#: TeamManager/templatetags/athlete_extras.py:19
+msgid "Female"
+msgstr "Weiblich"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:93
+msgid "Street:"
+msgstr "Straße:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:102
+msgid "Zip Code:"
+msgstr "Postleitzahl:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:108
+msgid "City:"
+msgstr "Stadt:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:115
+msgid "Competition Data"
+msgstr "Wettkampfdaten"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:122
+msgid "Competitor Number:"
+msgstr "Startrechtsnummer:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:128
+msgid "Last Medical Examination:"
+msgstr "Letzte Untersuchung:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:135
+msgid "Contact Data"
+msgstr "Kontaktdaten"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:142
+msgid "Phone Number:"
+msgstr "Telefonnummer:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:148
+msgid "Mobile Phone Number:"
+msgstr "Handynummer:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:166
+msgid "Mobile Phone Number Mother:"
+msgstr "Handynummer Mutter:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:172
+msgid "Mail Address Mother:"
+msgstr "E-Mail Adresse Mutter:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:181
+msgid "Mobile Phone Number Father:"
+msgstr "Handynummer Vater:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:187
+msgid "Mail Address Father:"
+msgstr "E-Mail Adresse Vater:"
+
+#: TeamManager/templates/team_manager/athlete_management.html:31
+msgid "Birth Date"
+msgstr "Geburtsdatum"
+
+#: TeamManager/templates/team_manager/athlete_management.html:32
+msgid "Gender"
+msgstr "Geschlecht"
+
+#: TeamManager/templates/team_manager/athlete_management.html:34
+msgid "Competitor Number"
+msgstr "Startrechtsnummer"
+
+#: TeamManager/templates/team_manager/athlete_management.html:35
+msgid "Details"
+msgstr "Details"
+
+#: TeamManager/templates/team_manager/athlete_management.html:61
+msgid "Add new Athlete"
+msgstr "Sportler hinzufügen"
+
+#: TeamManager/templates/team_manager/athlete_management.html:73
+#: TeamManager/templates/team_manager/athlete_management.html:80
+msgid "Delete Athlete"
+msgstr "Sportler löschen"
+
+#: TeamManager/templates/team_manager/athlete_management.html:76
+msgid "Are you sure to delete Athlete:"
+msgstr "Folgenden Sportler wirklich löschen?:"
+
+#: TeamManager/templates/team_manager/athlete_management.html:101
+msgid "Address Data"
+msgstr "Anschrift"
+
+#: TeamManager/templates/team_manager/athlete_management.html:104
+msgid "Street"
+msgstr "Straße"
+
+#: TeamManager/templates/team_manager/athlete_management.html:108
+msgid "City"
+msgstr "Stadt"
+
+#: TeamManager/templates/team_manager/athlete_management.html:113
+msgid "Contact Athlete"
+msgstr "Kontaktdaten Sportler"
+
+#: TeamManager/templates/team_manager/athlete_management.html:116
+msgid "Phone"
+msgstr "Telefon"
+
+#: TeamManager/templates/team_manager/athlete_management.html:120
+#: TeamManager/templates/team_manager/athlete_management.html:132
+#: TeamManager/templates/team_manager/athlete_management.html:144
+msgid "Mobile Phone"
+msgstr "Handy"
+
+#: TeamManager/templates/team_manager/athlete_management.html:129
+msgid "Contact Mother"
+msgstr "Kontaktdaten Mutter"
+
+#: TeamManager/templates/team_manager/athlete_management.html:141
+msgid "Contact Father"
+msgstr "Kontaktdaten Vater"
+
+#: TeamManager/templates/team_manager/athlete_management.html:173
+msgid "Contact Details:"
+msgstr "Kontaktdaten Sportler:"
+
+#: TeamManager/templates/team_manager/medical_view.html:32
+#: TeamManager/templates/team_manager/medical_view.html:62
+msgid "Update date"
+msgstr "Aktualisieren"
+
+#: TeamManager/templates/team_manager/medical_view.html:49
+msgid "Update Date of Medical Examination"
+msgstr "Datum der letzten Untersuchung aktualisieren"
+
+#: TeamManager/templates/team_manager/medical_view.html:53
+msgid "Date:"
+msgstr "Datum:"
+
+#: TeamManager/views/json_views.py:60
+msgid "Can't find athlete to delete"
+msgstr "Sportler konnte nicht gefunden werden"
+
+#: TeamManager/views/views.py:22 templates/base_backend.html:44
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: TeamManager/views/views.py:38 templates/base_backend.html:47
+msgid "Athlete Management"
+msgstr "Sportler Management"
+
+#: TeamManager/views/views.py:56
+msgid "Create Athlete"
+msgstr "Sportler anlegen"
+
+#: TeamManager/views/views.py:74
+msgid "Edit Athlete"
+msgstr "Sportler bearbeiten"
+
+#: TeamManager/views/views.py:92
+msgid "Medical Examination Overview"
+msgstr "Überblick Untersuchungen"
+
+#: templates/base_backend.html:11
+msgid "Toggle navigation"
+msgstr "Navigation umschalten"
+
+#: templates/base_backend.html:31
+msgid "Logout"
+msgstr "Abmelden"
+
+#: templates/base_backend.html:50
+msgid "Overview"
+msgstr "Überblick"
+
+#: templates/base_backend.html:53
+msgid "Medical Examinations"
+msgstr "Untersuchungen"
+
+#: templates/base_backend.html:58
+msgid "Administration"
+msgstr "Einstellungen"

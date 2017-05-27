@@ -1,6 +1,7 @@
 {% extends 'base_backend.html' %}
 {% load static %}
 {% load form_extras %}
+{% load i18n %}
 
 {% block content %}
     <!-- First data block -->
@@ -16,21 +17,21 @@
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>Basic Data</h3>
+                        <h3>{% trans 'Basic Data' %}</h3>
                     </div>
                 </div>
                 <!-- Username / Mail -->
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group {{ form.username.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.username.id_for_label }}">Username:</label>
+                            <label class="control-label" for="{{ form.username.id_for_label }}">{% trans 'Username:' %}</label>
                             <input type="text" class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:"" }}" {{ fix_username|yesno:"readonly," }}>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group {{ form.mail.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.mail.id_for_label }}">Mail Address:</label>
-                            <input type="email" class="form-control" id="{{ form.mail.id_for_label }}" name="{{ form.mail.html_name }}" value="{{ form.mail.value|default_if_none:"" }}">
+                            <label class="control-label" for="{{ form.mail.id_for_label }}">{% trans 'Mail Address:' %}</label>
+                            {{ form.mail|b_text }}
                         </div>
                     </div>
                 </div>
@@ -38,13 +39,13 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group {{ form.first_name.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.first_name.id_for_label }}">First Name:</label>
+                            <label class="control-label" for="{{ form.first_name.id_for_label }}">{% trans 'First Name:' %}</label>
                             {{ form.first_name|b_text }}
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group {{ form.last_name.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                            <label class="control-label" for="{{ form.last_name.id_for_label }}">{% trans 'Last Name:' %}</label>
                             {{ form.last_name|b_text }}
                         </div>
                     </div>
@@ -53,14 +54,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group {{ form.group.errors|yesno:"has-error," }}">
-                            <label class="control-label" for="{{ form.group.id_for_label }}">Group:</label>
-                            <select class="form-control" id="{{ form.group.id_for_label }}" name="{{ form.group.html_name }}">
+                            <label class="control-label" for="{{ form.group.id_for_label }}">{% trans 'Group:' %}</label>
+                            <!-- <select class="form-control" id="{{ form.group.id_for_label }}" name="{{ form.group.html_name }}">
                                 {% for choice in form.group.field.choices %}
                                     <option value="{{ choice.0 }}"
                                         {% if form.group.value == choice.0 %}selected="selected"{% endif %}>
                                     {{ choice.1 }}</option>
                                 {% endfor %}
-                            </select>
+                            </select> -->
+                            {{ form.group|b_text }}
                         </div>
                     </div>
                 </div>
@@ -68,7 +70,7 @@
 
                 {% endblock %}
 
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">{% trans 'Save' %}</button>
             </form>
         </div>
     </div>

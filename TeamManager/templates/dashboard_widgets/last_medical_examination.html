@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="row">
     <!-- Overdue Panel -->
     <div class="col-lg-6">
@@ -7,15 +9,15 @@
         <div class="panel panel-success">
     {% endif %}
             <div class="panel-heading">
-                <h3 class="panel-title">Overdue medical examinations</h3>
+                <h3 class="panel-title">{% trans 'Overdue medical examinations' %}</h3>
             </div>
             {% if overdue_medical %}
                 <table class="table table-condensed">
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Last medical</th>
+                            <th>{% trans 'First Name' %}</th>
+                            <th>{% trans 'Last Name' %}</th>
+                            <th>{% trans 'Last medical' %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,11 +32,11 @@
                 </table>
             {% else %}
                 <div class="panel-body" style="color: #3c763d;">
-                    <i class="fa fa-check" aria-hidden="true"></i> There are no overdue medical examinations
+                    <i class="fa fa-check" aria-hidden="true"></i> {% trans 'There are no overdue medical examinations' %}
                 </div>
             {% endif %}
             <div class="panel-footer" >
-                <a href="{% url "TeamManager:athleteMedical" %}">Show all</a>
+                <a href="{% url "TeamManager:athleteMedical" %}">{% trans 'Show all' %}</a>
             </div>
         </div>
     </div>
@@ -47,15 +49,15 @@
         <div class="panel panel-success">
     {% endif %}
             <div class="panel-heading">
-                <h3 class="panel-title">Upcoming medical examinations</h3>
+                <h3 class="panel-title">{% trans 'Upcoming medical examinations' %}</h3>
             </div>
             {% if upcoming_medical %}
                 <table class="table table-condensed">
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Last medical</th>
+                            <th>{% trans 'First Name' %}</th>
+                            <th>{% trans 'Last Name' %}</th>
+                            <th>{% trans 'Last medical' %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,11 +72,11 @@
                 </table>
             {% else %}
                 <div class="panel-body" style="color: #3c763d;">
-                    <i class="fa fa-check" aria-hidden="true"></i> There are no upcoming medical examinations in the next 3 months
+                    <i class="fa fa-check" aria-hidden="true"></i> {% trans 'There are no upcoming medical examinations in the next 3 months' %}
                 </div>
             {% endif %}
             <div class="panel-footer" style="text-align: right;">
-                <a href="{% url "TeamManager:athleteMedical" %}">Show all</a>
+                <a href="{% url "TeamManager:athleteMedical" %}">{% trans 'Show all' %}</a>
             </div>
         </div>
     </div>

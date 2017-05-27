@@ -11,6 +11,8 @@ from AdminBackend.forms.forms import BasicUserForm, FullUserForm, MedicalMailFor
 from AdminBackend.mixins.group_mixins import AdminPermissionRequiredMixin
 from AdminBackend.models import MailSettings, GeneralSettings
 
+from django.utils.translation import ugettext as _
+
 
 class UserManagementView(AdminPermissionRequiredMixin, ListView):
     """
@@ -23,7 +25,7 @@ class UserManagementView(AdminPermissionRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(UserManagementView, self).get_context_data(**kwargs)
 
-        context["title"] = "User Management"
+        context["title"] = _("User Management")
 
         return context
 
@@ -40,7 +42,7 @@ class UserCreateView(AdminPermissionRequiredMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super(UserCreateView, self).get_context_data(**kwargs)
 
-        context["title"] = "Create User"
+        context["title"] = _("Create User")
 
         return context
 
@@ -100,7 +102,7 @@ class UserEditView(AdminPermissionRequiredMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super(UserEditView, self).get_context_data(**kwargs)
 
-        context["title"] = "Edit User"
+        context["title"] = _("Edit User")
         context["fix_username"] = True
 
         return context
@@ -137,7 +139,7 @@ class TMLoginView(LoginView):
     def get_context_data(self, **kwargs):
         context = super(TMLoginView, self).get_context_data(**kwargs)
 
-        context["title"] = "Login"
+        context["title"] = _("Login")
 
         return context
 
@@ -149,7 +151,7 @@ class MailSettingsView(AdminPermissionRequiredMixin, View):
     form_class = MedicalMailForm
     template_name = "admin/mail_settings.html"
     data_object = {
-        'title': "Mail Settings",
+        'title': _("Mail Settings"),
     }
 
     def get(self, request, *args, **kwargs):
@@ -259,7 +261,7 @@ class GeneralSettingsView(AdminPermissionRequiredMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super(GeneralSettingsView, self).get_context_data(**kwargs)
 
-        context["title"] = "General Settings"
+        context["title"] = _("General Settings")
 
         if "save_success" in self.request.session:
             context["save_success"] = True

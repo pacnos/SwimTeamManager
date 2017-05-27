@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.translation import ugettext_lazy as _
 
 
 class TMUser(models.Model):
@@ -13,15 +14,15 @@ class TMUser(models.Model):
     GROUP_ADMIN = "AD"
 
     GROUP_CHOICES = (
-        (GROUP_ATHLETE, "Athlete"),
-        (GROUP_COACH, "Coach"),
-        (GROUP_ADMIN, "Admin")
+        (GROUP_ATHLETE, _("Athlete")),
+        (GROUP_COACH, _("Coach")),
+        (GROUP_ADMIN, _("Admin"))
     )
 
     GROUP_TRANSLATIONS = {
-        GROUP_ATHLETE: "Athlete",
-        GROUP_COACH: "Coach",
-        GROUP_ADMIN: "Admin"
+        GROUP_ATHLETE: _("Athlete"),
+        GROUP_COACH: _("Coach"),
+        GROUP_ADMIN: _("Admin")
     }
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -92,7 +93,7 @@ class GeneralSettings(models.Model):
     SSL = "SSL"
 
     GROUP_CHOICES = (
-        (NO_SECURITY, "None"),
+        (NO_SECURITY, _("None")),
         (TLS, "TLS"),
         (SSL, "SSL")
     )

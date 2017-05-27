@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block body %}
     <div id="wrapper">
@@ -7,7 +8,7 @@
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only">{% trans 'Toggle navigation' %}</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -27,7 +28,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out fa-fw"></i> {% trans 'Logout' %}</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -40,30 +41,30 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="{% url 'dashboard' %}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="{% url 'dashboard' %}"><i class="fa fa-dashboard fa-fw"></i> {% trans 'Dashboard' %}</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> Athlete Management <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> {% trans 'Athlete Management' %} <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{% url 'TeamManager:athleteManagement' %}"><i class="fa fa-id-badge fa-fw"></i> Overview</a>
+                                    <a href="{% url 'TeamManager:athleteManagement' %}"><i class="fa fa-id-badge fa-fw"></i> {% trans 'Overview' %}</a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'TeamManager:athleteMedical' %}"><i class="fa fa-medkit fa-fw"></i> Medical Examinations</a>
+                                    <a href="{% url 'TeamManager:athleteMedical' %}"><i class="fa fa-medkit fa-fw"></i> {% trans 'Medical Examinations' %}</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Administration <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> {% trans 'Administration' %} <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{% url 'AdminBackend:generalSettings' %}"><i class="fa fa-server fa-fw"></i> General Settings</a>
+                                    <a href="{% url 'AdminBackend:generalSettings' %}"><i class="fa fa-server fa-fw"></i> {% trans 'General Settings' %}</a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'AdminBackend:overview' %}"><i class="fa fa-user fa-fw"></i> User Management</a>
+                                    <a href="{% url 'AdminBackend:overview' %}"><i class="fa fa-user fa-fw"></i> {% trans 'User Management' %}</a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'AdminBackend:mailSettings' %}"><i class="fa fa-envelope fa-fw"></i> Mail Settings</a>
+                                    <a href="{% url 'AdminBackend:mailSettings' %}"><i class="fa fa-envelope fa-fw"></i> {% trans 'Mail Settings' %}</a>
                                 </li>
                             </ul>
                         </li>
