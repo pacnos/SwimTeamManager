@@ -1,11 +1,7 @@
 {% extends 'base_backend.html' %}
 {% load static %}
 {% load athlete_extras %}
-
-{% block css %}
-    <link href="{% static "dataTables/css/dataTables.bootstrap.css" %}" rel="stylesheet">
-    <link href="{% static "dataTables/css/dataTables.responsive.css" %}" rel="stylesheet">
-{% endblock %}
+{% load i18n %}
 
 {% block content %}
     <!-- First data block -->
@@ -17,12 +13,12 @@
 
     <div id="error_alert" class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
         <button type="button" class="close" aria-label="Close" onclick="$(this).parent().hide();"><span aria-hidden="true">&times;</span></button>
-        <strong>Error:</strong> <span id="errorMsg"></span>
+        <strong>{% trans 'Error:' %}</strong> <span id="errorMsg"></span>
     </div>
 
     <div id="finish_alert" class="alert alert-success alert-dismissible" role="alert" style="display: none;">
         <button type="button" class="close" aria-label="Close" onclick="$(this).parent().hide();"><span aria-hidden="true">&times;</span></button>
-        <strong>Success:</strong> <span id="infoMsg"></span>
+        <strong>{% trans 'Success' %}</strong> <span id="infoMsg"></span>
     </div>
 
     <!-- Start User table -->
@@ -32,14 +28,14 @@
                 <table class="table table-responsive table-striped">
                     <thead>
                         <tr>
-                            <th>Username</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Mail</th>
-                            <th>Type</th>
-                            <th>Edit</th>
-                            <th>Password</th>
-                            <th>Delete</th>
+                            <th>{% trans 'Username' %}</th>
+                            <th>{% trans 'First Name' %}</th>
+                            <th>{% trans 'Last Name' %}</th>
+                            <th>{% trans 'Mail' %}</th>
+                            <th>{% trans 'Type' %}</th>
+                            <th>{% trans 'Edit' %}</th>
+                            <th>{% trans 'Password' %}</th>
+                            <th>{% trans 'Delete' %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,7 +59,7 @@
                     </tbody>
                 </table>
                 <div class="panel-footer table-panel-footer">
-                    <a href="{% url 'AdminBackend:userCreate' %}"><i class="fa fa-plus"></i> Create new User</a>
+                    <a href="{% url 'AdminBackend:userCreate' %}"><i class="fa fa-plus"></i> {% trans 'Create new User' %}</a>
                 </div>
             </div>
         </div>
@@ -76,17 +72,17 @@
                 <form id="passwordResetForm" class="form-horizontal">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="userDelete">Reset User Password</h4>
+                        <h4 class="modal-title">{% trans 'Reset User Password' %}</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group" id="password_form_group">
-                            <label for="inputPassword" class="col-sm-4 control-label">Password</label>
+                            <label for="inputPassword" class="col-sm-4 control-label">{% trans 'Password:' %}</label>
                             <div class="col-sm-8">
                               <input type="password" class="form-control" id="inputPassword" name="password">
                             </div>
                         </div>
                         <div class="form-group" id="password_repeat_form_group">
-                            <label for="inputPasswordRepeat" class="col-sm-4 control-label">Repeat Password</label>
+                            <label for="inputPasswordRepeat" class="col-sm-4 control-label">{% trans 'Repeat Password:' %}</label>
                             <div class="col-sm-8">
                               <input type="password" class="form-control" id="inputPasswordRepeat" name="passwordRepeat">
                             </div>
@@ -94,13 +90,14 @@
                         <input type="hidden" id="passwdRstUserId" value="" name="userId">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resetPasswordFields()">Cancel</button>
-                        <button type="submit" class="btn btn-danger" id="deleteButton">Reset Password</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resetPasswordFields()">{% trans 'Cancel' %}</button>
+                        <button type="submit" class="btn btn-danger" id="deleteButton">{% trans 'Reset Password' %}</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
 
     <!-- Modal Dialog - Delete User -->
     <div class="modal fade" id="userDelete" tabindex="-1" role="dialog" aria-labelledby="userDeleteLabel">
@@ -108,25 +105,21 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="userDelete">Delete User</h4>
+                    <h4 class="modal-title" id="userDeleteTitle">{% trans 'Delete User' %}</h4>
                 </div>
                 <div class="modal-body">
-                    Are you sure to delete the User: <span id="user_name"></span>
+                    {% trans 'Are you sure to delete the User:'  %} <span id="user_name"></span>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" id="deleteButton" onclick="deleteUser(this)">Delete User</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Cancel' %}</button>
+                    <button type="button" class="btn btn-danger" id="deleteButton" onclick="deleteUser(this)">{% trans 'Delete User' %}</button>
                 </div>
             </div>
         </div>
     </div>
-
 {% endblock %}
 
 {% block javascript %}
-    <script src="{% static "dataTables/js/jquery.dataTables.min.js" %}"></script>
-    <script src="{% static "dataTables/js/dataTables.bootstrap.min.js" %}"></script>
-    <script src="{% static "dataTables/js/dataTables.responsive.js" %}"></script>
 
     <script>
         function showUserDelete(user_id, src) {
@@ -216,7 +209,7 @@
                         },
                         success: function(data)
                         {
-                            $("#finish_alert").find("#infoMsg").html("Password changed for successful");
+                            $("#finish_alert").find("#infoMsg").html("{% trans 'Password changed for successful' %}");
                             $("#finish_alert").show();
                         },
                         error: function (error) {

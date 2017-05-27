@@ -3,11 +3,6 @@
 {% load athlete_extras %}
 {% load i18n %}
 
-{% block css %}
-    <link href="{% static "dataTables/css/dataTables.bootstrap.css" %}" rel="stylesheet">
-    <link href="{% static "dataTables/css/dataTables.responsive.css" %}" rel="stylesheet">
-{% endblock %}
-
 {% block content %}
     <!-- First data block -->
     <div class="row">
@@ -159,10 +154,6 @@
 {% endblock %}
 
 {% block javascript %}
-    <script src="{% static "dataTables/js/jquery.dataTables.min.js" %}"></script>
-    <script src="{% static "dataTables/js/dataTables.bootstrap.min.js" %}"></script>
-    <script src="{% static "dataTables/js/dataTables.responsive.js" %}"></script>
-
     <script>
         function showAthleteDetails(athlete_id) {
             var modal = $("#athleteDetails");

@@ -1,5 +1,6 @@
 {% extends 'admin/user_edit.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block javascript %}
     <!-- Datepicker JS -->
@@ -35,7 +36,7 @@
 {% block password_content %}
     <div class="row">
         <div class="col-lg-12">
-            <h3>Password</h3>
+            <h3>{% trans 'Password' %}</h3>
         </div>
     </div>
 
@@ -43,13 +44,13 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group {{ form.password.errors|yesno:"has-error," }}" id="password_form_group">
-                <label class="control-label" for="{{ form.password.id_for_label }}">Password:</label>
+                <label class="control-label" for="{{ form.password.id_for_label }}">{% trans 'Password:' %}</label>
                 <input type="password" class="form-control" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" value="">
             </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group {{ form.password.errors|yesno:"has-error," }}" id="password_repeat_form_group">
-                <label class="control-label" for="repeat_passwd">Repeat Password:</label>
+                <label class="control-label" for="repeat_passwd">{% trans 'Repeat Password:' %}</label>
                 <input type="password" class="form-control" id="repeat_passwd" name="repeat_passwd" value="">
             </div>
         </div>

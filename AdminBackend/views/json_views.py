@@ -7,6 +7,7 @@ from django.views import View
 
 from AdminBackend.forms.forms import PasswordResetForm
 from AdminBackend.mixins.group_mixins import AdminPermissionRequiredMixin
+from django.utils.translation import ugettext as _
 
 
 class UserDeleteJSON(AdminPermissionRequiredMixin, View):
@@ -29,7 +30,7 @@ class UserDeleteJSON(AdminPermissionRequiredMixin, View):
             user = User.objects.get(pk=self.args[0])
             user.delete()
         except ObjectDoesNotExist as ex:
-            return HttpResponseBadRequest("Can't find user to delete")
+            return HttpResponseBadRequest(_("Can't find user to delete"))
 
         return HttpResponse()
 
@@ -60,6 +61,6 @@ class ResetUserPassword(AdminPermissionRequiredMixin, View):
             user.save()
             update_session_auth_hash(request, user)
         else:
-            return HttpResponseBadRequest("The given data are not valid")
+            return HttpResponseBadRequest(_("The given data are not valid"))
 
         return HttpResponse()

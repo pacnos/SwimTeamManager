@@ -14,15 +14,15 @@ class TMUser(models.Model):
     GROUP_ADMIN = "AD"
 
     GROUP_CHOICES = (
-        (GROUP_ATHLETE, "Athlete"),
-        (GROUP_COACH, "Coach"),
-        (GROUP_ADMIN, "Admin")
+        (GROUP_ATHLETE, _("Athlete")),
+        (GROUP_COACH, _("Coach")),
+        (GROUP_ADMIN, _("Admin"))
     )
 
     GROUP_TRANSLATIONS = {
-        GROUP_ATHLETE: "Athlete",
-        GROUP_COACH: "Coach",
-        GROUP_ADMIN: "Admin"
+        GROUP_ATHLETE: _("Athlete"),
+        GROUP_COACH: _("Coach"),
+        GROUP_ADMIN: _("Admin")
     }
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
