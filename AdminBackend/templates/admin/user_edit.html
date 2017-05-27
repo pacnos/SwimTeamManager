@@ -55,13 +55,6 @@
                     <div class="col-lg-12">
                         <div class="form-group {{ form.group.errors|yesno:"has-error," }}">
                             <label class="control-label" for="{{ form.group.id_for_label }}">{% trans 'Group:' %}</label>
-                            <!-- <select class="form-control" id="{{ form.group.id_for_label }}" name="{{ form.group.html_name }}">
-                                {% for choice in form.group.field.choices %}
-                                    <option value="{{ choice.0 }}"
-                                        {% if form.group.value == choice.0 %}selected="selected"{% endif %}>
-                                    {{ choice.1 }}</option>
-                                {% endfor %}
-                            </select> -->
                             {{ form.group|b_text }}
                         </div>
                     </div>

@@ -80,8 +80,8 @@
                         <div class="form-group {{ form.male.errors|yesno:"has-error," }}">
                             <label class="control-label" for="{{ form.male.id_for_label }}">{% trans 'Gender:' %}</label>
                             <select class="form-control" id="{{ form.male.id_for_label }}" name="{{ form.male.html_name }}">
-                                <option value="True">{% trans 'Male' %}</option>
-                                <option value="False">{% trans 'Female' %}</option>
+                                <option value="True" {% if form.male.value %}selected="selected"{% endif %}>{% trans 'Male' %}</option>
+                                <option value="False" {% if not form.male.value %}selected="selected"{% endif %}>{% trans 'Female' %}</option>
                             </select>
                         </div>
                     </div>
