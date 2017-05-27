@@ -1,6 +1,7 @@
 from django import forms
+from django.forms.widgets import PasswordInput
 
-from AdminBackend.models import TMUser, MailSettings
+from AdminBackend.models import TMUser, MailSettings, GeneralSettings
 
 
 class BasicUserForm(forms.Form):
@@ -40,4 +41,17 @@ class MedicalMailForm(forms.ModelForm):
         model = MailSettings
         fields = ['medical_mail_title', 'medical_mail_text', 'medical_mail_cc']
 
+
+class GeneralSettingsForm(forms.ModelForm):
+    """
+    Form for the general settings
+    """
+
+    class Meta:
+        model = GeneralSettings
+        fields = "__all__"
+
+        widgets = {
+            'email_host_password': PasswordInput()
+        }
 

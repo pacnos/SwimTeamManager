@@ -80,3 +80,33 @@ class MailSettings(models.Model):
     medical_mail_title = models.CharField(max_length=150)
     medical_mail_text = models.TextField()
     medical_mail_cc = models.EmailField()
+
+
+class GeneralSettings(models.Model):
+    """
+    Class which holds the general settings
+    """
+
+    NO_SECURITY = "NO"
+    TLS = "TLS"
+    SSL = "SSL"
+
+    GROUP_CHOICES = (
+        (NO_SECURITY, "None"),
+        (TLS, "TLS"),
+        (SSL, "SSL")
+    )
+
+    # Mail Settings
+    email_host = models.CharField('EMAIL_HOST', max_length=1024)
+    email_port = models.PositiveSmallIntegerField('EMAIL_PORT', default=587)
+    email_host_user = models.CharField('EMAIL_HOST_USER', max_length=255)
+    email_host_password = models.CharField('EMAIL_HOST_PASSWORD', max_length=255)
+
+    email_security = models.CharField(max_length=3, choices=GROUP_CHOICES, default=NO_SECURITY)
+
+    email_sender_name = models.CharField('EMAIL_SENDER', max_length=200)
+    email_sender_mail = models.EmailField('EMAIL_SENDER')
+
+
+

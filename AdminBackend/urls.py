@@ -7,6 +7,8 @@ app_name = 'AdminBackend'
 urlpatterns = [
     url(r'^$', views.UserManagementView.as_view(), name='overview'),
 
+    url(r'^settings/$', views.GeneralSettingsView.as_view(), name='generalSettings'),
+
     url(r'^mail/$', views.MailSettingsView.as_view(), name='mailSettings'),
 
     url(r'^user/create/$', views.UserCreateView.as_view(), name='userCreate'),

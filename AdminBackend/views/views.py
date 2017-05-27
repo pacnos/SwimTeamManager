@@ -3,15 +3,13 @@ from django.contrib.auth.views import LoginView
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
 from django.urls import reverse_lazy
-
 from django.views.generic import ListView
-from django.views.generic.base import TemplateView, View
-
+from django.views.generic.base import View
 from django.views.generic.edit import FormView
 
-from AdminBackend.forms.forms import BasicUserForm, FullUserForm, MedicalMailForm
+from AdminBackend.forms.forms import BasicUserForm, FullUserForm, MedicalMailForm, GeneralSettingsForm
 from AdminBackend.mixins.group_mixins import AdminPermissionRequiredMixin
-from AdminBackend.models import MailSettings
+from AdminBackend.models import MailSettings, GeneralSettings
 
 
 class UserManagementView(AdminPermissionRequiredMixin, ListView):
@@ -144,7 +142,7 @@ class TMLoginView(LoginView):
         return context
 
 
-class MailSettingsView(View):
+class MailSettingsView(AdminPermissionRequiredMixin, View):
     """
     View which shows the mail settings
     """
@@ -233,3 +231,53 @@ class MailSettingsView(View):
         settings_object.medical_mail_cc = cc
 
         settings_object.save()
+
+
+class GeneralSettingsView(AdminPermissionRequiredMixin, FormView):
+    """
+    View which is used to set the general settings
+    """
+    context_object_name = "form"
+    form_class = GeneralSettingsForm
+    template_name = "admin/general_settings.html"
+    success_url = reverse_lazy("AdminBackend:generalSettings")
+
+    def get_form(self):
+        """
+        Returns the form class
+        :param form_class: 
+        :return: 
+        """
+
+        # Try to get the settings object
+        try:
+            settings_object = GeneralSettings.objects.get(pk=1)
+            return self.form_class(instance=settings_object, **self.get_form_kwargs())
+        except ObjectDoesNotExist:
+            return self.form_class(**self.get_form_kwargs())
+
+    def get_context_data(self, **kwargs):
+        context = super(GeneralSettingsView, self).get_context_data(**kwargs)
+
+        context["title"] = "General Settings"
+
+        if "save_success" in self.request.session:
+            context["save_success"] = True
+            del self.request.session["save_success"]
+        else:
+            context["save_success"] = False
+
+        return context
+
+    def form_valid(self, form):
+        """
+        Called when the form was valid
+        :param form: 
+        :return: 
+        """
+
+        form.save()
+
+        # Go back the edit page
+        self.request.session["save_success"] = True
+        return super(GeneralSettingsView, self).form_valid(form)

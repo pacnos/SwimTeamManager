@@ -1,0 +1,89 @@
+{% extends 'base_backend.html' %}
+{% load static %}
+{% load form_extras %}
+
+{% block content %}
+    <!-- First data block -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ title }}</h1>
+        </div>
+    </div>
+    <!-- Start Data Input -->
+    <div class="row">
+        <div class="col-lg-12">
+            <form action="{{ request.get_full_path }}" method="post" id="settings_form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Mail Settings</h3>
+                    </div>
+                </div>
+                <!-- Success Alert -->
+                <div class="alert alert-success alert-dismissible" role="alert" {{ save_success|yesno:",hidden" }}>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Success</strong> Changes were saved successful
+                </div>
+                <!-- Sender -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.email_sender_name.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.email_sender_name.id_for_label }}">Sender Name:</label>
+                            {{ form.email_sender_name|b_text }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.email_sender_mail.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.email_sender_mail.id_for_label }}">Sender Mail Address:</label>
+                            {{ form.email_sender_mail|b_text }}
+                        </div>
+                    </div>
+                </div>
+                <!-- Host / Port -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.email_host.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.email_host.id_for_label }}">Mail Host:</label>
+                            {{ form.email_host|b_text }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.email_port.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.email_port.id_for_label }}">Mail Port:</label>
+                            {{ form.email_port|b_text }}
+                        </div>
+                    </div>
+                </div>
+                <!-- Username / Password -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.email_host_user.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.email_host_user.id_for_label }}">Mail User:</label>
+                            {{ form.email_host_user|b_text }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.email_host_password.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.email_host_password.id_for_label }}">Mail Password:</label>
+                            {{ form.email_host_password|b_text }}
+                        </div>
+                    </div>
+                </div>
+                <!-- Security -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group {{ form.email_security.errors|yesno:"has-error," }}">
+                            <label class="control-label" for="{{ form.email_security.id_for_label }}">Security:</label>
+                            {{ form.email_security|b_text }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
