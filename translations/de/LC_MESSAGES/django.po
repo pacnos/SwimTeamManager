@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-27 17:59+0000\n"
-"PO-Revision-Date: 2017-05-27 20:00+0200\n"
+"POT-Creation-Date: 2017-05-27 18:16+0000\n"
+"PO-Revision-Date: 2017-05-27 20:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -52,4 +52,46 @@ msgstr "Ablaufende Untersuchungen"
 
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:75
 msgid "There are no upcoming medical examinations in the next 3 months"
-msgstr "Es gibt keine bevorstehenden medizinischen Untersuchungen in den nächsten 3 Monaten"
+msgstr ""
+"Es gibt keine bevorstehenden medizinischen Untersuchungen in den nächsten 3 "
+"Monaten"
+
+#: templates/base_backend.html:11
+msgid "Toggle navigation"
+msgstr "Navigation umschalten"
+
+#: templates/base_backend.html:31
+msgid "Logout"
+msgstr "Abmelden"
+
+#: templates/base_backend.html:44
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: templates/base_backend.html:47
+msgid "Athlete Management"
+msgstr "Sportler Management"
+
+#: templates/base_backend.html:50
+msgid "Overview"
+msgstr "Überblick"
+
+#: templates/base_backend.html:53
+msgid "Medical Examinations"
+msgstr "Untersuchungen"
+
+#: templates/base_backend.html:58
+msgid "Administration"
+msgstr "Einstellungen"
+
+#: templates/base_backend.html:61
+msgid "General Settings"
+msgstr "Allgemeine Einstellungen"
+
+#: templates/base_backend.html:64
+msgid "User Management"
+msgstr "Nutzerverwaltung"
+
+#: templates/base_backend.html:67
+msgid "Mail Settings"
+msgstr "E-Mail Einstellungen"
