@@ -53,7 +53,7 @@ class CreateAthleteView(CoachPermissionRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super(CreateAthleteView, self).get_context_data(**kwargs)
 
-        context["title"] = "Create Athlete"
+        context["title"] = _("Create Athlete")
 
         return context
 
@@ -71,7 +71,7 @@ class EditAthleteView(CoachPermissionRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super(EditAthleteView, self).get_context_data(**kwargs)
 
-        context["title"] = "Edit Athlete"
+        context["title"] = _("Edit Athlete")
 
         return context
 

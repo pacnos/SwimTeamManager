@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-27 20:28+0000\n"
-"PO-Revision-Date: 2017-05-27 22:28+0200\n"
+"POT-Creation-Date: 2017-05-27 20:38+0000\n"
+"PO-Revision-Date: 2017-05-27 22:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -58,6 +58,96 @@ msgid "There are no upcoming medical examinations in the next 3 months"
 msgstr ""
 "Es gibt keine bevorstehenden medizinischen Untersuchungen in den nächsten 3 "
 "Monaten"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:53
+msgid "Basic Data"
+msgstr "Allgemeine Informationen"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:60
+msgid "First Name:"
+msgstr "Vorname"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:66
+msgid "Last Name:"
+msgstr "Nachname:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:75
+msgid "Birth Date:"
+msgstr "Geburtsdatum:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:81
+msgid "Gender:"
+msgstr "Geschlecht:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:83
+#: TeamManager/templatetags/athlete_extras.py:17
+msgid "Male"
+msgstr "Männlich"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:84
+#: TeamManager/templatetags/athlete_extras.py:19
+msgid "Female"
+msgstr "Weiblich"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:93
+msgid "Street:"
+msgstr "Straße:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:102
+msgid "Zip Code:"
+msgstr "Postleitzahl:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:108
+msgid "City:"
+msgstr "Stadt:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:115
+msgid "Competition Data"
+msgstr "Wettkampfdaten"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:122
+msgid "Competitor Number:"
+msgstr "Startrechtsnummer:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:128
+msgid "Last Medical Examination:"
+msgstr "Letzte Untersuchung:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:135
+msgid "Contact Data"
+msgstr "Kontaktdaten"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:142
+msgid "Phone Number:"
+msgstr "Telefonnummer:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:148
+msgid "Mobile Phone Number:"
+msgstr "Handynummer:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:157
+msgid "Mail Address:"
+msgstr "E-Mail Adresse:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:166
+msgid "Mobile Phone Number Mother:"
+msgstr "Handynummer Mutter:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:172
+msgid "Mail Address Mother:"
+msgstr "E-Mail Adresse Mutter:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:181
+msgid "Mobile Phone Number Father:"
+msgstr "Handynummer Vater:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:187
+msgid "Mail Address Father:"
+msgstr "E-Mail Adresse Vater:"
+
+#: TeamManager/templates/team_manager/athlete_create_edit.html:192
+msgid "Save"
+msgstr "Speichern"
 
 #: TeamManager/templates/team_manager/athlete_management.html:31
 msgid "Birth Date"
@@ -144,14 +234,6 @@ msgstr "Kontaktdaten Vater"
 msgid "Contact Details:"
 msgstr "Kontaktdaten Sportler:"
 
-#: TeamManager/templatetags/athlete_extras.py:17
-msgid "Male"
-msgstr "Männlich"
-
-#: TeamManager/templatetags/athlete_extras.py:19
-msgid "Female"
-msgstr "Weiblich"
-
 #: TeamManager/views/views.py:22 templates/base_backend.html:44
 msgid "Dashboard"
 msgstr "Dashboard"
@@ -159,6 +241,14 @@ msgstr "Dashboard"
 #: TeamManager/views/views.py:38 templates/base_backend.html:47
 msgid "Athlete Management"
 msgstr "Sportler Management"
+
+#: TeamManager/views/views.py:56
+msgid "Create Athlete"
+msgstr "Sportler anlegen"
+
+#: TeamManager/views/views.py:74
+msgid "Edit Athlete"
+msgstr "Sportler bearbeiten"
 
 #: templates/base_backend.html:11
 msgid "Toggle navigation"
