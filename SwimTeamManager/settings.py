@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import sys
 from django.urls.base import reverse
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -103,6 +104,26 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Logger Settings
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'log_to_stdout': {
+            'level': 'WARNING',
+            'class': 'logging.StreamHandler',
+            'stream': sys.stdout,
+            },
+        },
+    'loggers': {
+        'django': {
+            'handlers': ['log_to_stdout'],
+            'level': 'DEBUG',
+            'propagate': True,
+            }
+        }
+    }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
@@ -133,6 +154,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+# Application Settings
+MEDICAL_WARN_TIME = 3 * 30
 
 # Just for Debug
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

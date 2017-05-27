@@ -1,5 +1,6 @@
 import datetime
 from django import template
+from django.conf import settings
 
 from TeamManager.models import Athlete
 
@@ -13,7 +14,7 @@ def last_medical_examination():
     :return: 
     """
 
-    date_filter_warning = datetime.date.today() + datetime.timedelta(6 * 30)
+    date_filter_warning = datetime.date.today() + datetime.timedelta(settings.MEDICAL_WARN_TIME)
 
     return {
         "overdue_medical": Athlete.objects.filter(last_medical__lte=datetime.date.today()),

@@ -1,9 +1,7 @@
 import datetime
 
-from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
-from django.db.models.signals import post_save, pre_save
-from django.dispatch.dispatcher import receiver
+from django.conf import settings
 
 
 class Athlete(models.Model):
@@ -11,7 +9,7 @@ class Athlete(models.Model):
     Class for the athletes
     """
 
-    date_filter_warning = datetime.date.today() + datetime.timedelta(6 * 30)
+    date_filter_warning = datetime.date.today() + datetime.timedelta(settings.MEDICAL_WARN_TIME)
     date_filter_overdue = datetime.date.today()
 
     # Person Data
