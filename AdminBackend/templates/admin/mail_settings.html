@@ -1,6 +1,7 @@
 {% extends 'base_backend.html' %}
 {% load static %}
 {% load form_extras %}
+{% load i18n %}
 
 {% block content %}
     <!-- First data block -->
@@ -15,7 +16,7 @@
             <!-- Success Alert -->
             <div class="alert alert-success alert-dismissible" role="alert" {{ medical_success|yesno:",hidden" }}>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong>Success</strong> Changes were saved successful
+                <strong>{% trans 'Success' %}</strong> {% trans 'Changes were saved successful' %}
             </div>
             <!-- Medical Mail Settings -->
             <div class="row">
@@ -23,22 +24,22 @@
                     <form action="{{ request.get_full_path }}" method="post" id="medical_mail_form">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Medical Mail Settings</h3>
+                                <h3 class="panel-title">{% trans 'Medical Examination Mail Settings' %}</h3>
                             </div>
                             <div class="panel-body">
                                     {% csrf_token %}
                                     <input type='hidden' name='action' value='medical_mail'>
                                     <div class="form-group {{ medical_form.medical_mail_title.errors|yesno:"has-error," }}">
-                                        <label class="control-label" for="{{ medical_form.medical_mail_title.id_for_label }}">Mail Title:</label>
+                                        <label class="control-label" for="{{ medical_form.medical_mail_title.id_for_label }}">{% trans 'Mail Title:' %}</label>
                                         {{ medical_form.medical_mail_title|b_text }}
                                     </div>
                                     <div class="form-group {{ medical_form.medical_mail_cc.errors|yesno:"has-error," }}">
-                                        <label class="control-label" for="{{ medical_form.medical_mail_cc.id_for_label }}">CC:</label>
+                                        <label class="control-label" for="{{ medical_form.medical_mail_cc.id_for_label }}">{% trans 'CC:' %}</label>
                                         {{ medical_form.medical_mail_cc|b_text }}
                                     </div>
                                     <div class="form-group {{ medical_form.medical_mail_text.errors|yesno:"has-error," }}">
                                         <label class="control-label" for="{{ medical_form.medical_mail_text.id_for_label }}">
-                                            Mail Text:
+                                            {% trans 'Mail Text:' %}
                                             <!-- <a href="#" class="btn btn-default btn-circle"><i class="fa fa-question fa-fw"></i></a>-->
                                             <button type="button" class="btn btn-link btn-link-sm" data-toggle="modal" data-target="#helpModal">
                                                 <i class="fa fa-question-circle" aria-hidden="true"></i>
@@ -48,7 +49,7 @@
                                     </div>
                             </div>
                             <div class="panel-footer" style="text-align: right;">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">{% trans 'Save' %}</button>
                             </div>
                         </div>
                     </form>
@@ -64,28 +65,28 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Placeholder Help</h4>
+                    <h4 class="modal-title">{% trans 'Placeholder Help' %}</h4>
                 </div>
                 <div class="modal-body">
                     <table class="table table-condensed">
                         <thead>
                             <tr>
-                                <th>Placeholder</th>
-                                <th>Content</th>
+                                <th>{% trans 'Placeholder' %}</th>
+                                <th>{% trans 'Description' %}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>__FIRST_NAME__</td>
-                                <td>The first name of the athlete</td>
+                                <td>{% trans 'The first name of the athlete' %}</td>
                             </tr>
                             <tr>
                                 <td>__LAST_NAME__</td>
-                                <td>The last name of the athlete</td>
+                                <td>{% trans 'The last name of the athlete' %}</td>
                             </tr>
                             <tr>
                                 <td>__MEDICAL_END_DATE__</td>
-                                <td>The date when the medical examination ends</td>
+                                <td>{% trans 'The date when the medical examination ends' %}</td>
                             </tr>
                         </tbody>
                     </table>
