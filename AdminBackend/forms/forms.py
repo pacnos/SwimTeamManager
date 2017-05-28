@@ -1,4 +1,5 @@
 from django import forms
+from django.forms.fields import CharField
 from django.forms.widgets import PasswordInput
 
 from AdminBackend.models import TMUser, MailSettings, GeneralSettings
@@ -51,7 +52,4 @@ class GeneralSettingsForm(forms.ModelForm):
         model = GeneralSettings
         fields = "__all__"
 
-        widgets = {
-            'email_host_password': PasswordInput()
-        }
-
+    email_host_password = CharField(required=False, widget=PasswordInput(render_value=True))
