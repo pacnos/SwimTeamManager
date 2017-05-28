@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block css %}
     <link href="{% static "admin/css/login.css" %}" rel="stylesheet" type="text/css">
@@ -17,16 +18,16 @@
                         {% if next %}
                             <div class="alert alert-danger" role="alert">
                             {% if user.is_authenticated %}
-                                Your account doesn't have access to this page. To proceed, please login with an account that has access.
+                                {% trans "Your account doesn't have access to this page. To proceed, please login with an account that has access." %}
                             {% else %}
-                                Please login to see this page.
+                                {% trans 'Please login to see this page.' %}
                             {% endif %}
                             </div>
                         {% endif %}
 
                         {% if form.errors %}
                             <div class="alert alert-danger" role="alert">
-                                Your username and password didn't match. Please try again.
+                                {% trans "Your username and password didn't match. Please try again." %}
                             </div>
                         {% endif %}
 
@@ -34,13 +35,13 @@
                             {% csrf_token %}
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Username" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:"" }}" type="text" autofocus>
+                                    <input class="form-control" placeholder="{% trans 'Username' %}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:"" }}" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="{{ form.password.html_name }}" type="password" value="">
+                                    <input class="form-control" placeholder="{% trans 'Password' %}" name="{{ form.password.html_name }}" type="password" value="">
                                 </div>
                                 <input type="hidden" name="next" value="{{ next }}" />
-                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Login" />
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="{% trans 'Login' %}" />
                             </fieldset>
                         </form>
                     </div>

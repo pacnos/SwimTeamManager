@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-27 21:18+0000\n"
-"PO-Revision-Date: 2017-05-27 23:18+0200\n"
+"POT-Creation-Date: 2017-05-28 11:58+0000\n"
+"PO-Revision-Date: 2017-05-28 14:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -41,7 +41,7 @@ msgstr "E-Mail Einstellungen"
 
 #: AdminBackend/templates/admin/general_settings.html:26
 #: AdminBackend/templates/admin/mail_settings.html:19
-#: AdminBackend/templates/admin/user_management.html:26
+#: AdminBackend/templates/admin/user_management.html:21
 msgid "Success"
 msgstr "Abgeschlossen"
 
@@ -80,10 +80,41 @@ msgstr "Sicherheitsprotokoll:"
 
 #: AdminBackend/templates/admin/general_settings.html:84
 #: AdminBackend/templates/admin/mail_settings.html:52
-#: AdminBackend/templates/admin/user_edit.html:72
+#: AdminBackend/templates/admin/user_edit.html:66
 #: TeamManager/templates/team_manager/athlete_create_edit.html:192
 msgid "Save"
 msgstr "Speichern"
+
+#: AdminBackend/templates/admin/login.html:20
+msgid ""
+"Your account doesn't have access to this page. To proceed, please login with "
+"an account that has access."
+msgstr ""
+"Dein Account hat nicht die benötigten Rechte um die Seite zu betrachten."
+
+#: AdminBackend/templates/admin/login.html:22
+msgid "Please login to see this page."
+msgstr "Bitte melde dich an um die gewünschte Seite zu betrachten."
+
+#: AdminBackend/templates/admin/login.html:29
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"Nutzername und Passwort stimmen nicht überein. Bitte versuche es erneut."
+
+#: AdminBackend/templates/admin/login.html:37
+#: AdminBackend/templates/admin/user_management.html:31
+msgid "Username"
+msgstr "Nutzername"
+
+#: AdminBackend/templates/admin/login.html:40
+#: AdminBackend/templates/admin/user_create.html:39
+#: AdminBackend/templates/admin/user_management.html:37
+msgid "Password"
+msgstr "Passwort"
+
+#: AdminBackend/templates/admin/login.html:43 AdminBackend/views/views.py:142
+msgid "Login"
+msgstr "Login"
 
 #: AdminBackend/templates/admin/mail_settings.html:27
 msgid "Medical Examination Mail Settings"
@@ -125,123 +156,115 @@ msgstr "Nachname des Sportlers"
 msgid "The date when the medical examination ends"
 msgstr "Ablaufdatum der aktuellen Untersuchung"
 
-#: AdminBackend/templates/admin/user_create.html:39
-#: AdminBackend/templates/admin/user_management.html:42
-msgid "Password"
-msgstr "Passwort"
-
 #: AdminBackend/templates/admin/user_create.html:47
-#: AdminBackend/templates/admin/user_management.html:84
+#: AdminBackend/templates/admin/user_management.html:79
 msgid "Password:"
 msgstr "Passwort:"
 
 #: AdminBackend/templates/admin/user_create.html:53
-#: AdminBackend/templates/admin/user_management.html:90
+#: AdminBackend/templates/admin/user_management.html:85
 msgid "Repeat Password:"
 msgstr "Passwort wiederholen:"
 
-#: AdminBackend/templates/admin/user_edit.html:19
+#: AdminBackend/templates/admin/user_edit.html:20
 #: TeamManager/templates/team_manager/athlete_create_edit.html:53
 msgid "Basic Data"
 msgstr "Allgemeine Informationen"
 
-#: AdminBackend/templates/admin/user_edit.html:26
+#: AdminBackend/templates/admin/user_edit.html:27
 msgid "Username:"
 msgstr "Nutzername:"
 
-#: AdminBackend/templates/admin/user_edit.html:32
+#: AdminBackend/templates/admin/user_edit.html:33
 #: TeamManager/templates/team_manager/athlete_create_edit.html:157
 msgid "Mail Address:"
 msgstr "E-Mail Adresse:"
 
-#: AdminBackend/templates/admin/user_edit.html:41
+#: AdminBackend/templates/admin/user_edit.html:42
 #: TeamManager/templates/team_manager/athlete_create_edit.html:60
 msgid "First Name:"
 msgstr "Vorname:"
 
-#: AdminBackend/templates/admin/user_edit.html:47
+#: AdminBackend/templates/admin/user_edit.html:48
 #: TeamManager/templates/team_manager/athlete_create_edit.html:66
 msgid "Last Name:"
 msgstr "Nachname:"
 
-#: AdminBackend/templates/admin/user_edit.html:56
+#: AdminBackend/templates/admin/user_edit.html:57
 msgid "Group:"
-msgstr "Gruppe"
+msgstr "Gruppe:"
 
-#: AdminBackend/templates/admin/user_management.html:21
+#: AdminBackend/templates/admin/user_management.html:16
 #: TeamManager/templates/team_manager/medical_view.html:21
 msgid "Error:"
 msgstr "Fehler:"
 
-#: AdminBackend/templates/admin/user_management.html:36
-msgid "Username"
-msgstr "Nutzername"
-
-#: AdminBackend/templates/admin/user_management.html:37
+#: AdminBackend/templates/admin/user_management.html:32
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:18
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:58
-#: TeamManager/templates/team_manager/athlete_management.html:29
+#: TeamManager/templates/team_manager/athlete_management.html:24
 #: TeamManager/templates/team_manager/medical_view.html:29
 msgid "First Name"
 msgstr "Vorname"
 
-#: AdminBackend/templates/admin/user_management.html:38
+#: AdminBackend/templates/admin/user_management.html:33
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:19
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:59
-#: TeamManager/templates/team_manager/athlete_management.html:30
+#: TeamManager/templates/team_manager/athlete_management.html:25
 #: TeamManager/templates/team_manager/medical_view.html:30
 msgid "Last Name"
 msgstr "Nachname"
 
-#: AdminBackend/templates/admin/user_management.html:39
-#: TeamManager/templates/team_manager/athlete_management.html:124
-#: TeamManager/templates/team_manager/athlete_management.html:136
-#: TeamManager/templates/team_manager/athlete_management.html:148
+#: AdminBackend/templates/admin/user_management.html:34
+#: TeamManager/templates/team_manager/athlete_management.html:119
+#: TeamManager/templates/team_manager/athlete_management.html:131
+#: TeamManager/templates/team_manager/athlete_management.html:143
 msgid "Mail"
 msgstr "E-Mail"
 
-#: AdminBackend/templates/admin/user_management.html:40
+#: AdminBackend/templates/admin/user_management.html:35
 msgid "Type"
 msgstr "Typ"
 
-#: AdminBackend/templates/admin/user_management.html:41
-#: TeamManager/templates/team_manager/athlete_management.html:36
+#: AdminBackend/templates/admin/user_management.html:36
+#: TeamManager/templates/team_manager/athlete_management.html:31
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: AdminBackend/templates/admin/user_management.html:43
-#: TeamManager/templates/team_manager/athlete_management.html:37
+#: AdminBackend/templates/admin/user_management.html:38
+#: TeamManager/templates/team_manager/athlete_management.html:32
 msgid "Delete"
 msgstr "Löschen"
 
-#: AdminBackend/templates/admin/user_management.html:67
+#: AdminBackend/templates/admin/user_management.html:62
 msgid "Create new User"
 msgstr "Neuen Nutzer anlegen"
 
-#: AdminBackend/templates/admin/user_management.html:80
+#: AdminBackend/templates/admin/user_management.html:75
 msgid "Reset User Password"
 msgstr "Passwort zurücksetzen"
 
-#: AdminBackend/templates/admin/user_management.html:98
-#: AdminBackend/templates/admin/user_management.html:118
-#: TeamManager/templates/team_manager/athlete_management.html:79
+#: AdminBackend/templates/admin/user_management.html:93
+#: AdminBackend/templates/admin/user_management.html:114
+#: TeamManager/templates/team_manager/athlete_management.html:74
 #: TeamManager/templates/team_manager/medical_view.html:61
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: AdminBackend/templates/admin/user_management.html:99
+#: AdminBackend/templates/admin/user_management.html:94
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
 
+#: AdminBackend/templates/admin/user_management.html:108
 #: AdminBackend/templates/admin/user_management.html:115
-msgid "Are you sure to delete the User:"
-msgstr "Folgenden Nutzer wirklich löschen?:"
-
-#: AdminBackend/templates/admin/user_management.html:119
 msgid "Delete User"
 msgstr "Nutzer löschen"
 
-#: AdminBackend/templates/admin/user_management.html:220
+#: AdminBackend/templates/admin/user_management.html:111
+msgid "Are you sure to delete the User:"
+msgstr "Folgenden Nutzer wirklich löschen?:"
+
+#: AdminBackend/templates/admin/user_management.html:212
 msgid "Password changed for successful"
 msgstr "Passwort wurde erfolgreich geändert"
 
@@ -265,10 +288,6 @@ msgstr "Nutzer anlegen"
 msgid "Edit User"
 msgstr "Nutzer bearbeiten"
 
-#: AdminBackend/views/views.py:142
-msgid "Login"
-msgstr "Login"
-
 #: AdminBackend/views/views.py:264 templates/base_backend.html:61
 msgid "General Settings"
 msgstr "Allgemeine Einstellungen"
@@ -279,7 +298,7 @@ msgstr "Abgelaufene Untersuchungen"
 
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:20
 #: TeamManager/templates/dashboard_widgets/last_medical_examination.html:60
-#: TeamManager/templates/team_manager/athlete_management.html:33
+#: TeamManager/templates/team_manager/athlete_management.html:28
 #: TeamManager/templates/team_manager/medical_view.html:31
 msgid "Last medical"
 msgstr "Letzte Untersuchung"
@@ -373,70 +392,70 @@ msgstr "Handynummer Vater:"
 msgid "Mail Address Father:"
 msgstr "E-Mail Adresse Vater:"
 
-#: TeamManager/templates/team_manager/athlete_management.html:31
+#: TeamManager/templates/team_manager/athlete_management.html:26
 msgid "Birth Date"
 msgstr "Geburtsdatum"
 
-#: TeamManager/templates/team_manager/athlete_management.html:32
+#: TeamManager/templates/team_manager/athlete_management.html:27
 msgid "Gender"
 msgstr "Geschlecht"
 
-#: TeamManager/templates/team_manager/athlete_management.html:34
+#: TeamManager/templates/team_manager/athlete_management.html:29
 msgid "Competitor Number"
 msgstr "Startrechtsnummer"
 
-#: TeamManager/templates/team_manager/athlete_management.html:35
+#: TeamManager/templates/team_manager/athlete_management.html:30
 msgid "Details"
 msgstr "Details"
 
-#: TeamManager/templates/team_manager/athlete_management.html:61
+#: TeamManager/templates/team_manager/athlete_management.html:56
 msgid "Add new Athlete"
 msgstr "Sportler hinzufügen"
 
-#: TeamManager/templates/team_manager/athlete_management.html:73
-#: TeamManager/templates/team_manager/athlete_management.html:80
+#: TeamManager/templates/team_manager/athlete_management.html:68
+#: TeamManager/templates/team_manager/athlete_management.html:75
 msgid "Delete Athlete"
 msgstr "Sportler löschen"
 
-#: TeamManager/templates/team_manager/athlete_management.html:76
+#: TeamManager/templates/team_manager/athlete_management.html:71
 msgid "Are you sure to delete Athlete:"
 msgstr "Folgenden Sportler wirklich löschen?:"
 
-#: TeamManager/templates/team_manager/athlete_management.html:101
+#: TeamManager/templates/team_manager/athlete_management.html:96
 msgid "Address Data"
 msgstr "Anschrift"
 
-#: TeamManager/templates/team_manager/athlete_management.html:104
+#: TeamManager/templates/team_manager/athlete_management.html:99
 msgid "Street"
 msgstr "Straße"
 
-#: TeamManager/templates/team_manager/athlete_management.html:108
+#: TeamManager/templates/team_manager/athlete_management.html:103
 msgid "City"
 msgstr "Stadt"
 
-#: TeamManager/templates/team_manager/athlete_management.html:113
+#: TeamManager/templates/team_manager/athlete_management.html:108
 msgid "Contact Athlete"
 msgstr "Kontaktdaten Sportler"
 
-#: TeamManager/templates/team_manager/athlete_management.html:116
+#: TeamManager/templates/team_manager/athlete_management.html:111
 msgid "Phone"
 msgstr "Telefon"
 
-#: TeamManager/templates/team_manager/athlete_management.html:120
-#: TeamManager/templates/team_manager/athlete_management.html:132
-#: TeamManager/templates/team_manager/athlete_management.html:144
+#: TeamManager/templates/team_manager/athlete_management.html:115
+#: TeamManager/templates/team_manager/athlete_management.html:127
+#: TeamManager/templates/team_manager/athlete_management.html:139
 msgid "Mobile Phone"
 msgstr "Handy"
 
-#: TeamManager/templates/team_manager/athlete_management.html:129
+#: TeamManager/templates/team_manager/athlete_management.html:124
 msgid "Contact Mother"
 msgstr "Kontaktdaten Mutter"
 
-#: TeamManager/templates/team_manager/athlete_management.html:141
+#: TeamManager/templates/team_manager/athlete_management.html:136
 msgid "Contact Father"
 msgstr "Kontaktdaten Vater"
 
-#: TeamManager/templates/team_manager/athlete_management.html:173
+#: TeamManager/templates/team_manager/athlete_management.html:164
 msgid "Contact Details:"
 msgstr "Kontaktdaten Sportler:"
 
@@ -469,11 +488,11 @@ msgstr "Sportler Management"
 msgid "Create Athlete"
 msgstr "Sportler anlegen"
 
-#: TeamManager/views/views.py:74
+#: TeamManager/views/views.py:75
 msgid "Edit Athlete"
 msgstr "Sportler bearbeiten"
 
-#: TeamManager/views/views.py:92
+#: TeamManager/views/views.py:94
 msgid "Medical Examination Overview"
 msgstr "Überblick Untersuchungen"
 
