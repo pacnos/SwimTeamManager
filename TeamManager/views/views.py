@@ -1,4 +1,5 @@
 from django.urls.base import reverse_lazy
+from django.utils.translation import ugettext as _
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
@@ -6,8 +7,7 @@ from django.views.generic.list import ListView
 from AdminBackend.mixins.group_mixins import CoachPermissionRequiredMixin, AthletePermissionRequiredMixin
 from TeamManager.forms.forms import AthleteForm
 from TeamManager.models import Athlete
-
-from django.utils.translation import ugettext as _
+from TeamManager.utils import get_datepicker_date_format
 
 
 class DashboardView(AthletePermissionRequiredMixin, TemplateView):
@@ -54,6 +54,7 @@ class CreateAthleteView(CoachPermissionRequiredMixin, CreateView):
         context = super(CreateAthleteView, self).get_context_data(**kwargs)
 
         context["title"] = _("Create Athlete")
+        context["datepicker_format"] = get_datepicker_date_format()
 
         return context
 
@@ -72,6 +73,7 @@ class EditAthleteView(CoachPermissionRequiredMixin, UpdateView):
         context = super(EditAthleteView, self).get_context_data(**kwargs)
 
         context["title"] = _("Edit Athlete")
+        context["datepicker_format"] = get_datepicker_date_format()
 
         return context
 
@@ -90,5 +92,6 @@ class MedicalView(CoachPermissionRequiredMixin, ListView):
         context = super(MedicalView, self).get_context_data(**kwargs)
 
         context["title"] = _("Medical Examination Overview")
+        context["datepicker_format"] = get_datepicker_date_format()
 
         return context

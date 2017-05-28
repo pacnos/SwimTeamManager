@@ -134,7 +134,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = False
+USE_L10N = True
 
 USE_TZ = True
 
@@ -144,7 +144,7 @@ LOCALE_PATHS = [
 
 
 # Date formats
-SHORT_DATE_FORMAT = "d.m.Y"
+#SHORT_DATE_FORMAT = "d.m.Y"
 
 # Default urls
 LOGIN_REDIRECT_URL = "dashboard"
@@ -161,7 +161,3 @@ STATICFILES_DIRS = [
 
 # Application Settings
 MEDICAL_WARN_TIME = 3 * 30
-
-# Just for Debug
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# End Just for Debug

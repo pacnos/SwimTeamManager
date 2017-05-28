@@ -16,7 +16,7 @@
     <script>
         $(function() {
             $('#{{ form.birth_date.id_for_label }}').datepicker({
-                format: "dd.mm.yyyy",
+                format: "{{ datepicker_format }}",
                 language: "de",
                 autoclose: true,
                 todayHighlight: true,
@@ -25,7 +25,7 @@
             });
 
             $('#{{ form.last_medical.id_for_label }}').datepicker({
-                format: "dd.mm.yyyy",
+                format: "{{ datepicker_format }}",
                 language: "de",
                 autoclose: true,
                 todayHighlight: true,

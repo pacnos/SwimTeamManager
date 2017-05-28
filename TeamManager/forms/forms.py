@@ -13,8 +13,8 @@ class AthleteForm(ModelForm):
         model = Athlete
         fields = "__all__"
 
-    birth_date = DateField(input_formats=["%d.%m.%Y"])
-    last_medical = DateField(input_formats=["%d.%m.%Y"], required=False)
+    birth_date = DateField(localize=True)
+    last_medical = DateField(localize=True, required=False)
 
 
 class MedicalUpdateForm(Form):
@@ -23,4 +23,4 @@ class MedicalUpdateForm(Form):
     """
 
     user_id = CharField()
-    last_medical = DateField(input_formats=["%d.%m.%Y"])
+    last_medical = DateField(localize=True)
