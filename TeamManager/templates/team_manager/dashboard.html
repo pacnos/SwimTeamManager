@@ -17,7 +17,9 @@
     <div class="row">
         <div class="col-lg-12">
             <!-- Content -->
-            {% last_medical_examination %}
+            {% if request.user.tmuser.is_coach_or_admin %}
+                {% last_medical_examination %}
+            {% endif %}
         </div>
     </div>
 

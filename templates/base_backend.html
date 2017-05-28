@@ -43,31 +43,35 @@
                         <li>
                             <a href="{% url 'dashboard' %}"><i class="fa fa-dashboard fa-fw"></i> {% trans 'Dashboard' %}</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> {% trans 'Athlete Management' %} <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{% url 'TeamManager:athleteManagement' %}"><i class="fa fa-id-badge fa-fw"></i> {% trans 'Overview' %}</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'TeamManager:athleteMedical' %}"><i class="fa fa-medkit fa-fw"></i> {% trans 'Medical Examinations' %}</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> {% trans 'Administration' %} <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{% url 'AdminBackend:generalSettings' %}"><i class="fa fa-server fa-fw"></i> {% trans 'General Settings' %}</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'AdminBackend:overview' %}"><i class="fa fa-user fa-fw"></i> {% trans 'User Management' %}</a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'AdminBackend:mailSettings' %}"><i class="fa fa-envelope fa-fw"></i> {% trans 'Mail Settings' %}</a>
-                                </li>
-                            </ul>
-                        </li>
+                        {% if request.user.tmuser.is_coach_or_admin %}
+                            <li>
+                                <a href="#"><i class="fa fa-users fa-fw"></i> {% trans 'Athlete Management' %} <span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{% url 'TeamManager:athleteManagement' %}"><i class="fa fa-id-badge fa-fw"></i> {% trans 'Overview' %}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'TeamManager:athleteMedical' %}"><i class="fa fa-medkit fa-fw"></i> {% trans 'Medical Examinations' %}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                        {% if request.user.tmuser.is_admin %}
+                            <li>
+                                <a href="#"><i class="fa fa-wrench fa-fw"></i> {% trans 'Administration' %} <span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{% url 'AdminBackend:generalSettings' %}"><i class="fa fa-server fa-fw"></i> {% trans 'General Settings' %}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'AdminBackend:overview' %}"><i class="fa fa-user fa-fw"></i> {% trans 'User Management' %}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'AdminBackend:mailSettings' %}"><i class="fa fa-envelope fa-fw"></i> {% trans 'Mail Settings' %}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
 
                     </ul>
                 </div>
