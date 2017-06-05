@@ -122,7 +122,7 @@ class UploadAthleteImportCSVJSON(CoachPermissionRequiredMixin, View):
 
             # Start the import
             try:
-                conv_file = TextIOWrapper(file.file, encoding=request.encoding)
+                conv_file = TextIOWrapper(file.file, encoding="UTF-8")
                 import_athlete_csv(conv_file)
             except Exception as ex:
                 return HttpResponseBadRequest(str(ex))
