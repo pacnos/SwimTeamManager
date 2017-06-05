@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-28 11:58+0000\n"
-"PO-Revision-Date: 2017-05-28 14:00+0200\n"
+"POT-Creation-Date: 2017-06-05 12:43+0000\n"
+"PO-Revision-Date: 2017-06-05 14:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -35,7 +35,7 @@ msgid "None"
 msgstr "Keines"
 
 #: AdminBackend/templates/admin/general_settings.html:20
-#: AdminBackend/views/views.py:154 templates/base_backend.html:67
+#: AdminBackend/views/views.py:154 templates/base_backend.html:70
 msgid "Mail Settings"
 msgstr "E-Mail Einstellungen"
 
@@ -85,34 +85,34 @@ msgstr "Sicherheitsprotokoll:"
 msgid "Save"
 msgstr "Speichern"
 
-#: AdminBackend/templates/admin/login.html:20
+#: AdminBackend/templates/admin/login.html:21
 msgid ""
 "Your account doesn't have access to this page. To proceed, please login with "
 "an account that has access."
 msgstr ""
 "Dein Account hat nicht die benötigten Rechte um die Seite zu betrachten."
 
-#: AdminBackend/templates/admin/login.html:22
+#: AdminBackend/templates/admin/login.html:23
 msgid "Please login to see this page."
 msgstr "Bitte melde dich an um die gewünschte Seite zu betrachten."
 
-#: AdminBackend/templates/admin/login.html:29
+#: AdminBackend/templates/admin/login.html:30
 msgid "Your username and password didn't match. Please try again."
 msgstr ""
 "Nutzername und Passwort stimmen nicht überein. Bitte versuche es erneut."
 
-#: AdminBackend/templates/admin/login.html:37
+#: AdminBackend/templates/admin/login.html:38
 #: AdminBackend/templates/admin/user_management.html:31
 msgid "Username"
 msgstr "Nutzername"
 
-#: AdminBackend/templates/admin/login.html:40
+#: AdminBackend/templates/admin/login.html:41
 #: AdminBackend/templates/admin/user_create.html:39
 #: AdminBackend/templates/admin/user_management.html:37
 msgid "Password"
 msgstr "Passwort"
 
-#: AdminBackend/templates/admin/login.html:43 AdminBackend/views/views.py:142
+#: AdminBackend/templates/admin/login.html:44 AdminBackend/views/views.py:142
 msgid "Login"
 msgstr "Login"
 
@@ -195,6 +195,7 @@ msgid "Group:"
 msgstr "Gruppe:"
 
 #: AdminBackend/templates/admin/user_management.html:16
+#: TeamManager/templates/team_manager/athlete_management.html:16
 #: TeamManager/templates/team_manager/medical_view.html:21
 msgid "Error:"
 msgstr "Fehler:"
@@ -216,9 +217,9 @@ msgid "Last Name"
 msgstr "Nachname"
 
 #: AdminBackend/templates/admin/user_management.html:34
-#: TeamManager/templates/team_manager/athlete_management.html:119
-#: TeamManager/templates/team_manager/athlete_management.html:131
-#: TeamManager/templates/team_manager/athlete_management.html:143
+#: TeamManager/templates/team_manager/athlete_management.html:156
+#: TeamManager/templates/team_manager/athlete_management.html:168
+#: TeamManager/templates/team_manager/athlete_management.html:180
 msgid "Mail"
 msgstr "E-Mail"
 
@@ -246,7 +247,7 @@ msgstr "Passwort zurücksetzen"
 
 #: AdminBackend/templates/admin/user_management.html:93
 #: AdminBackend/templates/admin/user_management.html:114
-#: TeamManager/templates/team_manager/athlete_management.html:74
+#: TeamManager/templates/team_manager/athlete_management.html:111
 #: TeamManager/templates/team_manager/medical_view.html:61
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -272,11 +273,11 @@ msgstr "Passwort wurde erfolgreich geändert"
 msgid "Can't find user to delete"
 msgstr "Nutzer konnte nicht gefunden werden"
 
-#: AdminBackend/views/json_views.py:64 TeamManager/views/json_views.py:94
+#: AdminBackend/views/json_views.py:64 TeamManager/views/json_views.py:96
 msgid "The given data are not valid"
 msgstr "Die Übertragen Daten sind fehlerhaft"
 
-#: AdminBackend/views/views.py:28 templates/base_backend.html:64
+#: AdminBackend/views/views.py:28 templates/base_backend.html:67
 msgid "User Management"
 msgstr "Nutzerverwaltung"
 
@@ -288,7 +289,7 @@ msgstr "Nutzer anlegen"
 msgid "Edit User"
 msgstr "Nutzer bearbeiten"
 
-#: AdminBackend/views/views.py:264 templates/base_backend.html:61
+#: AdminBackend/views/views.py:264 templates/base_backend.html:64
 msgid "General Settings"
 msgstr "Allgemeine Einstellungen"
 
@@ -408,54 +409,70 @@ msgstr "Startrechtsnummer"
 msgid "Details"
 msgstr "Details"
 
-#: TeamManager/templates/team_manager/athlete_management.html:56
+#: TeamManager/templates/team_manager/athlete_management.html:58
 msgid "Add new Athlete"
 msgstr "Sportler hinzufügen"
 
-#: TeamManager/templates/team_manager/athlete_management.html:68
-#: TeamManager/templates/team_manager/athlete_management.html:75
+#: TeamManager/templates/team_manager/athlete_management.html:62
+msgid "Import from CSV"
+msgstr "CSV Import"
+
+#: TeamManager/templates/team_manager/athlete_management.html:73
+msgid "Select File"
+msgstr "Datei auswählen"
+
+#: TeamManager/templates/team_manager/athlete_management.html:78
+msgid "Choose file"
+msgstr "Öffnen"
+
+#: TeamManager/templates/team_manager/athlete_management.html:85
+msgid "Start Import"
+msgstr "Import starten"
+
+#: TeamManager/templates/team_manager/athlete_management.html:105
+#: TeamManager/templates/team_manager/athlete_management.html:112
 msgid "Delete Athlete"
 msgstr "Sportler löschen"
 
-#: TeamManager/templates/team_manager/athlete_management.html:71
+#: TeamManager/templates/team_manager/athlete_management.html:108
 msgid "Are you sure to delete Athlete:"
 msgstr "Folgenden Sportler wirklich löschen?:"
 
-#: TeamManager/templates/team_manager/athlete_management.html:96
+#: TeamManager/templates/team_manager/athlete_management.html:133
 msgid "Address Data"
 msgstr "Anschrift"
 
-#: TeamManager/templates/team_manager/athlete_management.html:99
+#: TeamManager/templates/team_manager/athlete_management.html:136
 msgid "Street"
 msgstr "Straße"
 
-#: TeamManager/templates/team_manager/athlete_management.html:103
+#: TeamManager/templates/team_manager/athlete_management.html:140
 msgid "City"
 msgstr "Stadt"
 
-#: TeamManager/templates/team_manager/athlete_management.html:108
+#: TeamManager/templates/team_manager/athlete_management.html:145
 msgid "Contact Athlete"
 msgstr "Kontaktdaten Sportler"
 
-#: TeamManager/templates/team_manager/athlete_management.html:111
+#: TeamManager/templates/team_manager/athlete_management.html:148
 msgid "Phone"
 msgstr "Telefon"
 
-#: TeamManager/templates/team_manager/athlete_management.html:115
-#: TeamManager/templates/team_manager/athlete_management.html:127
-#: TeamManager/templates/team_manager/athlete_management.html:139
+#: TeamManager/templates/team_manager/athlete_management.html:152
+#: TeamManager/templates/team_manager/athlete_management.html:164
+#: TeamManager/templates/team_manager/athlete_management.html:176
 msgid "Mobile Phone"
 msgstr "Handy"
 
-#: TeamManager/templates/team_manager/athlete_management.html:124
+#: TeamManager/templates/team_manager/athlete_management.html:161
 msgid "Contact Mother"
 msgstr "Kontaktdaten Mutter"
 
-#: TeamManager/templates/team_manager/athlete_management.html:136
+#: TeamManager/templates/team_manager/athlete_management.html:173
 msgid "Contact Father"
 msgstr "Kontaktdaten Vater"
 
-#: TeamManager/templates/team_manager/athlete_management.html:164
+#: TeamManager/templates/team_manager/athlete_management.html:204
 msgid "Contact Details:"
 msgstr "Kontaktdaten Sportler:"
 
@@ -472,27 +489,35 @@ msgstr "Datum der letzten Untersuchung aktualisieren"
 msgid "Date:"
 msgstr "Datum:"
 
-#: TeamManager/views/json_views.py:60
+#: TeamManager/views/json_views.py:62
 msgid "Can't find athlete to delete"
 msgstr "Sportler konnte nicht gefunden werden"
+
+#: TeamManager/views/json_views.py:121
+msgid "The given file is to big to import"
+msgstr "Die Datei ist zu groß um sie zu importieren"
+
+#: TeamManager/views/json_views.py:130
+msgid "The given file is not valid"
+msgstr "Die übertragene Datei ist fehlerhaft"
 
 #: TeamManager/views/views.py:22 templates/base_backend.html:44
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: TeamManager/views/views.py:38 templates/base_backend.html:47
+#: TeamManager/views/views.py:40 templates/base_backend.html:48
 msgid "Athlete Management"
 msgstr "Sportler Management"
 
-#: TeamManager/views/views.py:56
+#: TeamManager/views/views.py:59
 msgid "Create Athlete"
 msgstr "Sportler anlegen"
 
-#: TeamManager/views/views.py:75
+#: TeamManager/views/views.py:78
 msgid "Edit Athlete"
 msgstr "Sportler bearbeiten"
 
-#: TeamManager/views/views.py:94
+#: TeamManager/views/views.py:97
 msgid "Medical Examination Overview"
 msgstr "Überblick Untersuchungen"
 
@@ -504,14 +529,14 @@ msgstr "Navigation umschalten"
 msgid "Logout"
 msgstr "Abmelden"
 
-#: templates/base_backend.html:50
+#: templates/base_backend.html:51
 msgid "Overview"
 msgstr "Überblick"
 
-#: templates/base_backend.html:53
+#: templates/base_backend.html:54
 msgid "Medical Examinations"
 msgstr "Untersuchungen"
 
-#: templates/base_backend.html:58
+#: templates/base_backend.html:61
 msgid "Administration"
 msgstr "Einstellungen"
