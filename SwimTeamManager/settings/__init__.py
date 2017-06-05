@@ -120,6 +120,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "../static_deploy")
 
 # Application Settings
 MEDICAL_WARN_TIME = 3 * 30
+IMPORT_DATE_FORMAT = "%Y-%m-%d"
+
 
 
 # DEBUG IMPORT

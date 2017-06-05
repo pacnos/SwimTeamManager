@@ -22,7 +22,7 @@
     <div class="modal-content">\
       <div class="modal-header">\
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
-        <h4 class="modal-title">Uploading</h4>\
+        <h4 class="modal-title">'+ gettext('Uploading')+'</h4>\
       </div>\
       <div class="modal-body">\
         <div class="modal-message"></div>\
@@ -34,7 +34,7 @@
         </div>\
       </div>\
       <div class="modal-footer" style="display:none">\
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+        <button type="button" class="btn btn-default" data-dismiss="modal">'+gettext('Close')+'</button>\
       </div>\
     </div>\
   </div>\
@@ -62,7 +62,7 @@
         reset: function(){
             this.$modal_title = this.$modal_title.text('Uploading');
             this.$modal_footer.hide();
-            this.$modal_bar.addClass('progress-bar-success');
+            //this.$modal_bar.addClass('progress-bar-success');
             this.$modal_bar.removeClass('progress-bar-danger');
             if(this.xhr){
                 this.xhr.abort();
@@ -81,15 +81,26 @@
             var xhr = new XMLHttpRequest();
             this.xhr = xhr;
 
-            xhr.addEventListener('load', $.proxy(this.success, this, xhr));
-            xhr.addEventListener('error', $.proxy(this.error, this, xhr));
-            //xhr.addEventListener('abort', function(){});
+            //Setup success function
+            if (typeof this.options.succ_function === 'undefined') {
+                xhr.addEventListener('load', $.proxy(this.success, this, xhr));
+            }
+            else
+            {
+                xhr.addEventListener('load', $.proxy(this.options.succ_function, this, xhr, this.$modal));
+            }
 
+            //Setup error function
+            if (typeof this.options.error_function === 'undefined') {
+                xhr.addEventListener('error', $.proxy(this.error, this, xhr));
+            } else
+            {
+                xhr.addEventListener('error', $.proxy(this.options.error_function, this, xhr, this.$modal));
+            }
             xhr.upload.addEventListener('progress', $.proxy(this.progress, this));
 
             var form = this.$form;
-            
-            xhr.open(form.attr('method'), window.location.href);
+            xhr.open(form.attr('method'), this.options.submit_url);
             xhr.setRequestHeader('X-REQUESTED-WITH', 'XMLHttpRequest');
 
             var data = new FormData(form.get(0));

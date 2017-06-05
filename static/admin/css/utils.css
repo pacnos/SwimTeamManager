@@ -6,3 +6,12 @@
 .btn-link-sm:focus {
     outline: none;
 }
+
+.well-table-footer {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.form-group-table-footer {
+    margin-bottom: 0px;
+}

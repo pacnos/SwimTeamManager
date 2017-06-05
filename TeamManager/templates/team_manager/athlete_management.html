@@ -13,7 +13,7 @@
     <!-- Start Athlete table -->
     <div id="error_alert" class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
         <button type="button" class="close" aria-label="Close" onclick="$(this).parent().hide();"><span aria-hidden="true">&times;</span></button>
-        <strong>Error:</strong> <span id="errorMsg"></span>
+        <strong>{% trans 'Error:' %}</strong> <span id="errorMsg"></span>
     </div>
     <div class="row">
         <div class="col-lg-12">
@@ -53,12 +53,49 @@
                     </tbody>
                 </table>
                 <div class="panel-footer table-panel-footer">
-                    <a href="{% url 'TeamManager:athleteCreate' %}"><i class="fa fa-plus"></i> {% trans 'Add new Athlete' %}</a>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a href="{% url 'TeamManager:athleteCreate' %}"><i class="fa fa-plus"></i> {% trans 'Add new Athlete' %}</a>
+                        </div>
+                        <div class="col-lg-6" style="text-align: right;">
+                            <a role="button" data-toggle="collapse" href="#uploadForm" aria-expanded="false" aria-controls="uploadForm">
+                                <i class="fa fa-upload"></i> {% trans 'Import from CSV' %}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="collapse" id="uploadForm">
+                                <div class="well well-sm well-table-footer">
+                                    <form class="form-horizontal" id="csv_upload_form" enctype="multipart/form-data" method="post" action="test">
+                                        <div class="form-group">
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="upload-file-info" placeholder="Select File" value="" readonly="">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label class="btn btn-default" for="{{ form.file.id_for_label }}" style="width: 100%;">
+                                                    <input id="{{ form.file.id_for_label }}" type="file" name="{{ form.file.html_name }}" style="display:none;" onchange="$('#upload-file-info').val($(this).val().replace(/C:\\fakepath\\/i, ''));">
+                                                    <i class="fa fa-folder-open"></i> {% trans 'Choose file' %}
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-group-table-footer">
+                                            <div class="col-sm-12">
+                                                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                                    <i class="fa fa-upload"></i> {% trans 'Start Import' %}
+                                                </button>
+                                            </div>
+                                        </div>
+                                        {% csrf_token %}
+                                    </form>
+                                </div >
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Modal Dialog - Delete Athlete -->
     <div class="modal fade" id="athleteDelete" tabindex="-1" role="dialog" aria-labelledby="athleteDeleteLabel">
         <div class="modal-dialog" role="document">
@@ -154,6 +191,9 @@
 {% endblock %}
 
 {% block javascript %}
+    <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+    <script type="text/javascript" src="{% static "admin/js/bootstrap-uploadprogress.js" %}"></script>
+
     <script>
         function showAthleteDetails(athlete_id) {
             var modal = $("#athleteDetails");
@@ -218,8 +258,43 @@
                         modal.modal('hide');
                     }
             });
-
         }
+
+        function upload_sucess(xhr, modal) {
+            //Check other error codes
+            if(xhr.status == 0 || xhr.status >= 400){
+                return this.options.error_function(xhr, modal);
+            }
+
+            this.set_progress(100);
+
+            //Reload the page
+            location.reload(true);
+        }
+
+        function upload_error(xhr, modal) {
+            //Get the error message
+            var response_text = xhr.responseText;
+
+            //Show the error
+            $("#error_alert").find("#errorMsg").html(response_text);
+            $("#error_alert").show();
+
+            //Hide the dialog
+            modal.modal('hide');
+        }
+
+
+        // Called on Startup
+        $(function () {
+            //Setup the Uploadprogres form
+            $("#csv_upload_form").uploadprogress({
+                submit_url: '{% url 'TeamManager:athleteImport' %}',
+                error_function: upload_error,
+                succ_function: upload_sucess
+            });
+
+        });
 
     </script>
 

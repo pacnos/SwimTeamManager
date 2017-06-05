@@ -5,7 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 
 from AdminBackend.mixins.group_mixins import CoachPermissionRequiredMixin, AthletePermissionRequiredMixin
-from TeamManager.forms.forms import AthleteForm
+from TeamManager.forms.forms import AthleteForm, AthleteCSVImportForm
 from TeamManager.models import Athlete
 from TeamManager.utils import get_datepicker_date_format
 
@@ -31,11 +31,14 @@ class AthleteManagementView(CoachPermissionRequiredMixin, ListView):
     template_name = "team_manager/athlete_management.html"
     model = Athlete
     context_object_name = "athlete_list"
+    ordering = "-birth_date"
+
 
     def get_context_data(self, **kwargs):
         context = super(AthleteManagementView, self).get_context_data(**kwargs)
 
         context["title"] = _("Athlete Management")
+        context["form"] = AthleteCSVImportForm()
 
         return context
 

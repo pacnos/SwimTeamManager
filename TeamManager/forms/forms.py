@@ -1,4 +1,4 @@
-from django.forms.fields import DateField, IntegerField, CharField
+from django.forms.fields import DateField, IntegerField, CharField, FileField
 from django.forms.forms import Form
 from django.forms.models import ModelForm
 
@@ -24,3 +24,12 @@ class MedicalUpdateForm(Form):
 
     user_id = CharField()
     last_medical = DateField(localize=True)
+
+
+class AthleteCSVImportForm(Form):
+    """
+    Form which handles the athlete csv import
+    """
+
+    file = FileField(allow_empty_file=False)
+

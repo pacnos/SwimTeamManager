@@ -1,4 +1,5 @@
 import json
+from io import TextIOWrapper
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.forms import model_to_dict
@@ -9,9 +10,10 @@ from django.utils.translation import ugettext as _
 from django.views import View
 
 from AdminBackend.mixins.group_mixins import CoachPermissionRequiredMixin
-from TeamManager.forms.forms import MedicalUpdateForm
+from TeamManager.forms.forms import MedicalUpdateForm, AthleteCSVImportForm
 from TeamManager.models import Athlete
 from TeamManager.utils import json_helper
+from TeamManager.utils.import_helper import import_athlete_csv
 
 
 class AthleteContactDetailsJSON(CoachPermissionRequiredMixin, View):
@@ -92,3 +94,39 @@ class AthleteMedicalOverviewUpdate(CoachPermissionRequiredMixin, View):
             return render(request, "team_manager/ajax_parts/medical_table_body.html", {'athlete_list': athlete_list})
         else:
             return HttpResponseBadRequest(_("The given data are not valid"))
+
+
+class UploadAthleteImportCSVJSON(CoachPermissionRequiredMixin, View):
+    """
+    View which handles the upload of a csv file containing the athelte data
+    """
+
+    def post(self, request, *args, **kwargs):
+        """
+        Post Method
+        :param request:
+        :param args:
+        :return:
+        """
+        # Get the form
+        form = AthleteCSVImportForm(request.POST, request.FILES)
+
+        # Check if the form is valid
+        if form.is_valid():
+            # Validate the file
+            file = request.FILES['file']
+
+            # Is file > 5 MByte ?
+            if file.size > 5242880:
+                return HttpResponseBadRequest(_("The given file is to big to import"))
+
+            # Start the import
+            try:
+                conv_file = TextIOWrapper(file.file, encoding=request.encoding)
+                import_athlete_csv(conv_file)
+            except Exception as ex:
+                return HttpResponseBadRequest(str(ex))
+        else:
+            return HttpResponseBadRequest(_("The given file is not valid"))
+
+        return HttpResponse()
