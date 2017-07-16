@@ -60,23 +60,23 @@ class Command(BaseCommand):
         date_filter_warning = datetime.date.today() + datetime.timedelta(settings.MEDICAL_WARN_TIME)
 
         athlete_list = Athlete.objects.filter(last_medical__lte=date_filter_warning,
-                                              medical_warn_state__three_months_warning=False)
+                                              medical_warn_state__first_warning=False)
 
         for athlete in athlete_list:
             self.send_mail(athlete, mail_settings, mail_backend)
-            athlete.medical_warn_state.three_months_warning = True
+            athlete.medical_warn_state.first_warning = True
             athlete.save()
 
-        # Handle the overdue athletes
+        # Handle the second warning
         #############################
-        date_filter_week = datetime.date.today() + datetime.timedelta(7)
+        date_filter_week = datetime.date.today() + datetime.timedelta(settings.SECOND_MEDICAL_WARN_TIME)
 
         athlete_list = Athlete.objects.filter(last_medical__lte=date_filter_week,
-                                              medical_warn_state__week_warning=False)
+                                              medical_warn_state__second_warning=False)
 
         for athlete in athlete_list:
             self.send_mail(athlete, mail_settings, mail_backend)
-            athlete.medical_warn_state.week_warning = True
+            athlete.medical_warn_state.second_warning = True
             athlete.save()
 
     def send_mail(self, athlete, mail_settings, mail_backend):

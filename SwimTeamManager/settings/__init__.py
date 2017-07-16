@@ -119,7 +119,13 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, "../static_deploy")
 
 # Application Settings
+######################
+
+# Warning times
 MEDICAL_WARN_TIME = 3 * 30
+SECOND_MEDICAL_WARN_TIME = 14
+
+# Date formats
 IMPORT_DATE_FORMAT = "%Y-%m-%d"
 
 

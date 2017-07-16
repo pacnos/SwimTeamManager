@@ -21,10 +21,10 @@ def reset_medical_warn_state(sender, instance, raw, using, update_fields, **kwar
         if Athlete.objects.get(pk=instance.pk).last_medical != instance.last_medical:
             if hasattr(instance, 'medical_warn_state'):
                 medical_warn_state = instance.medical_warn_state
-                medical_warn_state.three_months_warning=False
-                medical_warn_state.week_warning=False
+                medical_warn_state.first_warning=False
+                medical_warn_state.second_warning=False
             else:
-                instance.medical_warn_state = MedicalWarnState(three_months_warning=False, week_warning=False, athlete=instance)
+                instance.medical_warn_state = MedicalWarnState(first_warning=False, second_warning=False, athlete=instance)
 
     except ObjectDoesNotExist as ex:
         pass
@@ -44,7 +44,7 @@ def athlete_created(sender, instance, created, raw, using, update_fields, **kwar
     """
 
     if created:
-        medical_warn_state = MedicalWarnState(three_months_warning=False, week_warning=False, athlete=instance)
+        medical_warn_state = MedicalWarnState(first_warning=False, second_warning=False, athlete=instance)
         medical_warn_state.save()
     else:
         instance.medical_warn_state.save()

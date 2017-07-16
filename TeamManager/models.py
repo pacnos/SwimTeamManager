@@ -60,7 +60,7 @@ class MedicalWarnState(models.Model):
     Table which holds the state of the medical examination warning
     """
 
-    three_months_warning = models.BooleanField()
-    week_warning = models.BooleanField()
+    first_warning = models.BooleanField()
+    second_warning = models.BooleanField()
 
     athlete = models.OneToOneField(Athlete, on_delete=models.CASCADE, related_name='medical_warn_state')
