@@ -64,3 +64,43 @@ class MedicalWarnState(models.Model):
     second_warning = models.BooleanField()
 
     athlete = models.OneToOneField(Athlete, on_delete=models.CASCADE, related_name='medical_warn_state')
+
+
+class Event(models.Model):
+    """
+    Table which holds the different events
+    """
+
+    name = models.CharField(max_length=150)
+    start_date = models.DateField()
+    end_date = models.DateField(null=True, default=None)
+    location = models.CharField(max_length=150)
+
+
+class CompetitionStyle(models.Model):
+    """
+    Table which contains the available competition styles
+    """
+
+    style_short = models.CharField(max_length=10)
+    style_long = models.CharField(max_length=50, default="", blank=True)
+
+
+class CompetitionType(models.Model):
+    """
+    Table which contains the available competition types
+    """
+
+    distance = models.IntegerField()
+    style = models.ForeignKey(CompetitionStyle, on_delete=models.PROTECT)
+
+
+class Result(models.Model):
+    """
+    Table which contains the result of a competition
+    """
+
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    athlete = models.ForeignKey(Athlete, on_delete=models.CASCADE)
+    competition_type = models.ForeignKey(CompetitionType, on_delete=models.PROTECT)
+    time = models.DurationField()
