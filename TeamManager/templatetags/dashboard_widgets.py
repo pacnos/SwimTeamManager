@@ -2,6 +2,7 @@ import datetime
 from django import template
 from django.conf import settings
 from django.db.models import Q
+from dateutil.relativedelta import relativedelta
 
 from TeamManager.models import Athlete
 
@@ -15,8 +16,8 @@ def last_medical_examination():
     :return: 
     """
 
-    date_filter_warning = datetime.date.today() + datetime.timedelta(settings.MEDICAL_WARN_TIME)
-    today = datetime.date.today()
+    date_filter_warning = datetime.date.today() + datetime.timedelta(settings.MEDICAL_WARN_TIME) + relativedelta(years=-1)
+    today = datetime.date.today() + relativedelta(years=-1)
 
     return {
         "overdue_medical": Athlete.objects.filter(Q(last_medical__lte=today) | Q(last_medical__isnull=True)).order_by("last_medical"),

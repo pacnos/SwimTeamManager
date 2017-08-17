@@ -2,6 +2,8 @@ import datetime
 
 import logging
 
+from dateutil.relativedelta import relativedelta
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import EmailMessage
 from django.core.mail.backends.smtp import EmailBackend
@@ -57,7 +59,8 @@ class Command(BaseCommand):
 
         # Handle the warning athletes
         #############################
-        date_filter_warning = datetime.date.today() + datetime.timedelta(settings.MEDICAL_WARN_TIME)
+        date_filter_warning = datetime.date.today() + datetime.timedelta(settings.MEDICAL_WARN_TIME) + \
+            relativedelta(years=-1)
 
         athlete_list = Athlete.objects.filter(last_medical__lte=date_filter_warning,
                                               medical_warn_state__first_warning=False)
@@ -69,9 +72,10 @@ class Command(BaseCommand):
 
         # Handle the second warning
         #############################
-        date_filter_week = datetime.date.today() + datetime.timedelta(settings.SECOND_MEDICAL_WARN_TIME)
+        date_filter_second_warning = datetime.date.today() + datetime.timedelta(settings.SECOND_MEDICAL_WARN_TIME) \
+            + relativedelta(years=-1)
 
-        athlete_list = Athlete.objects.filter(last_medical__lte=date_filter_week,
+        athlete_list = Athlete.objects.filter(last_medical__lte=date_filter_second_warning,
                                               medical_warn_state__second_warning=False)
 
         for athlete in athlete_list:
@@ -90,7 +94,7 @@ class Command(BaseCommand):
 
         # Create the body
         base_body = mail_settings.medical_mail_text
-        base_body = base_body.replace("__FIRST_NAME__", athlete.first_name).replace("__LAST_NAME__", athlete.last_name)\
+        base_body = base_body.replace("__FIRST_NAME__", athlete.first_name).replace("__LAST_NAME__", athlete.last_name) \
             .replace("__MEDICAL_END_DATE__", athlete.last_medical.strftime("%d.%m.%Y"))
 
         # Create the to list

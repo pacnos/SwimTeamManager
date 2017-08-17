@@ -2,6 +2,7 @@ import datetime
 
 from django.db import models
 from django.conf import settings
+from dateutil.relativedelta import relativedelta
 
 
 class Athlete(models.Model):
@@ -38,6 +39,15 @@ class Athlete(models.Model):
     mobile_phone_mother = models.CharField(max_length=30, null=True, blank=True)
     mail_mother = models.EmailField(null=True, blank=True)
 
+    __medical_exp_date = None
+
+    @property
+    def medical_exp_date(self):
+        if self.__medical_exp_date is None:
+            self.__medical_exp_date = self.last_medical + relativedelta(years=+1)
+
+        return self.__medical_exp_date
+
     @property
     def medical_state(self):
         """
@@ -47,9 +57,9 @@ class Athlete(models.Model):
         0: OK
         :return: 
         """
-        if self.last_medical is None or self.last_medical <= self.date_filter_overdue:
+        if self.last_medical is None or self.medical_exp_date <= self.date_filter_overdue:
             return 2
-        elif self.last_medical <= self.date_filter_warning:
+        elif self.medical_exp_date <= self.date_filter_warning:
             return 1
         else:
             return 0

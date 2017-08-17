@@ -1,6 +1,9 @@
 # SwimTeamManager
 SwimTeam manager will be a web solution to provide an easy way for coaches to manage there swim and finswimming teams. 
 
+# Used python packages
+- python-dateutil
+
 # Used Software
 - Python3: https://www.python.org
 - Django: https://www.djangoproject.com
