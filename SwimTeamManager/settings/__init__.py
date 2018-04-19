@@ -12,6 +12,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
     'TeamManager',
     'AdminBackend'
 ]
@@ -86,6 +87,13 @@ LOGGING = {
         }
     }
 
+BOOTSTRAP4 = {
+    # The Bootstrap base URL
+    'base_url': 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css',
+
+    # Include jQuery with Bootstrap JavaScript (affects django-bootstrap4 template tags)
+    'include_jquery': True
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
